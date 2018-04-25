@@ -42,6 +42,7 @@ public class UrlFilterSecurityInterceptor extends FilterSecurityInterceptor {
     }
 
 
+    @Override
     public void invoke(FilterInvocation fi) throws IOException, ServletException {
         //fi里面有一个被拦截的url
         //里面调用UrlMetadataSource的getAttributes(Object object)这个方法获取fi对应的所有权限

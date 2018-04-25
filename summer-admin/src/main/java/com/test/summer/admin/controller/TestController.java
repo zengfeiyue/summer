@@ -1,5 +1,6 @@
 package com.test.summer.admin.controller;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,11 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-
+    @Cacheable(value = "12311231")
     @RequestMapping("/test2")
     public String test1(){
         System.err.println("zzz");
        return null;
     }
-
+    @Cacheable(value = "12311231")
+    @RequestMapping("/test2")
+    public String test2(){
+        System.err.println("zzz");
+        return null;
+    }
 }

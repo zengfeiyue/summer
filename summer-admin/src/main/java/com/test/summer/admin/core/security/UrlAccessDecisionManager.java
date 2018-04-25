@@ -18,20 +18,17 @@ import java.util.Collection;
  * @author  zengfeiyue on 17/1/19.
  */
 @Service
-public class UrlAccessDecisionManager implements AccessDecisionManager {
+public class UrlAccessDecisionManager    implements AccessDecisionManager {
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
         HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
         String url, method;
         if ("anonymousUser".equals(authentication.getPrincipal())
-                || matchers("/images/**", request)
-                || matchers("/js/**", request)
-                || matchers("/css/**", request)
-                || matchers("/fonts/**", request)
                 || matchers("/", request)
-                || matchers("/index.html", request)
-                || matchers("/favicon.ico", request)
-                || matchers("/login.html", request)
+                || matchers("/static/**", request)
+                || matchers("/templates/index.html", request)
+                || matchers("/templates/favicon.ico", request)
+                || matchers("/templates/login.html", request)
                 || matchers("/login", request)) {
             return;
         } else {
