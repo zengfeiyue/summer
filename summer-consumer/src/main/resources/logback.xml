@@ -43,7 +43,7 @@
     <root level="INFO">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
-        <appender-ref ref="DB"/>
+       <!-- <appender-ref ref="DB"/>-->
     </root>
     <!--日志异步到数据库 -->
     <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">

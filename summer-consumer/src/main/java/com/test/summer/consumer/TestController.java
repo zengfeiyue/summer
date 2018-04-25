@@ -11,6 +11,6 @@ public class TestController {
     public TestService test;
     @RequestMapping(value = "/")
     public void hello(){
-        System.err.println(test.getName());
+        System.err.println(test.getName("zfy","22"));
     }
 }

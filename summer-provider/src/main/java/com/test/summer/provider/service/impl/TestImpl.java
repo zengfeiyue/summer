@@ -7,7 +7,7 @@ import com.test.summer.api.service.TestService;
 @org.springframework.stereotype.Service
 public class TestImpl implements TestService {
     @Override
-    public String getName() {
-        return "testzzz";
+    public String getName(String name,String age) {
+        return name+age;
     }
 }
