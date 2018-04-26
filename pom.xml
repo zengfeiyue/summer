@@ -15,6 +15,7 @@
 		<module>summer-consumer</module>
 		<module>summer-provider</module>
 		<module>summer-admin</module>
+		<module>summer-security</module>
 	</modules>
 
 	<parent>
