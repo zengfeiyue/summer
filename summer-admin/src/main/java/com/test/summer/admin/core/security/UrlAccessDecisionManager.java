@@ -25,7 +25,7 @@ public class UrlAccessDecisionManager    implements AccessDecisionManager {
         String url, method;
         if ("anonymousUser".equals(authentication.getPrincipal())
                 || matchers("/", request)
-                || matchers("/static/**", request)
+                || matchers("/**", request)
                 || matchers("/templates/index.html", request)
                 || matchers("/templates/favicon.ico", request)
                 || matchers("/templates/login.html", request)

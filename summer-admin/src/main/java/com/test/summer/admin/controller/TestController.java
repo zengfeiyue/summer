@@ -17,7 +17,7 @@ public class TestController {
        return null;
     }
     @Cacheable(value = "12311231")
-    @RequestMapping("/test2")
+    @RequestMapping("/test3")
     public String test2(){
         System.err.println("zzz");
         return null;

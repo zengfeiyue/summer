@@ -1,7 +1,4 @@
 package com.test.summer.admin.dao.security;
-
-
-
 import com.test.summer.admin.entity.security.SysUser;
 
 import java.util.List;
