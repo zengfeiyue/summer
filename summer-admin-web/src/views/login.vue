@@ -58,22 +58,23 @@ export default {
     },
     methods: {
         handleSubmit () {
-        this.$http.post('/test2', {
-                    username: 'zfy',
-                    password: '1'
-                  })
-                  .then(function (response) {
-                    console.log(response);
-                  })
-                  .catch(function (error) {
-                    console.log(error);
-                  });
-
+            var params = {
+                'username': 'zfy',
+                'password': '1'
+            }
+            this.$http({
+                method: 'post',
+                url:"/login",
+                data:params
+            }).then((res)=>{
+                console.log(res)
+            });
+            /*this.$router.push({
+                name: 'home_index'
+            });*/
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
                 console.log(123)
-                
-                    
                 }
             });
         }
