@@ -1,18 +1,19 @@
 package com.test.summer.admin.controller;
 
+import com.test.summer.admin.entity.LoginEntity;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zengfeiyue  zfy on 2017/8/24.
  */
-@RestController
+@Controller
 public class TestController {
 
-    @Cacheable(value = "12311231")
-    @RequestMapping("/test2")
-    public String test1(){
+    @RequestMapping(value ="/test2")
+    @ResponseBody
+    public String test1(LoginEntity loginEntity){
         System.err.println("zzz");
        return null;
     }

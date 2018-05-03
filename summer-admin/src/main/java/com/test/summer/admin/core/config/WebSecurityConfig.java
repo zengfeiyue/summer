@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsUtils;
 
 
 /**
@@ -36,12 +37,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/**").permitAll()
                 .antMatchers("/").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                /*.anyRequest().authenticated()*/
                 .and()
                 .formLogin()
                 //指定登录页是"/login"
                 .loginPage("/login")
-                .defaultSuccessUrl("/home")//登录成功后默认跳转到"/hello"
+                .defaultSuccessUrl("/#/home")//登录成功后默认跳转到"/hello"
                 .permitAll()
                 .and()
                 .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry)
@@ -51,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .and()
+                .csrf().disable()
                 .httpBasic();
     }
 
