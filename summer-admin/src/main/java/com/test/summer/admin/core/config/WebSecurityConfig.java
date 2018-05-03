@@ -1,6 +1,7 @@
 package com.test.summer.admin.core.config;
 
 
+import com.test.summer.admin.core.security.AuthenticationSuccessHandlerImpl;
 import com.test.summer.admin.core.security.UrlUserService;
 import com.test.summer.admin.core.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 //指定登录页是"/login"
                 .loginPage("/login")
-                .defaultSuccessUrl("/#/home")//登录成功后默认跳转到"/hello"
+                .successHandler(new AuthenticationSuccessHandlerImpl())
                 .permitAll()
                 .and()
                 .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry)

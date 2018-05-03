@@ -30,7 +30,7 @@
                             <Button @click="handleSubmit" type="primary" long>登录</Button>
                         </FormItem>
                     </Form>
-                    <p class="login-tip">输入任意用户名和密码即可</p>
+                    <!--<p class="login-tip">输入任意用户名和密码即可</p>-->
                 </div>
             </Card>
         </div>
@@ -58,25 +58,32 @@ export default {
     },
     methods: {
         handleSubmit () {
-            var params = {
-                'username': 'zfy',
-                'password': '1'
-            }
-            this.$http({
-                method: 'post',
-                url:"/login",
-                data:params
-            }).then((res)=>{
-                console.log(res)
+            let valid = false;
+            this.$refs.loginForm.validate((v) => {
+                valid = v;
             });
-            /*this.$router.push({
-                name: 'home_index'
-            });*/
-            this.$refs.loginForm.validate((valid) => {
-                if (valid) {
-                console.log(123)
+            if (valid){
+                var params = {
+                    'username': 'zfy',
+                    'password': '1'
                 }
-            });
+                this.$http({
+                    method: 'post',
+                    url:"/login",
+                    data:params
+                }).then((res)=>{
+                    if (res.status ==200 && res.data.code==2000){
+                        console.log(res.data)
+                        Cookies.set('user', "zzz");
+                        Cookies.set('password', this.form.password);
+                        this.$router.push({
+                            name: 'home_index'
+                        });
+                    }else{
+                        console.log("登录失败");
+                    }
+                });
+            }
         }
     }
 };

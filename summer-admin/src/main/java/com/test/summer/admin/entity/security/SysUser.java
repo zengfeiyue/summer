@@ -12,14 +12,15 @@ public class SysUser implements UserDetails {
     private String cnname;
     private String username;
     @JsonIgnore
-    private String password;
+    private transient String password;
     private String rePassword;
     private String historyPassword;
     private String email;
     @JsonIgnore
-    private String telephone;
+    private transient String telephone;
     private String mobilePhone;
-    private List<? extends GrantedAuthority> authorities;
+    @JsonIgnore
+    private transient List<? extends GrantedAuthority> authorities;
     private SysRole sysRole;
     private Integer roleId;
 
@@ -52,11 +53,12 @@ public class SysUser implements UserDetails {
         this.username = username;
     }
 
+    @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
-
+    @JsonIgnore
     public void setGrantedAuthorities(List<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }

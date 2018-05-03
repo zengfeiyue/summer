@@ -8,14 +8,23 @@ import '@/locale';
 import 'iview/dist/styles/iview.css';
 import VueI18n from 'vue-i18n';
 import util from './libs/util';
-
+import qs from 'qs';
 import axios from 'axios';
 Vue.use(VueI18n);
 Vue.use(iView);
 // axios全局配置
-Vue.prototype.$http = axios
-axios.defaults.baseURL = 'http://localhost:8080'
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+Vue.prototype.$http = axios.create({
+    baseURL: 'http://localhost:8080',
+    timeout: 10000,
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},//设置头
+    transformRequest: [function (data) {
+        if (data instanceof FormData) {
+            return data
+        }
+        data = qs.stringify(data)
+        return data
+    }]
+})
 
 new Vue({
     el: '#app',
