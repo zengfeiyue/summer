@@ -7,7 +7,7 @@ package com.test.summer.admin.entity.security;
 public class SysPermission {
     private Integer id;
     private String name;
-    private String permissionUrl;
+    private String url;
     private String method;
     private String description;
 
@@ -27,12 +27,12 @@ public class SysPermission {
         this.name = name;
     }
 
-    public String getPermissionUrl() {
-        return permissionUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPermissionUrl(String permissionUrl) {
-        this.permissionUrl = permissionUrl;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getMethod() {
@@ -56,7 +56,7 @@ public class SysPermission {
         return "SysPermission{" +
                 "id=" + id +
                 ", name=" + name +
-                ", permissionUrl=" + permissionUrl +
+                ", url=" + url +
                 ", method=" + method +
                 ", description=" + description +
                 '}';

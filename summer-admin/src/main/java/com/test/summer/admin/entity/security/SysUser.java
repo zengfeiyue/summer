@@ -17,7 +17,7 @@ public class SysUser implements UserDetails {
     private String historyPassword;
     private String email;
     @JsonIgnore
-    private transient String telephone;
+    private transient String phone;
     private String mobilePhone;
     @JsonIgnore
     private transient List<? extends GrantedAuthority> authorities;
@@ -79,10 +79,12 @@ public class SysUser implements UserDetails {
         this.cnname = cnname;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
@@ -99,12 +101,12 @@ public class SysUser implements UserDetails {
         this.email = email;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getMobilePhone() {
@@ -154,7 +156,7 @@ public class SysUser implements UserDetails {
                 ", username=" + username +
                 ", password=" + password +
                 ", email=" + email +
-                ", telephone=" + telephone +
+                ", telephone=" + phone +
                 ", mobilePhone=" + mobilePhone +
                 '}';
     }

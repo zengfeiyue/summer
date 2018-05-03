@@ -31,7 +31,7 @@ public class UrlUserService implements UserDetailsService {
             List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
             for (SysPermission sysPermission : sysPermissions) {
                 if (sysPermission != null && sysPermission.getName()!=null) {
-                    GrantedAuthority grantedAuthority = new UrlGrantedAuthority(sysPermission.getPermissionUrl(), sysPermission.getMethod());
+                    GrantedAuthority grantedAuthority = new UrlGrantedAuthority(sysPermission.getUrl(), sysPermission.getMethod());
                     grantedAuthorities.add(grantedAuthority);
                 }
             }
