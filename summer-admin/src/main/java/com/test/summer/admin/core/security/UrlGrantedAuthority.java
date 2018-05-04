@@ -7,15 +7,22 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public class UrlGrantedAuthority implements GrantedAuthority {
 
-    private String permissionUrl;
+    private String url;
     private String method;
 
-    public String getPermissionUrl() {
-        return permissionUrl;
+    public UrlGrantedAuthority(String url,String method){
+        this.url = url;
+        this.method = method;
+    }
+    public UrlGrantedAuthority(){
+
+    }
+    public String getUrl() {
+        return url;
     }
 
-    public void setPermissionUrl(String permissionUrl) {
-        this.permissionUrl = permissionUrl;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getMethod() {
@@ -26,13 +33,8 @@ public class UrlGrantedAuthority implements GrantedAuthority {
         this.method = method;
     }
 
-    public UrlGrantedAuthority (String permissionUrl, String method) {
-        this.permissionUrl = permissionUrl;
-        this.method = method;
-    }
-
     @Override
     public String getAuthority() {
-        return this.permissionUrl + ";"+this.method;
+        return this.url + ";"+this.method;
     }
 }

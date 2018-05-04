@@ -23,8 +23,14 @@ public class UrlUserService implements UserDetailsService {
     private SysUserMapper userMapper;
     @Autowired
     private SysPermissionMapper permissionMapper;
+
+    /**
+     * 重写loadUserByUsername 方法获得 userdetails 类型用户
+     * @param userName
+     * @return
+     */
     @Override
-    public UserDetails loadUserByUsername(String userName) { //重写loadUserByUsername 方法获得 userdetails 类型用户
+    public UserDetails loadUserByUsername(String userName) {
         SysUser sysUser = userMapper.getByUserName(userName);
         if (sysUser != null) {
             List<SysPermission> sysPermissions = permissionMapper.getByUserId(sysUser.getId());
@@ -36,6 +42,7 @@ public class UrlUserService implements UserDetailsService {
                 }
             }
             sysUser.setGrantedAuthorities(grantedAuthorities);
+
             return sysUser;
         } else {
             throw new UsernameNotFoundException("admin: " + userName + " do not exist!");

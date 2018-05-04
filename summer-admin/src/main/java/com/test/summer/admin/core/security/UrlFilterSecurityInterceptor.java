@@ -1,14 +1,18 @@
 package com.test.summer.admin.core.security;
 
+import com.test.summer.admin.core.jwt.JwtTokenAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.InterceptorStatusToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -28,15 +32,8 @@ public class UrlFilterSecurityInterceptor extends FilterSecurityInterceptor {
         super.setAccessDecisionManager(urlAccessDecisionManager);
     }
 
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
         FilterInvocation fi = new FilterInvocation(request, response, chain);
         invoke(fi);
     }
@@ -54,12 +51,6 @@ public class UrlFilterSecurityInterceptor extends FilterSecurityInterceptor {
         } finally {
             super.afterInvocation(token, null);
         }
-    }
-
-
-    @Override
-    public void destroy() {
-
     }
 
     @Override

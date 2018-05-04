@@ -9,6 +9,14 @@ public class ResponseBean {
     private Integer code;
     private Object data;
 
+    public ResponseBean(Integer code, String msg, Object data) {
+        this.msg = msg;
+        this.code = code;
+        this.data = data;
+    }
+    public ResponseBean() {
+
+    }
     public String getMsg() {
         return msg;
     }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class TestController {
 
-    @RequestMapping(value ="/test2")
+    @RequestMapping(value ="/test1")
     @ResponseBody
     public String test1(LoginEntity loginEntity){
         System.err.println("zzz");

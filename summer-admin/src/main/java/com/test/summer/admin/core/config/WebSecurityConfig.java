@@ -1,6 +1,7 @@
 package com.test.summer.admin.core.config;
 
-
+import com.test.summer.admin.core.filter.jwt.JwtAuthenticationFilter;
+import com.test.summer.admin.core.filter.jwt.JwtLoginFilter;
 import com.test.summer.admin.core.security.AuthenticationSuccessHandlerImpl;
 import com.test.summer.admin.core.security.UrlUserService;
 import com.test.summer.admin.core.utils.MD5Util;
@@ -11,11 +12,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsUtils;
-
 
 /**
  *
@@ -29,17 +31,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UrlUserService urlUserService;
+
     @Autowired
     SessionRegistry sessionRegistry;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //http.csrf().disable()
-        http.authorizeRequests()
-                .antMatchers("/**").permitAll()
+
+        http.csrf().disable()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                /*.antMatchers("/**").permitAll()*/
                 .antMatchers("/").permitAll()
+                //允许跨域
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                /*.anyRequest().authenticated()*/
+                .and()
+                //无状态session
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .formLogin()
                 //指定登录页是"/login"
@@ -47,15 +55,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new AuthenticationSuccessHandlerImpl())
                 .permitAll()
                 .and()
-                .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry)
-                .and()
-                .and()
-                .logout()
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .and()
-                .csrf().disable()
-                .httpBasic();
+                .addFilterBefore(new JwtLoginFilter("/login", authenticationManager()),
+                        UsernamePasswordAuthenticationFilter.class)
+                // 添加一个过滤器验证其他请求的Token是否合法
+                .addFilterBefore(new JwtAuthenticationFilter(),
+                        UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
@@ -73,7 +77,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             }
         });
     }
-
 
     @Bean
     public SessionRegistry getSessionRegistry(){

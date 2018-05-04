@@ -69,7 +69,7 @@ export default {
                 }
                 this.$http({
                     method: 'post',
-                    url:"/login",
+                    url:"/test2",
                     data:params
                 }).then((res)=>{
                     if (res.status ==200 && res.data.code==2000){
