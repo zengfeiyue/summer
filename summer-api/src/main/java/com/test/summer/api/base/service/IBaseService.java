@@ -1,4 +1,6 @@
 package com.test.summer.api.base.service;
+import com.github.pagehelper.PageInfo;
+
 import java.io.Serializable;
 
 /**
@@ -46,4 +48,10 @@ public interface IBaseService<T,ID extends Serializable> {
      * @return
      */
     int updateByPrimaryKey(T record);
+
+    /**
+     * 分页查询数据
+     * @return
+     */
+    PageInfo<T> findByPage(int currPage, int pageSize);
 }

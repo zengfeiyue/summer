@@ -1,5 +1,7 @@
 package com.test.summer.api.base;
 
+import com.github.pagehelper.Page;
+
 import java.io.Serializable;
 
 /**
@@ -48,4 +50,11 @@ public interface BaseMapper<T,ID extends Serializable> {
      * @return
      */
     int updateByPrimaryKey(T record);
+
+    /**
+     * 分页查询数据
+     * @return
+     */
+    Page<T> findByPage();
+
 }

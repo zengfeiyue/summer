@@ -29,6 +29,7 @@
     from sys_permission
     where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbggenerated
@@ -122,4 +123,17 @@
       description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getByUserId" resultMap="BaseResultMap">
+      SELECT
+          p.*
+      FROM
+          sys_user su
+      LEFT JOIN sys_user_group sug ON sug.user_id = su.id
+      LEFT JOIN sys_user_role ur ON su.id = ur.user_id
+      LEFT JOIN sys_role_group srg ON srg.group_id = sug.group_id
+      LEFT JOIN sys_role r ON ur.role_id = r.id
+      LEFT JOIN sys_role_permission rp ON rp.role_id = r.id or rp.role_id=srg.role_id
+      LEFT JOIN sys_permission p ON p.id = rp.permission_id
+        where su.id=#{userId}
+  </select>
 </mapper>

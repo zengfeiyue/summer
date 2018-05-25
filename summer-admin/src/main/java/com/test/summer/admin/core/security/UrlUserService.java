@@ -1,9 +1,9 @@
 package com.test.summer.admin.core.security;
 
-import com.test.summer.admin.dao.security.SysPermissionMapper;
-import com.test.summer.admin.dao.security.SysUserMapper;
-import com.test.summer.admin.entity.security.SysPermission;
-import com.test.summer.admin.entity.security.SysUser;
+import com.test.summer.admin.dao.sys.SysPermissionMapper;
+import com.test.summer.admin.dao.sys.SysUserMapper;
+import com.test.summer.admin.entity.sys.SysPermission;
+import com.test.summer.admin.entity.sys.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,10 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zengfeiyue on 17/2/7.
+ *
+ * @author zengfeiyue
+ * @date 17/2/7
  */
 @Service
 public class UrlUserService implements UserDetailsService {
+
     @Autowired
     private SysUserMapper userMapper;
     @Autowired

@@ -1,10 +1,11 @@
 package com.test.summer.admin.core.filter.jwt;
 import com.test.summer.admin.core.jwt.JwtTokenAuthentication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -13,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * jwt login filter
@@ -40,7 +40,7 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest req,HttpServletResponse res, FilterChain chain,Authentication auth) {
         //生成token
-        String token = JwtTokenAuthentication.getJwtToken(auth.getName(), (List<GrantedAuthority>) auth.getAuthorities());
+        String token = JwtTokenAuthentication.getJwtToken(auth.getName(),  auth);
         //传递token
         req.setAttribute("token",token);
         try {

@@ -27,7 +27,7 @@ public class JwtTokenAuthentication {
     /**
      * 5天
      */
-    static final long EXPIRATIONTIME = 432_000_000;
+    static final long EXPIR_ATION_TIME = 432_000_000;
     /**
      * JWT密码
      */
@@ -55,7 +55,7 @@ public class JwtTokenAuthentication {
                 // 用户名写入标题
                 .setSubject(username)
                 // 有效期设置
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIR_ATION_TIME))
                 // 签名设置
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
@@ -73,15 +73,15 @@ public class JwtTokenAuthentication {
      * JWT生成方法
      * @param username
      */
-    public static String getJwtToken(String username,List<GrantedAuthority> grantedAuthorities) {
+    public static String getJwtToken(String username,Authentication auth) {
         // 生成JWT
         String JwtToken = Jwts.builder()
                 // 保存权限（角色）
-                .claim("authorities", grantedAuthorities)
+                .claim("authorities", auth.getPrincipal())
                 // 用户名写入标题
                 .setSubject(username)
                 // 有效期设置
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIR_ATION_TIME))
                 // 签名设置
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
@@ -96,7 +96,6 @@ public class JwtTokenAuthentication {
     public static Authentication getAuthentication(HttpServletRequest request) {
         // 从Header中拿到token
         String token = request.getHeader(HEADER_STRING);
-
         if (token != null) {
             // 解析 Token
             Claims claims = Jwts.parser()
@@ -108,7 +107,9 @@ public class JwtTokenAuthentication {
             // 拿用户名
             String user = claims.getSubject();
             // 得到 权限（角色）
-            ArrayList<UrlGrantedAuthority> authorities = JSON.parseObject(JSON.toJSONString(claims.get("authorities")), new TypeReference<ArrayList<UrlGrantedAuthority>>() {});
+            //ArrayList<UrlGrantedAuthority> authorities = JSON.parseObject(JSON.toJSONString(claims.get("authorities")), new TypeReference<ArrayList<UrlGrantedAuthority>>() {});
+
+            List<GrantedAuthority> authorities =  AuthorityUtils.createAuthorityList(JSON.toJSONString(claims.get("authorities")));
             // 返回验证令牌
             return user != null ? new UsernamePasswordAuthenticationToken(user, null, authorities) : null;
         }

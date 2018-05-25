@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @SpringBootApplication
 @MapperScan("com.test.summer.admin.dao")
+@EnableCaching
 public class SummerAdminApplication {
 
 	public static void main(String[] args) {

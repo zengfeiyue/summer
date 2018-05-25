@@ -2,7 +2,7 @@ package com.test.summer.admin.core.security;
 
 import com.alibaba.fastjson.JSON;
 import com.test.summer.admin.core.base.ResponseBean;
-import com.test.summer.admin.entity.security.SysUser;
+import com.test.summer.admin.entity.sys.SysUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import javax.servlet.http.HttpServletRequest;

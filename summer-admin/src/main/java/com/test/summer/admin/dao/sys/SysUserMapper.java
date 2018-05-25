@@ -2,6 +2,7 @@ package com.test.summer.admin.dao.sys;
 
 
 import com.test.summer.admin.entity.sys.SysUser;
+import org.springframework.cache.annotation.Cacheable;
 
 public interface SysUserMapper {
     /**
@@ -51,4 +52,12 @@ public interface SysUserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(SysUser record);
+
+    /**
+     *
+     * @param userName
+     * @return
+     */
+    @Cacheable(value = "zzz")
+    SysUser getByUserName(String userName);
 }

@@ -40,9 +40,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .anyRequest().authenticated()
-                /*.antMatchers("/**").permitAll()*/
+                /*放行的路径*/
+                .antMatchers("/**").permitAll()
                 .antMatchers("/").permitAll()
+                .antMatchers("/test","/test1").permitAll()
+                /*其他路径都要鉴权*/
+                .anyRequest().authenticated()
                 //允许跨域
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .and()

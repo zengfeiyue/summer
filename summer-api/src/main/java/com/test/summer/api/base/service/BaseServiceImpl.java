@@ -1,14 +1,19 @@
 package com.test.summer.api.base.service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.test.summer.api.base.BaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+/**
+ * @author zengfeiyue
+ */
 @Service
 public class BaseServiceImpl<T,ID extends Serializable> implements IBaseService<T,ID> {
 
     @Autowired
-    private BaseMapper<T,ID> baseMapper;
+    protected BaseMapper<T,ID> baseMapper;
 
     @Override
     public int deleteByPrimaryKey(ID id) {
@@ -38,5 +43,12 @@ public class BaseServiceImpl<T,ID extends Serializable> implements IBaseService<
     @Override
     public int updateByPrimaryKey(T record) {
         return baseMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public PageInfo<T> findByPage(int currPage, int pageSize) {
+        PageHelper.startPage(currPage, pageSize);
+        PageInfo<T> pageInfo = new PageInfo<>(baseMapper.findByPage());
+        return pageInfo;
     }
 }
