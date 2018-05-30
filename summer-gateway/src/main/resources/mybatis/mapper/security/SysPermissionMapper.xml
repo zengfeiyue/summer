@@ -54,7 +54,7 @@
         where u.id=#{userId}
     </select>
 
-    <insert id="create" parameterType="com.test.summer.gateway.entity.security.SysPermission">
+    <insert id="create" parameterType="com.summer.gateway.entity.security.SysPermission">
         <selectKey resultType="int"  order="AFTER" keyProperty="id" >
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.test.summer.gateway.entity.security.SysPermission">
+    <update id="update" parameterType="com.summer.gateway.entity.security.SysPermission">
         UPDATE sys_permission SET
         name = #{name},
         url = #{url},

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @SpringBootApplication
-@MapperScan("com.test.summer.gateway.dao")
+@MapperScan("com.summer.gateway.dao")
 @EnableCaching
 public class SummerGateWayApplication {
 

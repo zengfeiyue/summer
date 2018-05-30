@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author zengfy
+ * @author zengfeiyue
  */
 public class PageBean <T> implements Serializable {
     private static final long serialVersionUID = 5760097915453738435L;

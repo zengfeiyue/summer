@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author zengfeiyue
  */
 @Service
-public class BaseServiceImpl<T,ID extends Serializable> implements IBaseService<T,ID> {
+public class BaseServiceImpl<T,ID extends Serializable> implements BaseService<T,ID> {
 
     @Autowired
     protected BaseMapper<T,ID> baseMapper;

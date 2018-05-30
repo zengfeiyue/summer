@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * @author zengfeiyue
  */
-public interface IBaseService<T,ID extends Serializable> {
+public interface BaseService<T,ID extends Serializable> {
     /**
      * 根据id删除
      * @param id

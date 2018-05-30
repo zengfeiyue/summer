@@ -2,7 +2,6 @@ package com.summer.consumer;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.summer.api.service.TestService;
-import com.test.summer.api.service.TestService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

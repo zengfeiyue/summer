@@ -8,6 +8,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * 自定义登录成功处理器
@@ -21,12 +22,16 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         String token = (String) request.getAttribute("token");
         response.setContentType("text/html;charset=UTF-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
+        //用户信息
+        SysUser user= (SysUser) authentication.getPrincipal();
         ResponseBean responseBean = new ResponseBean();
         responseBean.setCode(2000);
-        responseBean.setMsg(token);
-        //user
-        SysUser user= (SysUser) authentication.getPrincipal();
-        responseBean.setData(user);
+        responseBean.setMsg("");
+        //登录token 个人信息
+        HashMap map = new HashMap(2);
+        map.put("token",token);
+        map.put("principal",user);
+        responseBean.setData(map);
         response.getWriter().write(JSON.toJSONString(responseBean));
     }
 
