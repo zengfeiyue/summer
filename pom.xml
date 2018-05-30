@@ -14,9 +14,8 @@
 	<modules>
 		<module>summer-consumer</module>
 		<module>summer-provider</module>
-		<module>summer-admin</module>
+		<module>summer-gateway</module>
 		<module>summer-authorization</module>
-		<module>summer-getway</module>
 	</modules>
 
 	<parent>

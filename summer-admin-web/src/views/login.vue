@@ -63,15 +63,21 @@ export default {
                 valid = v;
             });
             if (valid){
+                Cookies.set('user', "zzz");
+                Cookies.set('password', this.form.password);
+                this.$router.push({
+                    name: 'home_index'
+                });
                 var params = {
                     'username': 'zfy',
                     'password': '1'
                 }
-                this.$http({
+                /*this.$http({
                     method: 'post',
                     url:"/test2",
                     data:params
                 }).then((res)=>{
+
                     if (res.status ==200 && res.data.code==2000){
                         console.log(res.data)
                         Cookies.set('user', "zzz");
@@ -82,7 +88,7 @@ export default {
                     }else{
                         console.log("登录失败");
                     }
-                });
+                });*/
             }
         }
     }
