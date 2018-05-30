@@ -1,0 +1,15 @@
+package com.summer.authorization.service.impl;
+
+import com.github.pagehelper.PageInfo;
+import com.summer.api.base.service.BaseServiceImpl;
+import com.summer.authorization.entity.sys.SysUserGroup;
+import com.summer.authorization.service.SysUserGroupService;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author zengfeiyue
+ */
+@Service
+public class SysUserGroupServiceImpl extends BaseServiceImpl<SysUserGroup,Integer>implements SysUserGroupService {
+
+}
