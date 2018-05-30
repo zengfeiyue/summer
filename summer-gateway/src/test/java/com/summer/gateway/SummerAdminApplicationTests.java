@@ -1,4 +1,4 @@
-package com.test.summer.gateway;
+package com.summer.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
