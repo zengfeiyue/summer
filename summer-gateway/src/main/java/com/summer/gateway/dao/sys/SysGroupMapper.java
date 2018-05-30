@@ -2,7 +2,6 @@ package com.summer.gateway.dao.sys;
 
 
 import com.summer.gateway.entity.sys.SysGroup;
-import com.test.summer.gateway.entity.sys.SysGroup;
 
 public interface SysGroupMapper {
     /**

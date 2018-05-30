@@ -1,10 +1,9 @@
 package com.summer.gateway.core.filter.jwt;
 
-import com.test.summer.gateway.core.jwt.JwtTokenAuthentication;
+import com.summer.gateway.core.jwt.JwtTokenAuthentication;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;

@@ -2,7 +2,6 @@ package com.summer.gateway.dao.sys;
 
 
 import com.summer.gateway.entity.sys.SysRoleMenu;
-import com.test.summer.gateway.entity.sys.SysRoleMenu;
 
 public interface SysRoleMenuMapper {
     /**

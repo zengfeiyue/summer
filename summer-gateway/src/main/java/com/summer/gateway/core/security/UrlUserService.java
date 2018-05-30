@@ -1,11 +1,9 @@
 package com.summer.gateway.core.security;
 
+import com.summer.gateway.dao.sys.SysPermissionMapper;
+import com.summer.gateway.dao.sys.SysUserMapper;
 import com.summer.gateway.entity.sys.SysPermission;
 import com.summer.gateway.entity.sys.SysUser;
-import com.test.summer.gateway.dao.sys.SysPermissionMapper;
-import com.test.summer.gateway.dao.sys.SysUserMapper;
-import com.test.summer.gateway.entity.sys.SysPermission;
-import com.test.summer.gateway.entity.sys.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

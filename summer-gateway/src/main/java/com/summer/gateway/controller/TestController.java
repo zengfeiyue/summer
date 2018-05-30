@@ -1,6 +1,6 @@
 package com.summer.gateway.controller;
 
-import com.test.summer.gateway.entity.LoginEntity;
+import com.summer.gateway.entity.LoginEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;

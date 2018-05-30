@@ -1,6 +1,6 @@
 package com.summer.gateway.core.jwt;
 import com.alibaba.fastjson.JSON;
-import com.test.summer.gateway.core.base.ResponseBean;
+import com.summer.gateway.core.base.ResponseBean;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

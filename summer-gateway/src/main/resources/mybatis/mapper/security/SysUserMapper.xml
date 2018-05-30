@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.test.summer.gateway.dao.security.SysUserMapper">
-    <resultMap id="userMap" type="com.test.summer.gateway.entity.security.SysUser">
+<mapper namespace="com.summer.gateway.dao.security.SysUserMapper">
+    <resultMap id="userMap" type="com.summer.gateway.entity.security.SysUser">
         <id property="id" column="id"/>
         <result property="cnname" column="cnname"/>
         <result property="username" column="username"/>

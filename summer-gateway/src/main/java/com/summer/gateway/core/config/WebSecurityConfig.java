@@ -1,12 +1,10 @@
 package com.summer.gateway.core.config;
 
+import com.summer.gateway.core.filter.jwt.JwtAuthenticationFilter;
+import com.summer.gateway.core.filter.jwt.JwtLoginFilter;
 import com.summer.gateway.core.security.AuthenticationSuccessHandlerImpl;
 import com.summer.gateway.core.security.UrlUserService;
-import com.test.summer.gateway.core.filter.jwt.JwtAuthenticationFilter;
-import com.test.summer.gateway.core.filter.jwt.JwtLoginFilter;
-import com.test.summer.gateway.core.security.AuthenticationSuccessHandlerImpl;
-import com.test.summer.gateway.core.security.UrlUserService;
-import com.test.summer.gateway.core.utils.MD5Util;
+import com.summer.gateway.core.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

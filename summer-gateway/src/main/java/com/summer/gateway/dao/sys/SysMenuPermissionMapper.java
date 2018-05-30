@@ -2,7 +2,6 @@ package com.summer.gateway.dao.sys;
 
 
 import com.summer.gateway.entity.sys.SysMenuPermission;
-import com.test.summer.gateway.entity.sys.SysMenuPermission;
 
 public interface SysMenuPermissionMapper {
     /**

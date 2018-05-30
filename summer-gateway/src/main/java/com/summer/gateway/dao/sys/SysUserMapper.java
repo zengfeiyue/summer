@@ -2,7 +2,6 @@ package com.summer.gateway.dao.sys;
 
 
 import com.summer.gateway.entity.sys.SysUser;
-import com.test.summer.gateway.entity.sys.SysUser;
 import org.springframework.cache.annotation.Cacheable;
 
 public interface SysUserMapper {
