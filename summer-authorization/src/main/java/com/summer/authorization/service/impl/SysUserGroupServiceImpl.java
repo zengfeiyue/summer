@@ -1,8 +1,7 @@
 package com.summer.authorization.service.impl;
 
-import com.github.pagehelper.PageInfo;
 import com.summer.api.base.service.BaseServiceImpl;
-import com.summer.authorization.entity.sys.SysUserGroup;
+import com.summer.api.entity.authorization.SysUserGroup;
 import com.summer.authorization.service.SysUserGroupService;
 import org.springframework.stereotype.Service;
 

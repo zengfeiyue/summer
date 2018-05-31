@@ -1,7 +1,7 @@
 package com.summer.authorization.service.impl;
 
 import com.summer.api.base.service.BaseServiceImpl;
-import com.summer.authorization.entity.sys.SysUserRole;
+import com.summer.api.entity.authorization.SysUserRole;
 import com.summer.authorization.service.SysUserRoleService;
 import org.springframework.stereotype.Service;
 

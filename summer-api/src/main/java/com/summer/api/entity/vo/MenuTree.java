@@ -1,4 +1,4 @@
-package com.summer.authorization.entity.vo;
+package com.summer.api.entity.vo;
 
 import java.util.List;
 

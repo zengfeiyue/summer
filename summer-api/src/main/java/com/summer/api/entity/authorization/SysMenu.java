@@ -1,4 +1,4 @@
-package com.summer.authorization.entity.sys;
+package com.summer.api.entity.authorization;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package com.summer.authorization;
 
+import com.summer.api.service.authorization.AuthorizationProvider;
 import com.summer.authorization.dao.sys.SysMenuMapper;
 import com.summer.authorization.service.SysMenuService;
 import org.junit.Test;
@@ -13,16 +14,13 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SummerAuthorizeApplicationTests {
-	@Autowired
-	public SysMenuMapper sysMenuMapper;
 
 	@Autowired
-	private SysMenuService menuService;
+	private AuthorizationProvider authorizationProvider;
 	@Test
 	public void contextLoads() {
-		//PageInfo<SysMenu> pageInfo = menuService.findByPage(1,2);
-		List list= sysMenuMapper.getMenuList();
-		System.err.println(list.size());
+
+		System.err.println(authorizationProvider.getUserAccount("zzz"));
 	}
 
 }

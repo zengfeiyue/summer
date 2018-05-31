@@ -1,8 +1,10 @@
 package com.summer.authorization.service.impl;
 
 import com.summer.api.base.service.BaseServiceImpl;
-import com.summer.authorization.entity.sys.SysUser;
+import com.summer.api.entity.authorization.SysUser;
+import com.summer.authorization.dao.sys.SysUserMapper;
 import com.summer.authorization.service.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,4 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserServiceImpl extends BaseServiceImpl<SysUser,Integer> implements SysUserService {
 
+    @Autowired
+    private SysUserMapper sysUserMapper;
+
+    @Override
+    public SysUser getUserAccount(String account) {
+        return sysUserMapper.getUserAccount(account);
+    }
 }
