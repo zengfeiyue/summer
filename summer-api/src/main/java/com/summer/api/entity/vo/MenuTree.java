@@ -1,5 +1,6 @@
 package com.summer.api.entity.vo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,10 +24,20 @@ public class MenuTree {
      * 菜单title
      */
     private String title;
+
+    /**
+     * parent id
+     */
+    private Integer pid;
+
+    /**
+     * id
+     */
+    private Integer id;
     /**
      * children list
      */
-    private List<MenuTree> children;
+    private List<MenuTree> children = new ArrayList<>(10);
 
     public String getPath() {
         return path;
@@ -66,5 +77,21 @@ public class MenuTree {
 
     public void setChildren(List<MenuTree> children) {
         this.children = children;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

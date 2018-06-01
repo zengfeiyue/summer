@@ -133,10 +133,26 @@
     <include refid="Base_Column_List" />
     from sys_menu
   </select>
-  <select id="getMenuList" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from sys_menu
-    order by parent_id asc,grade asc
+  <select id="getMenuList" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT
+        sm.id, sm.name, sm.path, sm.parent_id,sm.icon,sm.path,sm.sort,sm.remark,sm.type
+    FROM
+        sys_menu sm
+    WHERE
+        sm.id IN (
+            SELECT
+                srm.menu_id
+            FROM
+                sys_user su
+            INNER JOIN sys_user_group sug ON su.id = sug.user_id
+            INNER JOIN sys_user_role sur ON sur.user_id = su.id
+            INNER JOIN sys_role_group srg on srg.group_id = sug.group_id or sur.role_id = srg.role_id
+            INNER JOIN sys_role_menu srm ON srm.role_id = sur.role_id or srm.role_id= srg.role_id
+            WHERE
+                su.id = #{userId}
+            GROUP BY
+                srm.menu_id
+        )
+    order by grade asc,sort asc
   </select>
 </mapper>

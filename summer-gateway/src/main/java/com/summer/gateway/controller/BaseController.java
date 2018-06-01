@@ -1,5 +1,6 @@
 package com.summer.gateway.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.summer.api.entity.authorization.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,9 @@ public class BaseController {
      */
     @ModelAttribute
     public SysUser getUser() {
-        return (SysUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        /*SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.err.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());*/
+        return null;
     }
 
 }

@@ -10,11 +10,11 @@ import java.util.Map;
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu,Integer> {
 
-    public List<Map> getPage();
+    List<Map> getPage();
 
     /**
      * 获取菜单列表
      * @return
      */
-    List<SysMenu> getMenuList();
+    List<SysMenu> getMenuList(Integer userId);
 }
