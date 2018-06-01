@@ -72,7 +72,7 @@ public class JwtTokenAuthentication {
         // 生成JWT
         String JwtToken = Jwts.builder()
                 // 保存权限（角色）
-                .claim("authorities", auth.getPrincipal())
+                .claim("authorities", auth)
                 // 用户名写入标题
                 .setSubject(username)
                 // 有效期设置

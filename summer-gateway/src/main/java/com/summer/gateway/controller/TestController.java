@@ -1,6 +1,5 @@
 package com.summer.gateway.controller;
 
-import com.summer.gateway.entity.LoginEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -17,7 +16,7 @@ public class TestController extends BaseController{
 
     @RequestMapping(value ="/test1")
     @ResponseBody
-    public String test1(LoginEntity loginEntity){
+    public String test1(){
         System.err.println(Thread.currentThread().getId());
         redisTemplate.opsForValue().set("1","1");
         System.err.println("zzz"+request);

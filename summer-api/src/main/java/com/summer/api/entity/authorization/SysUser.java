@@ -1,5 +1,6 @@
 package com.summer.api.entity.authorization;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -42,7 +43,7 @@ public class SysUser implements UserDetails {
      *
      * @mbggenerated
      */
-    @JsonIgnore
+    @JSONField(serialize=false)
     private String password;
 
     /**
@@ -59,6 +60,7 @@ public class SysUser implements UserDetails {
      *
      * @mbggenerated
      */
+    @JSONField(serialize=false)
     private String phone;
 
     /**
@@ -67,6 +69,7 @@ public class SysUser implements UserDetails {
      *
      * @mbggenerated
      */
+    @JSONField(serialize=false)
     private String mobilePhone;
 
     /**
@@ -75,6 +78,7 @@ public class SysUser implements UserDetails {
      *
      * @mbggenerated
      */
+    @JSONField(serialize=false)
     private Integer wechatId;
 
     /**

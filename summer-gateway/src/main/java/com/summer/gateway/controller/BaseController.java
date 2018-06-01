@@ -1,6 +1,6 @@
 package com.summer.gateway.controller;
 
-import com.summer.gateway.entity.sys.SysUser;
+import com.summer.api.entity.authorization.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;

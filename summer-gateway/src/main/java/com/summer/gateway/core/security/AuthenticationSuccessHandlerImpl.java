@@ -1,8 +1,8 @@
 package com.summer.gateway.core.security;
 
 import com.alibaba.fastjson.JSON;
+import com.summer.api.entity.authorization.SysUser;
 import com.summer.gateway.core.base.ResponseBean;
-import com.summer.gateway.entity.sys.SysUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         SysUser user= (SysUser) authentication.getPrincipal();
         ResponseBean responseBean = new ResponseBean();
         responseBean.setCode(2000);
-        responseBean.setMsg("");
+        responseBean.setMsg("login success");
         //登录token 个人信息
         HashMap map = new HashMap(2);
         map.put("token",token);
