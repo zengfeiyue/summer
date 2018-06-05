@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.textcolor.Plugin","tinymce.core.PluginManager","tinymce.plugins.textcolor.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.core.dom.DOMUtils","tinymce.core.util.Tools","tinymce.plugins.textcolor.api.Settings","tinymce.plugins.textcolor.core.TextColor","tinymce.plugins.textcolor.ui.ColorPickerHtml","tinymce.core.util.I18n"]
+["tinymce.plugins.textcolor.Plugin","tinymce.core.PluginManager","tinymce.plugins.textcolor.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.core.dom.DOMUtils","tinymce.core.util.Tools","tinymce.plugins.textcolor.common.Settings","tinymce.plugins.textcolor.core.TextColor","tinymce.plugins.textcolor.ui.ColorPickerHtml","tinymce.core.util.I18n"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -346,7 +346,7 @@ jsc */
         [
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.util.I18n',
-            'tinymce.plugins.textcolor.api.Settings',
+            'tinymce.plugins.textcolor.common.Settings',
             'tinymce.plugins.textcolor.core.TextColor'
         ],
   function (DOMUtils, I18n, Settings, TextColor) {
@@ -442,7 +442,7 @@ jsc */
         [
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.textcolor.api.Settings',
+            'tinymce.plugins.textcolor.common.Settings',
             'tinymce.plugins.textcolor.core.TextColor',
             'tinymce.plugins.textcolor.ui.ColorPickerHtml'
         ],

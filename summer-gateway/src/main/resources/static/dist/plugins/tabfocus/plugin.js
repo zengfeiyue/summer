@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.tabfocus.Plugin","tinymce.core.PluginManager","tinymce.plugins.tabfocus.core.Keyboard","global!tinymce.util.Tools.resolve","global!window","tinymce.core.dom.DOMUtils","tinymce.core.EditorManager","tinymce.core.Env","tinymce.core.util.Delay","tinymce.core.util.Tools","tinymce.core.util.VK","tinymce.plugins.tabfocus.api.Settings"]
+["tinymce.plugins.tabfocus.Plugin","tinymce.core.PluginManager","tinymce.plugins.tabfocus.core.Keyboard","global!tinymce.util.Tools.resolve","global!window","tinymce.core.dom.DOMUtils","tinymce.core.EditorManager","tinymce.core.Env","tinymce.core.util.Delay","tinymce.core.util.Tools","tinymce.core.util.VK","tinymce.plugins.tabfocus.common.Settings"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -261,7 +261,7 @@ jsc */
             'tinymce.core.util.Delay',
             'tinymce.core.util.Tools',
             'tinymce.core.util.VK',
-            'tinymce.plugins.tabfocus.api.Settings'
+            'tinymce.plugins.tabfocus.common.Settings'
         ],
   function (window, DOMUtils, EditorManager, Env, Delay, Tools, VK, Settings) {
       var DOM = DOMUtils.DOM;

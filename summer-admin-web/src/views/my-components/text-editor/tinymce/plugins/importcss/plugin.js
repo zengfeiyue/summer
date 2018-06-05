@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.importcss.Plugin","tinymce.core.PluginManager","tinymce.plugins.importcss.api.Api","tinymce.plugins.importcss.core.ImportCss","global!tinymce.util.Tools.resolve","tinymce.core.dom.DOMUtils","tinymce.core.EditorManager","tinymce.core.Env","tinymce.core.util.Tools","tinymce.plugins.importcss.api.Settings"]
+["tinymce.plugins.importcss.Plugin","tinymce.core.PluginManager","tinymce.plugins.importcss.common.Api","tinymce.plugins.importcss.core.ImportCss","global!tinymce.util.Tools.resolve","tinymce.core.dom.DOMUtils","tinymce.core.EditorManager","tinymce.core.Env","tinymce.core.util.Tools","tinymce.plugins.importcss.common.Settings"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -242,7 +242,7 @@ jsc */
             'tinymce.core.EditorManager',
             'tinymce.core.Env',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.importcss.api.Settings'
+            'tinymce.plugins.importcss.common.Settings'
         ],
   function (DOMUtils, EditorManager, Env, Tools, Settings) {
       var removeCacheSuffix = function (url) {
@@ -548,7 +548,7 @@ jsc */
   'tinymce.plugins.importcss.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.importcss.api.Api',
+            'tinymce.plugins.importcss.common.Api',
             'tinymce.plugins.importcss.core.ImportCss'
         ],
   function (PluginManager, Api, ImportCss) {

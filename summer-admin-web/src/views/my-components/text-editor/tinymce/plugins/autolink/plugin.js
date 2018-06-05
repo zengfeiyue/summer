@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.autolink.Plugin","tinymce.core.Env","tinymce.core.PluginManager","tinymce.plugins.autolink.core.Keys","global!tinymce.util.Tools.resolve","tinymce.plugins.autolink.api.Settings"]
+["tinymce.plugins.autolink.Plugin","tinymce.core.Env","tinymce.core.PluginManager","tinymce.plugins.autolink.core.Keys","global!tinymce.util.Tools.resolve","tinymce.plugins.autolink.common.Settings"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -155,7 +155,7 @@ jsc */
         [
             'tinymce.core.Env',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.autolink.api.Settings'
+            'tinymce.plugins.autolink.common.Settings'
         ],
   function (Env, PluginManager, Settings) {
       var rangeEqualsDelimiterOrSpace = function (rangeString, delimiter) {

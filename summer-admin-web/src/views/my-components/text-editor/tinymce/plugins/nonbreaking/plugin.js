@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.nonbreaking.Plugin","tinymce.core.PluginManager","tinymce.plugins.nonbreaking.api.Commands","tinymce.plugins.nonbreaking.core.Keyboard","tinymce.plugins.nonbreaking.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.nonbreaking.core.Actions","tinymce.plugins.nonbreaking.api.Settings"]
+["tinymce.plugins.nonbreaking.Plugin","tinymce.core.PluginManager","tinymce.plugins.nonbreaking.common.Commands","tinymce.plugins.nonbreaking.core.Keyboard","tinymce.plugins.nonbreaking.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.nonbreaking.core.Actions","tinymce.plugins.nonbreaking.common.Settings"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -203,7 +203,7 @@ jsc */
     define(
   'tinymce.plugins.nonbreaking.core.Keyboard',
         [
-            'tinymce.plugins.nonbreaking.api.Settings',
+            'tinymce.plugins.nonbreaking.common.Settings',
             'tinymce.plugins.nonbreaking.core.Actions'
         ],
   function (Settings, Actions) {
@@ -282,7 +282,7 @@ jsc */
   'tinymce.plugins.nonbreaking.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.nonbreaking.api.Commands',
+            'tinymce.plugins.nonbreaking.common.Commands',
             'tinymce.plugins.nonbreaking.core.Keyboard',
             'tinymce.plugins.nonbreaking.ui.Buttons'
         ],

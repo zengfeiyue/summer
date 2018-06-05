@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.fullpage.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.fullpage.api.Commands","tinymce.plugins.fullpage.core.FilterContent","tinymce.plugins.fullpage.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.fullpage.ui.Dialog","tinymce.core.util.Tools","tinymce.plugins.fullpage.api.Settings","tinymce.plugins.fullpage.core.Parser","tinymce.plugins.fullpage.core.Protect","tinymce.core.html.DomParser","tinymce.core.html.Node","tinymce.core.html.Serializer"]
+["tinymce.plugins.fullpage.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.fullpage.common.Commands","tinymce.plugins.fullpage.core.FilterContent","tinymce.plugins.fullpage.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.fullpage.ui.Dialog","tinymce.core.util.Tools","tinymce.plugins.fullpage.common.Settings","tinymce.plugins.fullpage.core.Parser","tinymce.plugins.fullpage.core.Protect","tinymce.core.html.DomParser","tinymce.core.html.Node","tinymce.core.html.Serializer"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -280,7 +280,7 @@ jsc */
             'tinymce.core.html.Node',
             'tinymce.core.html.Serializer',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.fullpage.api.Settings'
+            'tinymce.plugins.fullpage.common.Settings'
         ],
   function (DomParser, Node, Serializer, Tools, Settings) {
       var parseHeader = function (head) {
@@ -702,7 +702,7 @@ jsc */
   'tinymce.plugins.fullpage.core.FilterContent',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.fullpage.api.Settings',
+            'tinymce.plugins.fullpage.common.Settings',
             'tinymce.plugins.fullpage.core.Parser',
             'tinymce.plugins.fullpage.core.Protect'
         ],
@@ -927,9 +927,9 @@ jsc */
     define(
   'tinymce.plugins.fullpage.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.fullpage.api.Commands',
+            'tinymce.plugins.fullpage.common.Commands',
             'tinymce.plugins.fullpage.core.FilterContent',
             'tinymce.plugins.fullpage.ui.Buttons'
         ],

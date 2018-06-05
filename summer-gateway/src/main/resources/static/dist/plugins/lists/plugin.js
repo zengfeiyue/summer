@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.lists.Plugin","tinymce.core.PluginManager","tinymce.plugins.lists.api.Api","tinymce.plugins.lists.api.Commands","tinymce.plugins.lists.core.Keyboard","tinymce.plugins.lists.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.lists.core.Delete","tinymce.plugins.lists.actions.Indent","tinymce.plugins.lists.actions.Outdent","tinymce.plugins.lists.actions.ToggleList","tinymce.core.util.VK","tinymce.plugins.lists.api.Settings","tinymce.core.util.Tools","tinymce.plugins.lists.core.NodeType","tinymce.plugins.lists.core.Selection","tinymce.core.dom.RangeUtils","tinymce.core.dom.TreeWalker","tinymce.core.dom.BookmarkManager","tinymce.core.dom.DOMUtils","tinymce.plugins.lists.core.Bookmark","tinymce.plugins.lists.core.NormalizeLists","tinymce.core.dom.DomQuery","tinymce.plugins.lists.core.SplitList","tinymce.plugins.lists.core.TextBlock","tinymce.plugins.lists.core.Range","tinymce.core.Env"]
+["tinymce.plugins.lists.Plugin","tinymce.core.PluginManager","tinymce.plugins.lists.common.Api","tinymce.plugins.lists.common.Commands","tinymce.plugins.lists.core.Keyboard","tinymce.plugins.lists.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.lists.core.Delete","tinymce.plugins.lists.actions.Indent","tinymce.plugins.lists.actions.Outdent","tinymce.plugins.lists.actions.ToggleList","tinymce.core.util.VK","tinymce.plugins.lists.common.Settings","tinymce.core.util.Tools","tinymce.plugins.lists.core.NodeType","tinymce.plugins.lists.core.Selection","tinymce.core.dom.RangeUtils","tinymce.core.dom.TreeWalker","tinymce.core.dom.BookmarkManager","tinymce.core.dom.DOMUtils","tinymce.plugins.lists.core.Bookmark","tinymce.plugins.lists.core.NormalizeLists","tinymce.core.dom.DomQuery","tinymce.plugins.lists.core.SplitList","tinymce.plugins.lists.core.TextBlock","tinymce.plugins.lists.core.Range","tinymce.core.Env"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -1743,7 +1743,7 @@ jsc */
             'tinymce.core.util.VK',
             'tinymce.plugins.lists.actions.Indent',
             'tinymce.plugins.lists.actions.Outdent',
-            'tinymce.plugins.lists.api.Settings',
+            'tinymce.plugins.lists.common.Settings',
             'tinymce.plugins.lists.core.Delete'
         ],
   function (VK, Indent, Outdent, Settings, Delete) {
@@ -1869,8 +1869,8 @@ jsc */
   'tinymce.plugins.lists.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.lists.api.Api',
-            'tinymce.plugins.lists.api.Commands',
+            'tinymce.plugins.lists.common.Api',
+            'tinymce.plugins.lists.common.Commands',
             'tinymce.plugins.lists.core.Keyboard',
             'tinymce.plugins.lists.ui.Buttons'
         ],

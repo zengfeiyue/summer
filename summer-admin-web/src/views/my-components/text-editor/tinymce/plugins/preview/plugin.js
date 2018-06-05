@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.preview.Plugin","tinymce.core.PluginManager","tinymce.plugins.preview.api.Commands","tinymce.plugins.preview.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.preview.ui.Dialog","tinymce.core.Env","tinymce.core.util.Tools","tinymce.plugins.preview.api.Settings","tinymce.plugins.preview.ui.IframeContent"]
+["tinymce.plugins.preview.Plugin","tinymce.core.PluginManager","tinymce.plugins.preview.common.Commands","tinymce.plugins.preview.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.preview.ui.Dialog","tinymce.core.Env","tinymce.core.util.Tools","tinymce.plugins.preview.common.Settings","tinymce.plugins.preview.ui.IframeContent"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -257,7 +257,7 @@ jsc */
         [
             'tinymce.core.Env',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.preview.api.Settings',
+            'tinymce.plugins.preview.common.Settings',
             'tinymce.plugins.preview.ui.IframeContent'
         ],
   function (Env, Tools, Settings, IframeContent) {
@@ -364,7 +364,7 @@ jsc */
   'tinymce.plugins.preview.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.preview.api.Commands',
+            'tinymce.plugins.preview.common.Commands',
             'tinymce.plugins.preview.ui.Buttons'
         ],
   function (PluginManager, Commands, Buttons) {

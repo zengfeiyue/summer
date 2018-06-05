@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.autosave.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.autosave.api.Api","tinymce.plugins.autosave.core.BeforeUnload","tinymce.plugins.autosave.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.autosave.core.Storage","global!window","tinymce.core.EditorManager","tinymce.core.util.Tools","tinymce.plugins.autosave.api.Settings","global!setInterval","tinymce.core.util.LocalStorage","tinymce.plugins.autosave.api.Events","global!document","tinymce.plugins.autosave.core.Time"]
+["tinymce.plugins.autosave.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.autosave.common.Api","tinymce.plugins.autosave.core.BeforeUnload","tinymce.plugins.autosave.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.autosave.core.Storage","global!window","tinymce.core.EditorManager","tinymce.core.util.Tools","tinymce.plugins.autosave.common.Settings","global!setInterval","tinymce.core.util.LocalStorage","tinymce.plugins.autosave.common.Events","global!document","tinymce.plugins.autosave.core.Time"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -300,8 +300,8 @@ jsc */
             'global!setInterval',
             'tinymce.core.util.LocalStorage',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.autosave.api.Events',
-            'tinymce.plugins.autosave.api.Settings'
+            'tinymce.plugins.autosave.common.Events',
+            'tinymce.plugins.autosave.common.Settings'
         ],
   function (setInterval, LocalStorage, Tools, Events, Settings) {
       var isEmpty = function (editor, html) {
@@ -465,7 +465,7 @@ jsc */
             'global!window',
             'tinymce.core.EditorManager',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.autosave.api.Settings'
+            'tinymce.plugins.autosave.common.Settings'
         ],
   function (window, EditorManager, Tools, Settings) {
       EditorManager._beforeUnloadHandler = function () {
@@ -571,9 +571,9 @@ jsc */
     define(
   'tinymce.plugins.autosave.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.autosave.api.Api',
+            'tinymce.plugins.autosave.common.Api',
             'tinymce.plugins.autosave.core.BeforeUnload',
             'tinymce.plugins.autosave.ui.Buttons'
         ],

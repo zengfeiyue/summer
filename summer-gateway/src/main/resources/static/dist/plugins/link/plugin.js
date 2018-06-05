@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.link.Plugin","tinymce.core.PluginManager","tinymce.plugins.link.api.Commands","tinymce.plugins.link.core.Actions","tinymce.plugins.link.core.Keyboard","tinymce.plugins.link.ui.Controls","global!tinymce.util.Tools.resolve","tinymce.core.util.VK","tinymce.plugins.link.api.Settings","tinymce.plugins.link.core.OpenUrl","tinymce.plugins.link.core.Utils","tinymce.plugins.link.ui.Dialog","global!document","global!window","tinymce.core.dom.DOMUtils","tinymce.core.Env","global!RegExp","tinymce.core.util.Tools","tinymce.core.util.Delay","tinymce.core.util.XHR"]
+["tinymce.plugins.link.Plugin","tinymce.core.PluginManager","tinymce.plugins.link.common.Commands","tinymce.plugins.link.core.Actions","tinymce.plugins.link.core.Keyboard","tinymce.plugins.link.ui.Controls","global!tinymce.util.Tools.resolve","tinymce.core.util.VK","tinymce.plugins.link.common.Settings","tinymce.plugins.link.core.OpenUrl","tinymce.plugins.link.core.Utils","tinymce.plugins.link.ui.Dialog","global!document","global!window","tinymce.core.dom.DOMUtils","tinymce.core.Env","global!RegExp","tinymce.core.util.Tools","tinymce.core.util.Delay","tinymce.core.util.XHR"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -336,7 +336,7 @@ jsc */
         [
             'global!RegExp',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.link.api.Settings'
+            'tinymce.plugins.link.common.Settings'
         ],
   function (RegExp, Tools, Settings) {
       var toggleTargetRules = function (rel, isUnsafe) {
@@ -556,7 +556,7 @@ jsc */
             'tinymce.core.util.Delay',
             'tinymce.core.util.Tools',
             'tinymce.core.util.XHR',
-            'tinymce.plugins.link.api.Settings',
+            'tinymce.plugins.link.common.Settings',
             'tinymce.plugins.link.core.Utils'
         ],
   function (Delay, Tools, XHR, Settings, Utils) {
@@ -918,7 +918,7 @@ jsc */
   'tinymce.plugins.link.core.Actions',
         [
             'tinymce.core.util.VK',
-            'tinymce.plugins.link.api.Settings',
+            'tinymce.plugins.link.common.Settings',
             'tinymce.plugins.link.core.OpenUrl',
             'tinymce.plugins.link.core.Utils',
             'tinymce.plugins.link.ui.Dialog'
@@ -1194,7 +1194,7 @@ jsc */
   'tinymce.plugins.link.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.link.api.Commands',
+            'tinymce.plugins.link.common.Commands',
             'tinymce.plugins.link.core.Actions',
             'tinymce.plugins.link.core.Keyboard',
             'tinymce.plugins.link.ui.Controls'

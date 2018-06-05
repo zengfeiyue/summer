@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.media.Plugin","tinymce.core.PluginManager","tinymce.plugins.media.api.Api","tinymce.plugins.media.api.Commands","tinymce.plugins.media.core.FilterContent","tinymce.plugins.media.core.ResolveName","tinymce.plugins.media.core.Selection","tinymce.plugins.media.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.media.ui.Dialog","tinymce.core.html.Node","tinymce.core.util.Tools","tinymce.plugins.media.core.Nodes","tinymce.plugins.media.core.Sanitize","tinymce.plugins.media.core.UpdateHtml","tinymce.core.Env","tinymce.core.util.Delay","tinymce.plugins.media.api.Settings","tinymce.plugins.media.core.HtmlToData","tinymce.plugins.media.core.Service","tinymce.plugins.media.core.Size","tinymce.core.html.Writer","tinymce.core.html.SaxParser","tinymce.core.html.Schema","tinymce.core.dom.DOMUtils","tinymce.plugins.media.ui.SizeManager","tinymce.plugins.media.core.VideoScript","tinymce.core.util.Promise","tinymce.plugins.media.core.DataToHtml","tinymce.plugins.media.core.Mime","tinymce.plugins.media.core.UrlPatterns"]
+["tinymce.plugins.media.Plugin","tinymce.core.PluginManager","tinymce.plugins.media.common.Api","tinymce.plugins.media.common.Commands","tinymce.plugins.media.core.FilterContent","tinymce.plugins.media.core.ResolveName","tinymce.plugins.media.core.Selection","tinymce.plugins.media.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.media.ui.Dialog","tinymce.core.html.Node","tinymce.core.util.Tools","tinymce.plugins.media.core.Nodes","tinymce.plugins.media.core.Sanitize","tinymce.plugins.media.core.UpdateHtml","tinymce.core.Env","tinymce.core.util.Delay","tinymce.plugins.media.common.Settings","tinymce.plugins.media.core.HtmlToData","tinymce.plugins.media.core.Service","tinymce.plugins.media.core.Size","tinymce.core.html.Writer","tinymce.core.html.SaxParser","tinymce.core.html.Schema","tinymce.core.dom.DOMUtils","tinymce.plugins.media.ui.SizeManager","tinymce.plugins.media.core.VideoScript","tinymce.core.util.Promise","tinymce.plugins.media.core.DataToHtml","tinymce.plugins.media.core.Mime","tinymce.plugins.media.core.UrlPatterns"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -844,7 +844,7 @@ jsc */
   'tinymce.plugins.media.core.DataToHtml',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.media.api.Settings',
+            'tinymce.plugins.media.common.Settings',
             'tinymce.plugins.media.core.HtmlToData',
             'tinymce.plugins.media.core.Mime',
             'tinymce.plugins.media.core.UpdateHtml',
@@ -1008,7 +1008,7 @@ jsc */
   'tinymce.plugins.media.core.Service',
         [
             'tinymce.core.util.Promise',
-            'tinymce.plugins.media.api.Settings',
+            'tinymce.plugins.media.common.Settings',
             'tinymce.plugins.media.core.DataToHtml'
         ],
   function (Promise, Settings, DataToHtml) {
@@ -1175,7 +1175,7 @@ jsc */
             'tinymce.core.Env',
             'tinymce.core.util.Delay',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.media.api.Settings',
+            'tinymce.plugins.media.common.Settings',
             'tinymce.plugins.media.core.HtmlToData',
             'tinymce.plugins.media.core.Service',
             'tinymce.plugins.media.core.Size',
@@ -1503,7 +1503,7 @@ jsc */
             'tinymce.core.html.Schema',
             'tinymce.core.html.Writer',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.media.api.Settings'
+            'tinymce.plugins.media.common.Settings'
         ],
   function (SaxParser, Schema, Writer, Tools, Settings) {
       var sanitize = function (editor, html) {
@@ -1584,7 +1584,7 @@ jsc */
         [
             'tinymce.core.Env',
             'tinymce.core.html.Node',
-            'tinymce.plugins.media.api.Settings',
+            'tinymce.plugins.media.common.Settings',
             'tinymce.plugins.media.core.Sanitize',
             'tinymce.plugins.media.core.VideoScript'
         ],
@@ -2013,8 +2013,8 @@ jsc */
   'tinymce.plugins.media.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.media.api.Api',
-            'tinymce.plugins.media.api.Commands',
+            'tinymce.plugins.media.common.Api',
+            'tinymce.plugins.media.common.Commands',
             'tinymce.plugins.media.core.FilterContent',
             'tinymce.plugins.media.core.ResolveName',
             'tinymce.plugins.media.core.Selection',

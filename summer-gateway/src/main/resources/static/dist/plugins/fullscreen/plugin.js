@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.fullscreen.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.fullscreen.api.Api","tinymce.plugins.fullscreen.api.Commands","tinymce.plugins.fullscreen.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.fullscreen.core.Actions","global!document","global!window","tinymce.core.dom.DOMUtils","tinymce.plugins.fullscreen.api.Events"]
+["tinymce.plugins.fullscreen.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.fullscreen.common.Api","tinymce.plugins.fullscreen.common.Commands","tinymce.plugins.fullscreen.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.fullscreen.core.Actions","global!document","global!window","tinymce.core.dom.DOMUtils","tinymce.plugins.fullscreen.common.Events"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -216,7 +216,7 @@ jsc */
             'global!document',
             'global!window',
             'tinymce.core.dom.DOMUtils',
-            'tinymce.plugins.fullscreen.api.Events'
+            'tinymce.plugins.fullscreen.common.Events'
         ],
   function (document, window, DOMUtils, Events) {
       var DOM = DOMUtils.DOM;
@@ -417,10 +417,10 @@ jsc */
     define(
   'tinymce.plugins.fullscreen.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.fullscreen.api.Api',
-            'tinymce.plugins.fullscreen.api.Commands',
+            'tinymce.plugins.fullscreen.common.Api',
+            'tinymce.plugins.fullscreen.common.Commands',
             'tinymce.plugins.fullscreen.ui.Buttons'
         ],
   function (Cell, PluginManager, Api, Commands, Buttons) {

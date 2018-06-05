@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.test</groupId>
+	<groupId>com.summer</groupId>
 	<artifactId>summer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -12,10 +12,9 @@
 	<description>Demo project for Spring Boot</description>
 
 	<modules>
-		<module>summer-consumer</module>
-		<module>summer-provider</module>
+		<module>summer-common</module>
 		<module>summer-gateway</module>
-		<module>summer-authorization</module>
+		<module>summer-security</module>
 	</modules>
 
 	<parent>
@@ -33,12 +32,7 @@
 
 	<dependencies>
 
-		<dependency>
-			<groupId>com.test</groupId>
-			<artifactId>summer-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>jar</type>
-		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

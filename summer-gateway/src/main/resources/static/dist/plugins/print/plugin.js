@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.print.Plugin","tinymce.core.PluginManager","tinymce.plugins.print.api.Commands","tinymce.plugins.print.ui.Buttons","global!tinymce.util.Tools.resolve"]
+["tinymce.plugins.print.Plugin","tinymce.core.PluginManager","tinymce.plugins.print.common.Commands","tinymce.plugins.print.ui.Buttons","global!tinymce.util.Tools.resolve"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -164,7 +164,7 @@ jsc */
   'tinymce.plugins.print.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.print.api.Commands',
+            'tinymce.plugins.print.common.Commands',
             'tinymce.plugins.print.ui.Buttons'
         ],
   function (PluginManager, Commands, Buttons) {

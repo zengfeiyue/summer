@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.save.Plugin","tinymce.core.PluginManager","tinymce.plugins.save.api.Commands","tinymce.plugins.save.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.save.core.Actions","tinymce.plugins.save.api.Settings","tinymce.core.dom.DOMUtils","tinymce.core.util.Tools"]
+["tinymce.plugins.save.Plugin","tinymce.core.PluginManager","tinymce.plugins.save.common.Commands","tinymce.plugins.save.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.save.core.Actions","tinymce.plugins.save.common.Settings","tinymce.core.dom.DOMUtils","tinymce.core.util.Tools"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -180,7 +180,7 @@ jsc */
         [
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.save.api.Settings'
+            'tinymce.plugins.save.common.Settings'
         ],
   function (DOMUtils, Tools, Settings) {
       var displayErrorMessage = function (editor, message) {
@@ -289,7 +289,7 @@ jsc */
     define(
   'tinymce.plugins.save.ui.Buttons',
         [
-            'tinymce.plugins.save.api.Settings'
+            'tinymce.plugins.save.common.Settings'
         ],
   function (Settings) {
       var stateToggle = function (editor) {
@@ -341,7 +341,7 @@ jsc */
   'tinymce.plugins.save.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.save.api.Commands',
+            'tinymce.plugins.save.common.Commands',
             'tinymce.plugins.save.ui.Buttons'
         ],
   function (PluginManager, Commands, Buttons) {

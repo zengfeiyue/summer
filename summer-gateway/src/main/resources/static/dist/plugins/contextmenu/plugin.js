@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.contextmenu.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.contextmenu.api.Api","tinymce.plugins.contextmenu.core.Bind","global!tinymce.util.Tools.resolve","tinymce.core.dom.DOMUtils","tinymce.core.Env","tinymce.plugins.contextmenu.api.Settings","tinymce.plugins.contextmenu.core.RangePoint","tinymce.plugins.contextmenu.ui.ContextMenu","ephox.katamari.api.Arr","tinymce.core.ui.Factory","tinymce.core.util.Tools","ephox.katamari.api.Option","global!Array","global!Error","global!String","ephox.katamari.api.Fun","global!Object"]
+["tinymce.plugins.contextmenu.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.contextmenu.common.Api","tinymce.plugins.contextmenu.core.Bind","global!tinymce.util.Tools.resolve","tinymce.core.dom.DOMUtils","tinymce.core.Env","tinymce.plugins.contextmenu.common.Settings","tinymce.plugins.contextmenu.core.RangePoint","tinymce.plugins.contextmenu.ui.ContextMenu","ephox.katamari.common.Arr","tinymce.core.ui.Factory","tinymce.core.util.Tools","ephox.katamari.common.Option","global!Array","global!Error","global!String","ephox.katamari.common.Fun","global!Object"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -320,7 +320,7 @@ jsc */
   'ephox.katamari.api.Option',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'global!Object'
         ],
 
@@ -506,7 +506,7 @@ jsc */
   'ephox.katamari.api.Arr',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Array',
             'global!Error',
             'global!String'
@@ -815,7 +815,7 @@ jsc */
     define(
   'tinymce.plugins.contextmenu.core.RangePoint',
         [
-            'ephox.katamari.api.Arr'
+            'ephox.katamari.common.Arr'
         ],
   function (Arr) {
       var containsXY = function (clientRect, clientX, clientY) {
@@ -897,7 +897,7 @@ jsc */
         [
             'tinymce.core.ui.Factory',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.contextmenu.api.Settings'
+            'tinymce.plugins.contextmenu.common.Settings'
         ],
   function (Factory, Tools, Settings) {
       var renderMenu = function (editor, visibleState) {
@@ -976,7 +976,7 @@ jsc */
         [
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.Env',
-            'tinymce.plugins.contextmenu.api.Settings',
+            'tinymce.plugins.contextmenu.common.Settings',
             'tinymce.plugins.contextmenu.core.RangePoint',
             'tinymce.plugins.contextmenu.ui.ContextMenu'
         ],
@@ -1055,9 +1055,9 @@ jsc */
     define(
   'tinymce.plugins.contextmenu.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.contextmenu.api.Api',
+            'tinymce.plugins.contextmenu.common.Api',
             'tinymce.plugins.contextmenu.core.Bind'
         ],
   function (Cell, PluginManager, Api, Bind) {

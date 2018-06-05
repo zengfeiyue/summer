@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.wordcount.Plugin","tinymce.core.PluginManager","tinymce.plugins.wordcount.api.Api","tinymce.plugins.wordcount.ui.Statusbar","global!tinymce.util.Tools.resolve","tinymce.plugins.wordcount.text.WordCount","tinymce.core.util.Delay","tinymce.core.util.I18n","tinymce.plugins.wordcount.text.WordGetter","tinymce.plugins.wordcount.text.UnicodeData","tinymce.plugins.wordcount.text.StringMapper","tinymce.plugins.wordcount.text.WordBoundary","tinymce.plugins.wordcount.alien.Arr"]
+["tinymce.plugins.wordcount.Plugin","tinymce.core.PluginManager","tinymce.plugins.wordcount.common.Api","tinymce.plugins.wordcount.ui.Statusbar","global!tinymce.util.Tools.resolve","tinymce.plugins.wordcount.text.WordCount","tinymce.core.util.Delay","tinymce.core.util.I18n","tinymce.plugins.wordcount.text.WordGetter","tinymce.plugins.wordcount.text.UnicodeData","tinymce.plugins.wordcount.text.StringMapper","tinymce.plugins.wordcount.text.WordBoundary","tinymce.plugins.wordcount.alien.Arr"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -705,7 +705,7 @@ jsc */
   'tinymce.plugins.wordcount.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.wordcount.api.Api',
+            'tinymce.plugins.wordcount.common.Api',
             'tinymce.plugins.wordcount.ui.Statusbar'
         ],
   function (PluginManager, Api, Statusbar) {

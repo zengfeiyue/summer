@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.insertdatetime.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.insertdatetime.api.Commands","tinymce.plugins.insertdatetime.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.fullpage.api.Settings","tinymce.plugins.insertdatetime.core.Actions","tinymce.core.util.Tools","tinymce.plugins.insertdatetime.api.Settings"]
+["tinymce.plugins.insertdatetime.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.insertdatetime.common.Commands","tinymce.plugins.insertdatetime.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.fullpage.common.Settings","tinymce.plugins.insertdatetime.core.Actions","tinymce.core.util.Tools","tinymce.plugins.insertdatetime.common.Settings"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -263,7 +263,7 @@ jsc */
   'tinymce.plugins.insertdatetime.core.Actions',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.insertdatetime.api.Settings'
+            'tinymce.plugins.insertdatetime.common.Settings'
         ],
   function (Tools, Settings) {
       var daysShort = 'Sun Mon Tue Wed Thu Fri Sat Sun'.split(' ');
@@ -356,7 +356,7 @@ jsc */
     define(
   'tinymce.plugins.insertdatetime.api.Commands',
         [
-            'tinymce.plugins.fullpage.api.Settings',
+            'tinymce.plugins.fullpage.common.Settings',
             'tinymce.plugins.insertdatetime.core.Actions'
         ],
   function (Settings, Actions) {
@@ -390,7 +390,7 @@ jsc */
   'tinymce.plugins.insertdatetime.ui.Buttons',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.insertdatetime.api.Settings',
+            'tinymce.plugins.insertdatetime.common.Settings',
             'tinymce.plugins.insertdatetime.core.Actions'
         ],
   function (Tools, Settings, Actions) {
@@ -448,9 +448,9 @@ jsc */
     define(
   'tinymce.plugins.insertdatetime.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.insertdatetime.api.Commands',
+            'tinymce.plugins.insertdatetime.common.Commands',
             'tinymce.plugins.insertdatetime.ui.Buttons'
         ],
   function (Cell, PluginManager, Commands, Buttons) {

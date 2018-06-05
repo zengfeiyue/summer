@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.template.Plugin","tinymce.core.PluginManager","tinymce.plugins.template.api.Commands","tinymce.plugins.template.core.FilterContent","tinymce.plugins.template.ui.Buttons","global!tinymce.util.Tools.resolve","ephox.katamari.api.Fun","tinymce.plugins.template.core.Templates","tinymce.core.util.Tools","tinymce.plugins.template.api.Settings","tinymce.plugins.template.core.DateTimeHelper","tinymce.plugins.template.ui.Dialog","global!Array","global!Error","tinymce.core.util.XHR","tinymce.core.dom.DOMUtils"]
+["tinymce.plugins.template.Plugin","tinymce.core.PluginManager","tinymce.plugins.template.common.Commands","tinymce.plugins.template.core.FilterContent","tinymce.plugins.template.ui.Buttons","global!tinymce.util.Tools.resolve","ephox.katamari.common.Fun","tinymce.plugins.template.core.Templates","tinymce.core.util.Tools","tinymce.plugins.template.common.Settings","tinymce.plugins.template.core.DateTimeHelper","tinymce.plugins.template.ui.Dialog","global!Array","global!Error","tinymce.core.util.XHR","tinymce.core.dom.DOMUtils"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -389,7 +389,7 @@ jsc */
         [
             'tinymce.core.util.Tools',
             'tinymce.core.util.XHR',
-            'tinymce.plugins.template.api.Settings',
+            'tinymce.plugins.template.common.Settings',
             'tinymce.plugins.template.core.DateTimeHelper'
         ],
   function (Tools, XHR, Settings, DateTimeHelper) {
@@ -503,7 +503,7 @@ jsc */
     define(
   'tinymce.plugins.template.api.Commands',
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'tinymce.plugins.template.core.Templates'
         ],
   function (Fun, Templates) {
@@ -530,7 +530,7 @@ jsc */
   'tinymce.plugins.template.core.FilterContent',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.template.api.Settings',
+            'tinymce.plugins.template.common.Settings',
             'tinymce.plugins.template.core.DateTimeHelper',
             'tinymce.plugins.template.core.Templates'
         ],
@@ -574,7 +574,7 @@ jsc */
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.util.Tools',
             'tinymce.core.util.XHR',
-            'tinymce.plugins.template.api.Settings',
+            'tinymce.plugins.template.common.Settings',
             'tinymce.plugins.template.core.Templates'
         ],
   function (DOMUtils, Tools, XHR, Settings, Templates) {
@@ -766,7 +766,7 @@ jsc */
   'tinymce.plugins.template.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.template.api.Commands',
+            'tinymce.plugins.template.common.Commands',
             'tinymce.plugins.template.core.FilterContent',
             'tinymce.plugins.template.ui.Buttons'
         ],

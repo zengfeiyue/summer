@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.visualblocks.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.visualblocks.api.Commands","tinymce.plugins.visualblocks.core.Bindings","tinymce.plugins.visualblocks.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.visualblocks.core.VisualBlocks","tinymce.plugins.visualblocks.api.Settings","tinymce.plugins.visualblocks.api.Events","tinymce.plugins.visualblocks.core.LoadCss","tinymce.core.dom.DOMUtils","tinymce.core.util.Tools"]
+["tinymce.plugins.visualblocks.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.visualblocks.common.Commands","tinymce.plugins.visualblocks.core.Bindings","tinymce.plugins.visualblocks.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.visualblocks.core.VisualBlocks","tinymce.plugins.visualblocks.common.Settings","tinymce.plugins.visualblocks.common.Events","tinymce.plugins.visualblocks.core.LoadCss","tinymce.core.dom.DOMUtils","tinymce.core.util.Tools"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -271,8 +271,8 @@ jsc */
     define(
   'tinymce.plugins.visualblocks.core.VisualBlocks',
         [
-            'tinymce.plugins.visualblocks.api.Events',
-            'tinymce.plugins.visualblocks.api.Settings',
+            'tinymce.plugins.visualblocks.common.Events',
+            'tinymce.plugins.visualblocks.common.Settings',
             'tinymce.plugins.visualblocks.core.LoadCss'
         ],
   function (Events, Settings, LoadCss) {
@@ -332,7 +332,7 @@ jsc */
     define(
   'tinymce.plugins.visualblocks.core.Bindings',
         [
-            'tinymce.plugins.visualblocks.api.Settings',
+            'tinymce.plugins.visualblocks.common.Settings',
             'tinymce.plugins.visualblocks.core.VisualBlocks'
         ],
   function (Settings, VisualBlocks) {
@@ -423,9 +423,9 @@ jsc */
     define(
   'tinymce.plugins.visualblocks.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.visualblocks.api.Commands',
+            'tinymce.plugins.visualblocks.common.Commands',
             'tinymce.plugins.visualblocks.core.Bindings',
             'tinymce.plugins.visualblocks.ui.Buttons'
         ],

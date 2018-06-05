@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.anchor.Plugin","tinymce.core.PluginManager","tinymce.plugins.anchor.api.Commands","tinymce.plugins.anchor.core.FilterContent","tinymce.plugins.anchor.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.anchor.ui.Dialog","tinymce.plugins.anchor.core.Anchor"]
+["tinymce.plugins.anchor.Plugin","tinymce.core.PluginManager","tinymce.plugins.anchor.common.Commands","tinymce.plugins.anchor.core.FilterContent","tinymce.plugins.anchor.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.anchor.ui.Dialog","tinymce.plugins.anchor.core.Anchor"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -307,7 +307,7 @@ jsc */
   'tinymce.plugins.anchor.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.anchor.api.Commands',
+            'tinymce.plugins.anchor.common.Commands',
             'tinymce.plugins.anchor.core.FilterContent',
             'tinymce.plugins.anchor.ui.Buttons'
         ],

@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.toc.Plugin","tinymce.core.PluginManager","tinymce.plugins.toc.api.Commands","tinymce.plugins.toc.api.Settings","tinymce.plugins.toc.core.FilterContent","tinymce.plugins.toc.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.toc.core.Toc","tinymce.core.dom.DOMUtils","tinymce.core.util.I18n","tinymce.core.util.Tools","tinymce.plugins.toc.core.Guid"]
+["tinymce.plugins.toc.Plugin","tinymce.core.PluginManager","tinymce.plugins.toc.common.Commands","tinymce.plugins.toc.common.Settings","tinymce.plugins.toc.core.FilterContent","tinymce.plugins.toc.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.toc.core.Toc","tinymce.core.dom.DOMUtils","tinymce.core.util.I18n","tinymce.core.util.Tools","tinymce.plugins.toc.core.Guid"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -233,7 +233,7 @@ jsc */
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.util.I18n',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.toc.api.Settings',
+            'tinymce.plugins.toc.common.Settings',
             'tinymce.plugins.toc.core.Guid'
         ],
   function (DOMUtils, I18n, Tools, Settings, Guid) {
@@ -423,7 +423,7 @@ jsc */
     define(
   'tinymce.plugins.toc.core.FilterContent',
         [
-            'tinymce.plugins.toc.api.Settings'
+            'tinymce.plugins.toc.common.Settings'
         ],
   function (Settings) {
       var setup = function (editor) {
@@ -464,7 +464,7 @@ jsc */
     define(
   'tinymce.plugins.toc.ui.Buttons',
         [
-            'tinymce.plugins.toc.api.Settings',
+            'tinymce.plugins.toc.common.Settings',
             'tinymce.plugins.toc.core.Toc'
         ],
   function (Settings, Toc) {
@@ -527,8 +527,8 @@ jsc */
   'tinymce.plugins.toc.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.toc.api.Commands',
-            'tinymce.plugins.toc.api.Settings',
+            'tinymce.plugins.toc.common.Commands',
+            'tinymce.plugins.toc.common.Settings',
             'tinymce.plugins.toc.core.FilterContent',
             'tinymce.plugins.toc.ui.Buttons'
         ],

@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.codesample.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.codesample.api.Commands","tinymce.plugins.codesample.core.FilterContent","tinymce.plugins.codesample.core.LoadCss","tinymce.plugins.codesample.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.codesample.ui.Dialog","tinymce.plugins.codesample.util.Utils","tinymce.plugins.codesample.core.Prism","tinymce.plugins.codesample.api.Settings","tinymce.core.dom.DOMUtils","tinymce.plugins.codesample.core.CodeSample","tinymce.plugins.codesample.core.Languages"]
+["tinymce.plugins.codesample.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.codesample.common.Commands","tinymce.plugins.codesample.core.FilterContent","tinymce.plugins.codesample.core.LoadCss","tinymce.plugins.codesample.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.codesample.ui.Dialog","tinymce.plugins.codesample.util.Utils","tinymce.plugins.codesample.core.Prism","tinymce.plugins.codesample.common.Settings","tinymce.core.dom.DOMUtils","tinymce.plugins.codesample.core.CodeSample","tinymce.plugins.codesample.core.Languages"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -1238,7 +1238,7 @@ define(
     define(
   'tinymce.plugins.codesample.core.Languages',
         [
-            'tinymce.plugins.codesample.api.Settings',
+            'tinymce.plugins.codesample.common.Settings',
             'tinymce.plugins.codesample.core.CodeSample'
         ],
   function (Settings, CodeSample) {
@@ -1290,7 +1290,7 @@ define(
     define(
   'tinymce.plugins.codesample.ui.Dialog',
         [
-            'tinymce.plugins.codesample.api.Settings',
+            'tinymce.plugins.codesample.common.Settings',
             'tinymce.plugins.codesample.core.CodeSample',
             'tinymce.plugins.codesample.core.Languages'
         ],
@@ -1450,7 +1450,7 @@ define(
     define(
   'tinymce.plugins.codesample.core.LoadCss',
         [
-            'tinymce.plugins.codesample.api.Settings'
+            'tinymce.plugins.codesample.common.Settings'
         ],
   function (Settings) {
     // Todo: use a proper css loader here
@@ -1532,9 +1532,9 @@ define(
     define(
   'tinymce.plugins.codesample.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.codesample.api.Commands',
+            'tinymce.plugins.codesample.common.Commands',
             'tinymce.plugins.codesample.core.FilterContent',
             'tinymce.plugins.codesample.core.LoadCss',
             'tinymce.plugins.codesample.ui.Buttons'

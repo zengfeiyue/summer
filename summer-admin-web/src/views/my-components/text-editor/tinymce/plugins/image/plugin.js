@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.image.Plugin","tinymce.core.PluginManager","tinymce.plugins.image.api.Commands","tinymce.plugins.image.core.FilterContent","tinymce.plugins.image.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.image.ui.Dialog","tinymce.core.util.Tools","ephox.sand.api.URL","global!document","global!Math","global!RegExp","tinymce.core.Env","tinymce.core.ui.Factory","tinymce.core.util.JSON","tinymce.core.util.XHR","tinymce.plugins.image.api.Settings","tinymce.plugins.image.core.Uploader","tinymce.plugins.image.core.Utils","ephox.sand.util.Global","ephox.sand.api.XMLHttpRequest","global!window","tinymce.core.util.Promise","ephox.katamari.api.Resolve","ephox.katamari.api.Global"]
+["tinymce.plugins.image.Plugin","tinymce.core.PluginManager","tinymce.plugins.image.common.Commands","tinymce.plugins.image.core.FilterContent","tinymce.plugins.image.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.image.ui.Dialog","tinymce.core.util.Tools","ephox.sand.common.URL","global!document","global!Math","global!RegExp","tinymce.core.Env","tinymce.core.ui.Factory","tinymce.core.util.JSON","tinymce.core.util.XHR","tinymce.plugins.image.common.Settings","tinymce.plugins.image.core.Uploader","tinymce.plugins.image.core.Utils","ephox.sand.util.Global","ephox.sand.common.XMLHttpRequest","global!window","tinymce.core.util.Promise","ephox.katamari.common.Resolve","ephox.katamari.common.Global"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -111,7 +111,7 @@ jsc */
   'ephox.katamari.api.Resolve',
 
         [
-            'ephox.katamari.api.Global'
+            'ephox.katamari.common.Global'
         ],
 
   function (Global) {
@@ -160,7 +160,7 @@ jsc */
   'ephox.sand.util.Global',
 
         [
-            'ephox.katamari.api.Resolve'
+            'ephox.katamari.common.Resolve'
         ],
 
   function (Resolve) {
@@ -432,7 +432,7 @@ jsc */
     define(
   'tinymce.plugins.image.core.Uploader',
         [
-            'ephox.sand.api.XMLHttpRequest',
+            'ephox.sand.common.XMLHttpRequest',
             'global!document',
             'global!window',
             'tinymce.core.util.Promise',
@@ -667,7 +667,7 @@ jsc */
     define(
   'tinymce.plugins.image.ui.Dialog',
         [
-            'ephox.sand.api.URL',
+            'ephox.sand.common.URL',
             'global!document',
             'global!Math',
             'global!RegExp',
@@ -676,7 +676,7 @@ jsc */
             'tinymce.core.util.JSON',
             'tinymce.core.util.Tools',
             'tinymce.core.util.XHR',
-            'tinymce.plugins.image.api.Settings',
+            'tinymce.plugins.image.common.Settings',
             'tinymce.plugins.image.core.Uploader',
             'tinymce.plugins.image.core.Utils'
         ],
@@ -1392,7 +1392,7 @@ jsc */
   'tinymce.plugins.image.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.image.api.Commands',
+            'tinymce.plugins.image.common.Commands',
             'tinymce.plugins.image.core.FilterContent',
             'tinymce.plugins.image.ui.Buttons'
         ],

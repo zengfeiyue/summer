@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.searchreplace.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.searchreplace.api.Api","tinymce.plugins.searchreplace.api.Commands","tinymce.plugins.searchreplace.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.searchreplace.core.Actions","tinymce.plugins.searchreplace.ui.Dialog","tinymce.core.util.Tools","tinymce.plugins.searchreplace.core.FindReplaceText"]
+["tinymce.plugins.searchreplace.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.searchreplace.common.Api","tinymce.plugins.searchreplace.common.Commands","tinymce.plugins.searchreplace.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.searchreplace.core.Actions","tinymce.plugins.searchreplace.ui.Dialog","tinymce.core.util.Tools","tinymce.plugins.searchreplace.core.FindReplaceText"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -953,10 +953,10 @@ jsc */
     define(
   'tinymce.plugins.searchreplace.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.searchreplace.api.Api',
-            'tinymce.plugins.searchreplace.api.Commands',
+            'tinymce.plugins.searchreplace.common.Api',
+            'tinymce.plugins.searchreplace.common.Commands',
             'tinymce.plugins.searchreplace.ui.Buttons'
         ],
   function (Cell, PluginManager, Api, Commands, Buttons) {

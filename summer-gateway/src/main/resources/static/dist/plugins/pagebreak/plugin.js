@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.pagebreak.Plugin","tinymce.core.Env","tinymce.core.PluginManager","tinymce.plugins.pagebreak.api.Commands","tinymce.plugins.pagebreak.core.FilterContent","tinymce.plugins.pagebreak.core.ResolveName","tinymce.plugins.pagebreak.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.pagebreak.api.Settings"]
+["tinymce.plugins.pagebreak.Plugin","tinymce.core.Env","tinymce.core.PluginManager","tinymce.plugins.pagebreak.common.Commands","tinymce.plugins.pagebreak.core.FilterContent","tinymce.plugins.pagebreak.core.ResolveName","tinymce.plugins.pagebreak.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.pagebreak.common.Settings"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -155,7 +155,7 @@ jsc */
   'tinymce.plugins.pagebreak.core.FilterContent',
         [
             'tinymce.core.Env',
-            'tinymce.plugins.pagebreak.api.Settings'
+            'tinymce.plugins.pagebreak.common.Settings'
         ],
   function (Env, Settings) {
       var getPageBreakClass = function () {
@@ -321,7 +321,7 @@ jsc */
         [
             'tinymce.core.Env',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.pagebreak.api.Commands',
+            'tinymce.plugins.pagebreak.common.Commands',
             'tinymce.plugins.pagebreak.core.FilterContent',
             'tinymce.plugins.pagebreak.core.ResolveName',
             'tinymce.plugins.pagebreak.ui.Buttons'

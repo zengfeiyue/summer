@@ -1,8 +1,8 @@
 package com.summer.gateway.core.security;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.summer.api.entity.authorization.SysUser;
-import com.summer.api.service.authorization.AuthorizationProvider;
+import com.summer.security.entity.SysUser;
+import com.summer.security.service.SysUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UrlUserService implements UserDetailsService {
 
-    @Reference(version = "1.0",timeout = 2000,mock = "return null")
-    protected AuthorizationProvider authorizationProvider;
+    @Reference(version = "0.1",timeout = 2000,mock = "return null",check = false)
+    protected SysUserService sysUserService;
 
 
     /**
@@ -28,7 +28,7 @@ public class UrlUserService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String userName) {
-        SysUser sysUser = authorizationProvider.getUserAccount(userName);
+        SysUser sysUser = sysUserService.getUserAccount(userName);
         if (sysUser != null) {
             return sysUser;
         } else {

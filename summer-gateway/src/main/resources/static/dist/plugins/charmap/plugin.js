@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.charmap.Plugin","tinymce.core.PluginManager","tinymce.plugins.charmap.api.Api","tinymce.plugins.charmap.api.Commands","tinymce.plugins.charmap.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.charmap.core.Actions","tinymce.plugins.charmap.core.CharMap","tinymce.plugins.charmap.ui.Dialog","tinymce.plugins.charmap.api.Events","tinymce.core.util.Tools","tinymce.plugins.charmap.api.Settings","tinymce.plugins.charmap.ui.GridHtml"]
+["tinymce.plugins.charmap.Plugin","tinymce.core.PluginManager","tinymce.plugins.charmap.common.Api","tinymce.plugins.charmap.common.Commands","tinymce.plugins.charmap.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.charmap.core.Actions","tinymce.plugins.charmap.core.CharMap","tinymce.plugins.charmap.ui.Dialog","tinymce.plugins.charmap.common.Events","tinymce.core.util.Tools","tinymce.plugins.charmap.common.Settings","tinymce.plugins.charmap.ui.GridHtml"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -129,7 +129,7 @@ jsc */
     define(
   'tinymce.plugins.charmap.core.Actions',
         [
-            'tinymce.plugins.charmap.api.Events'
+            'tinymce.plugins.charmap.common.Events'
         ],
   function (Events) {
       var insertChar = function (editor, chr) {
@@ -205,7 +205,7 @@ jsc */
   'tinymce.plugins.charmap.core.CharMap',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.charmap.api.Settings'
+            'tinymce.plugins.charmap.common.Settings'
         ],
   function (Tools, Settings) {
       var isArray = Tools.isArray;
@@ -812,8 +812,8 @@ jsc */
   'tinymce.plugins.charmap.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.charmap.api.Api',
-            'tinymce.plugins.charmap.api.Commands',
+            'tinymce.plugins.charmap.common.Api',
+            'tinymce.plugins.charmap.common.Commands',
             'tinymce.plugins.charmap.ui.Buttons'
         ],
   function (PluginManager, Api, Commands, Buttons) {

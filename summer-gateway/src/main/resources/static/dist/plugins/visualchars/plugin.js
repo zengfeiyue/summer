@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.visualchars.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.visualchars.api.Api","tinymce.plugins.visualchars.api.Commands","tinymce.plugins.visualchars.core.Keyboard","tinymce.plugins.visualchars.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.visualchars.core.Actions","tinymce.core.util.Delay","tinymce.plugins.visualchars.core.VisualChars","tinymce.plugins.visualchars.api.Events","tinymce.plugins.visualchars.core.Data","tinymce.plugins.visualchars.core.Nodes","ephox.katamari.api.Arr","ephox.sugar.api.node.Element","ephox.sugar.api.node.Node","ephox.katamari.api.Option","global!Array","global!Error","global!String","ephox.katamari.api.Fun","global!console","global!document","ephox.sugar.api.node.NodeTypes","tinymce.plugins.visualchars.core.Html","global!Object"]
+["tinymce.plugins.visualchars.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.visualchars.common.Api","tinymce.plugins.visualchars.common.Commands","tinymce.plugins.visualchars.core.Keyboard","tinymce.plugins.visualchars.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.visualchars.core.Actions","tinymce.core.util.Delay","tinymce.plugins.visualchars.core.VisualChars","tinymce.plugins.visualchars.common.Events","tinymce.plugins.visualchars.core.Data","tinymce.plugins.visualchars.core.Nodes","ephox.katamari.common.Arr","ephox.sugar.common.node.Element","ephox.sugar.common.node.Node","ephox.katamari.common.Option","global!Array","global!Error","global!String","ephox.katamari.common.Fun","global!console","global!document","ephox.sugar.common.node.NodeTypes","tinymce.plugins.visualchars.core.Html","global!Object"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -327,7 +327,7 @@ jsc */
   'ephox.katamari.api.Option',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'global!Object'
         ],
 
@@ -513,7 +513,7 @@ jsc */
   'ephox.katamari.api.Arr',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Array',
             'global!Error',
             'global!String'
@@ -815,7 +815,7 @@ jsc */
   'ephox.sugar.api.node.Element',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'global!Error',
             'global!console',
             'global!document'
@@ -889,7 +889,7 @@ jsc */
   'ephox.sugar.api.node.Node',
 
         [
-            'ephox.sugar.api.node.NodeTypes'
+            'ephox.sugar.common.node.NodeTypes'
         ],
 
   function (NodeTypes) {
@@ -971,9 +971,9 @@ jsc */
     define(
   'tinymce.plugins.visualchars.core.Nodes',
         [
-            'ephox.katamari.api.Arr',
-            'ephox.sugar.api.node.Element',
-            'ephox.sugar.api.node.Node',
+            'ephox.katamari.common.Arr',
+            'ephox.sugar.common.node.Element',
+            'ephox.sugar.common.node.Node',
             'tinymce.plugins.visualchars.core.Data',
             'tinymce.plugins.visualchars.core.Html'
         ],
@@ -1035,9 +1035,9 @@ jsc */
         [
             'tinymce.plugins.visualchars.core.Data',
             'tinymce.plugins.visualchars.core.Nodes',
-            'ephox.katamari.api.Arr',
-            'ephox.sugar.api.node.Element',
-            'ephox.sugar.api.node.Node'
+            'ephox.katamari.common.Arr',
+            'ephox.sugar.common.node.Element',
+            'ephox.sugar.common.node.Node'
         ],
   function (Data, Nodes, Arr, Element, Node) {
       var show = function (editor, rootElm) {
@@ -1098,7 +1098,7 @@ jsc */
     define(
   'tinymce.plugins.visualchars.core.Actions',
         [
-            'tinymce.plugins.visualchars.api.Events',
+            'tinymce.plugins.visualchars.common.Events',
             'tinymce.plugins.visualchars.core.VisualChars'
         ],
   function (Events, VisualChars) {
@@ -1267,10 +1267,10 @@ jsc */
     define(
   'tinymce.plugins.visualchars.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.visualchars.api.Api',
-            'tinymce.plugins.visualchars.api.Commands',
+            'tinymce.plugins.visualchars.common.Api',
+            'tinymce.plugins.visualchars.common.Commands',
             'tinymce.plugins.visualchars.core.Keyboard',
             'tinymce.plugins.visualchars.ui.Buttons'
         ],

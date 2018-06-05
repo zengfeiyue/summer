@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.textpattern.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.textpattern.api.Api","tinymce.plugins.textpattern.api.Settings","tinymce.plugins.textpattern.core.Keyboard","global!tinymce.util.Tools.resolve","tinymce.core.util.Delay","tinymce.core.util.VK","tinymce.plugins.textpattern.core.KeyHandler","tinymce.plugins.textpattern.core.Formatter","global!document","tinymce.core.dom.TreeWalker","tinymce.core.util.Tools","tinymce.plugins.textpattern.core.Patterns"]
+["tinymce.plugins.textpattern.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.textpattern.common.Api","tinymce.plugins.textpattern.common.Settings","tinymce.plugins.textpattern.core.Keyboard","global!tinymce.util.Tools.resolve","tinymce.core.util.Delay","tinymce.core.util.VK","tinymce.plugins.textpattern.core.KeyHandler","tinymce.plugins.textpattern.core.Formatter","global!document","tinymce.core.dom.TreeWalker","tinymce.core.util.Tools","tinymce.plugins.textpattern.core.Patterns"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -682,10 +682,10 @@ jsc */
     define(
   'tinymce.plugins.textpattern.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.textpattern.api.Api',
-            'tinymce.plugins.textpattern.api.Settings',
+            'tinymce.plugins.textpattern.common.Api',
+            'tinymce.plugins.textpattern.common.Settings',
             'tinymce.plugins.textpattern.core.Keyboard'
         ],
   function (Cell, PluginManager, Api, Settings, Keyboard) {

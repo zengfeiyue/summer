@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.code.Plugin","tinymce.core.PluginManager","tinymce.plugins.code.api.Commands","tinymce.plugins.code.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.code.ui.Dialog","tinymce.plugins.code.api.Settings","tinymce.plugins.code.core.Content","tinymce.core.dom.DOMUtils"]
+["tinymce.plugins.code.Plugin","tinymce.core.PluginManager","tinymce.plugins.code.common.Commands","tinymce.plugins.code.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.code.ui.Dialog","tinymce.plugins.code.common.Settings","tinymce.plugins.code.core.Content","tinymce.core.dom.DOMUtils"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -193,7 +193,7 @@ jsc */
     define(
   'tinymce.plugins.code.ui.Dialog',
         [
-            'tinymce.plugins.code.api.Settings',
+            'tinymce.plugins.code.common.Settings',
             'tinymce.plugins.code.core.Content'
         ],
   function (Settings, Content) {
@@ -307,7 +307,7 @@ jsc */
   'tinymce.plugins.code.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.code.api.Commands',
+            'tinymce.plugins.code.common.Commands',
             'tinymce.plugins.code.ui.Buttons'
         ],
   function (PluginManager, Commands, Buttons) {

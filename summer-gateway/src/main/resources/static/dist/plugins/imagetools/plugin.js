@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.imagetools.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.imagetools.api.Commands","tinymce.plugins.imagetools.core.UploadSelectedImage","tinymce.plugins.imagetools.ui.Buttons","tinymce.plugins.imagetools.ui.ContextToolbar","global!tinymce.util.Tools.resolve","tinymce.core.util.Tools","tinymce.plugins.imagetools.core.Actions","ephox.katamari.api.Fun","tinymce.plugins.imagetools.api.Settings","ephox.imagetools.api.BlobConversions","ephox.imagetools.api.ImageTransformations","global!Array","global!Error","ephox.sand.api.URL","global!clearTimeout","tinymce.core.util.Delay","tinymce.core.util.Promise","tinymce.core.util.URI","tinymce.plugins.imagetools.core.ImageSize","tinymce.plugins.imagetools.core.Proxy","tinymce.plugins.imagetools.ui.Dialog","ephox.imagetools.util.Conversions","ephox.imagetools.util.ImageResult","ephox.imagetools.transformations.Filters","ephox.imagetools.transformations.ImageTools","ephox.sand.util.Global","tinymce.plugins.imagetools.core.Errors","tinymce.plugins.imagetools.core.Utils","global!Math","global!setTimeout","tinymce.core.dom.DOMUtils","tinymce.core.ui.Factory","tinymce.plugins.imagetools.core.UndoStack","tinymce.plugins.imagetools.ui.ImagePanel","ephox.imagetools.util.Promise","ephox.imagetools.util.Canvas","ephox.imagetools.util.Mime","ephox.imagetools.util.ImageSize","ephox.imagetools.transformations.ColorMatrix","ephox.imagetools.transformations.ImageResizerCanvas","ephox.katamari.api.Resolve","ephox.katamari.api.Arr","ephox.sand.api.FileReader","ephox.sand.api.XMLHttpRequest","global!document","global!Image","tinymce.core.geom.Rect","tinymce.plugins.imagetools.core.LoadImage","tinymce.plugins.imagetools.ui.CropRect","ephox.katamari.api.Global","ephox.katamari.api.Option","global!String","tinymce.core.dom.DomQuery","tinymce.core.util.Observable","tinymce.core.util.VK","global!Object"]
+["tinymce.plugins.imagetools.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.imagetools.common.Commands","tinymce.plugins.imagetools.core.UploadSelectedImage","tinymce.plugins.imagetools.ui.Buttons","tinymce.plugins.imagetools.ui.ContextToolbar","global!tinymce.util.Tools.resolve","tinymce.core.util.Tools","tinymce.plugins.imagetools.core.Actions","ephox.katamari.common.Fun","tinymce.plugins.imagetools.common.Settings","ephox.imagetools.common.BlobConversions","ephox.imagetools.common.ImageTransformations","global!Array","global!Error","ephox.sand.common.URL","global!clearTimeout","tinymce.core.util.Delay","tinymce.core.util.Promise","tinymce.core.util.URI","tinymce.plugins.imagetools.core.ImageSize","tinymce.plugins.imagetools.core.Proxy","tinymce.plugins.imagetools.ui.Dialog","ephox.imagetools.util.Conversions","ephox.imagetools.util.ImageResult","ephox.imagetools.transformations.Filters","ephox.imagetools.transformations.ImageTools","ephox.sand.util.Global","tinymce.plugins.imagetools.core.Errors","tinymce.plugins.imagetools.core.Utils","global!Math","global!setTimeout","tinymce.core.dom.DOMUtils","tinymce.core.ui.Factory","tinymce.plugins.imagetools.core.UndoStack","tinymce.plugins.imagetools.ui.ImagePanel","ephox.imagetools.util.Promise","ephox.imagetools.util.Canvas","ephox.imagetools.util.Mime","ephox.imagetools.util.ImageSize","ephox.imagetools.transformations.ColorMatrix","ephox.imagetools.transformations.ImageResizerCanvas","ephox.katamari.common.Resolve","ephox.katamari.common.Arr","ephox.sand.common.FileReader","ephox.sand.common.XMLHttpRequest","global!document","global!Image","tinymce.core.geom.Rect","tinymce.plugins.imagetools.core.LoadImage","tinymce.plugins.imagetools.ui.CropRect","ephox.katamari.common.Global","ephox.katamari.common.Option","global!String","tinymce.core.dom.DomQuery","tinymce.core.util.Observable","tinymce.core.util.VK","global!Object"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -1522,7 +1522,7 @@ define(
   'ephox.katamari.api.Resolve',
 
         [
-            'ephox.katamari.api.Global'
+            'ephox.katamari.common.Global'
         ],
 
   function (Global) {
@@ -1571,7 +1571,7 @@ define(
   'ephox.sand.util.Global',
 
         [
-            'ephox.katamari.api.Resolve'
+            'ephox.katamari.common.Resolve'
         ],
 
   function (Resolve) {
@@ -1807,7 +1807,7 @@ define(
   'ephox.katamari.api.Option',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'global!Object'
         ],
 
@@ -1993,7 +1993,7 @@ define(
   'ephox.katamari.api.Arr',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Array',
             'global!Error',
             'global!String'
@@ -2338,8 +2338,8 @@ define(
     define(
   'tinymce.plugins.imagetools.core.Utils',
         [
-            'ephox.sand.api.FileReader',
-            'ephox.sand.api.XMLHttpRequest',
+            'ephox.sand.common.FileReader',
+            'ephox.sand.common.XMLHttpRequest',
             'tinymce.core.util.Promise',
             'tinymce.core.util.Tools'
         ],
@@ -2422,8 +2422,8 @@ define(
   'tinymce.plugins.imagetools.core.Errors',
 
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
             'tinymce.core.util.Promise',
             'tinymce.plugins.imagetools.core.Utils'
         ],
@@ -2435,9 +2435,9 @@ define(
       { code: 0, message: 'Incorrect Image Proxy URL' }
       ];
       var friendlyServiceErrors = [
-      { type: 'key_missing', message: 'The request did not include an api key.' },
-      { type: 'key_not_found', message: 'The provided api key could not be found.' },
-      { type: 'domain_not_trusted', message: 'The api key is not valid for the request origins.' }
+      { type: 'key_missing', message: 'The request did not include an common key.' },
+      { type: 'key_not_found', message: 'The provided common key could not be found.' },
+      { type: 'domain_not_trusted', message: 'The common key is not valid for the request origins.' }
       ];
 
       var isServiceErrorCode = function (code) {
@@ -3297,9 +3297,9 @@ define(
     define(
   'tinymce.plugins.imagetools.ui.Dialog',
         [
-            'ephox.imagetools.api.BlobConversions',
-            'ephox.imagetools.api.ImageTransformations',
-            'ephox.sand.api.URL',
+            'ephox.imagetools.common.BlobConversions',
+            'ephox.imagetools.common.ImageTransformations',
+            'ephox.sand.common.URL',
             'global!Math',
             'global!setTimeout',
             'tinymce.core.dom.DOMUtils',
@@ -3852,16 +3852,16 @@ define(
     define(
   'tinymce.plugins.imagetools.core.Actions',
         [
-            'ephox.imagetools.api.BlobConversions',
-            'ephox.imagetools.api.ImageTransformations',
-            'ephox.katamari.api.Fun',
-            'ephox.sand.api.URL',
+            'ephox.imagetools.common.BlobConversions',
+            'ephox.imagetools.common.ImageTransformations',
+            'ephox.katamari.common.Fun',
+            'ephox.sand.common.URL',
             'global!clearTimeout',
             'tinymce.core.util.Delay',
             'tinymce.core.util.Promise',
             'tinymce.core.util.Tools',
             'tinymce.core.util.URI',
-            'tinymce.plugins.imagetools.api.Settings',
+            'tinymce.plugins.imagetools.common.Settings',
             'tinymce.plugins.imagetools.core.ImageSize',
             'tinymce.plugins.imagetools.core.Proxy',
             'tinymce.plugins.imagetools.ui.Dialog'
@@ -4236,8 +4236,8 @@ define(
     define(
   'tinymce.plugins.imagetools.ui.ContextToolbar',
         [
-            'ephox.katamari.api.Fun',
-            'tinymce.plugins.imagetools.api.Settings',
+            'ephox.katamari.common.Fun',
+            'tinymce.plugins.imagetools.common.Settings',
             'tinymce.plugins.imagetools.core.Actions'
         ],
   function (Fun, Settings, Actions) {
@@ -4267,9 +4267,9 @@ define(
     define(
   'tinymce.plugins.imagetools.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
-            'tinymce.plugins.imagetools.api.Commands',
+            'tinymce.plugins.imagetools.common.Commands',
             'tinymce.plugins.imagetools.core.UploadSelectedImage',
             'tinymce.plugins.imagetools.ui.Buttons',
             'tinymce.plugins.imagetools.ui.ContextToolbar'

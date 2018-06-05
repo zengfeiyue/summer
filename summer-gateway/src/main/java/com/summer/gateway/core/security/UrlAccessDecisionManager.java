@@ -24,6 +24,7 @@ public class UrlAccessDecisionManager implements AccessDecisionManager {
         HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
         String url, method;
         if ("anonymousUser".equals(authentication.getPrincipal())
+                || matchers("/**", request)
                 || matchers("/", request)
                 || matchers("/templates/index.html", request)
                 || matchers("/templates/favicon.ico", request)

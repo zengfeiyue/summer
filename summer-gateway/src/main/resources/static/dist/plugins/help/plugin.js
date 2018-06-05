@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.help.Plugin","tinymce.core.PluginManager","tinymce.plugins.help.api.Commands","tinymce.plugins.help.ui.Buttons","tinymce.plugins.help.ui.Dialog","global!tinymce.util.Tools.resolve","tinymce.core.EditorManager","tinymce.plugins.help.ui.KeyboardShortcutsTab","tinymce.plugins.help.ui.PluginsTab","tinymce.plugins.help.ui.ButtonsRow","ephox.katamari.api.Arr","tinymce.core.util.I18n","tinymce.plugins.help.data.KeyboardShortcuts","ephox.katamari.api.Fun","ephox.katamari.api.Obj","ephox.katamari.api.Strings","tinymce.plugins.help.data.PluginUrls","ephox.katamari.api.Option","global!Array","global!Error","global!String","tinymce.core.Env","global!Object","ephox.katamari.str.StrAppend","ephox.katamari.str.StringParts"]
+["tinymce.plugins.help.Plugin","tinymce.core.PluginManager","tinymce.plugins.help.common.Commands","tinymce.plugins.help.ui.Buttons","tinymce.plugins.help.ui.Dialog","global!tinymce.util.Tools.resolve","tinymce.core.EditorManager","tinymce.plugins.help.ui.KeyboardShortcutsTab","tinymce.plugins.help.ui.PluginsTab","tinymce.plugins.help.ui.ButtonsRow","ephox.katamari.common.Arr","tinymce.core.util.I18n","tinymce.plugins.help.data.KeyboardShortcuts","ephox.katamari.common.Fun","ephox.katamari.common.Obj","ephox.katamari.common.Strings","tinymce.plugins.help.data.PluginUrls","ephox.katamari.common.Option","global!Array","global!Error","global!String","tinymce.core.Env","global!Object","ephox.katamari.str.StrAppend","ephox.katamari.str.StringParts"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -207,7 +207,7 @@ jsc */
   'ephox.katamari.api.Option',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'global!Object'
         ],
 
@@ -393,7 +393,7 @@ jsc */
   'ephox.katamari.api.Arr',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Array',
             'global!Error',
             'global!String'
@@ -794,7 +794,7 @@ jsc */
     define(
   'tinymce.plugins.help.ui.KeyboardShortcutsTab',
         [
-            'ephox.katamari.api.Arr',
+            'ephox.katamari.common.Arr',
             'tinymce.core.util.I18n',
             'tinymce.plugins.help.data.KeyboardShortcuts'
         ],
@@ -840,7 +840,7 @@ jsc */
   'ephox.katamari.api.Obj',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Object'
         ],
 
@@ -993,7 +993,7 @@ jsc */
   'ephox.katamari.str.StringParts',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Error'
         ],
 
@@ -1219,10 +1219,10 @@ jsc */
     define(
   'tinymce.plugins.help.ui.PluginsTab',
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
-            'ephox.katamari.api.Obj',
-            'ephox.katamari.api.Strings',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
+            'ephox.katamari.common.Obj',
+            'ephox.katamari.common.Strings',
             'tinymce.core.EditorManager',
             'tinymce.core.util.I18n',
             'tinymce.plugins.help.data.PluginUrls'
@@ -1478,7 +1478,7 @@ jsc */
   'tinymce.plugins.help.Plugin',
         [
             'tinymce.core.PluginManager',
-            'tinymce.plugins.help.api.Commands',
+            'tinymce.plugins.help.common.Commands',
             'tinymce.plugins.help.ui.Buttons',
             'tinymce.plugins.help.ui.Dialog'
         ],

@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.advlist.Plugin","tinymce.core.PluginManager","tinymce.core.util.Tools","tinymce.plugins.advlist.api.Commands","tinymce.plugins.advlist.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.advlist.core.Actions","tinymce.plugins.advlist.api.Settings","tinymce.plugins.advlist.core.ListUtils","tinymce.plugins.advlist.ui.ListStyles"]
+["tinymce.plugins.advlist.Plugin","tinymce.core.PluginManager","tinymce.core.util.Tools","tinymce.plugins.advlist.common.Commands","tinymce.plugins.advlist.ui.Buttons","global!tinymce.util.Tools.resolve","tinymce.plugins.advlist.core.Actions","tinymce.plugins.advlist.common.Settings","tinymce.plugins.advlist.core.ListUtils","tinymce.plugins.advlist.ui.ListStyles"]
 jsc */
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
 /**
@@ -285,7 +285,7 @@ jsc */
   'tinymce.plugins.advlist.ui.Buttons',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.advlist.api.Settings',
+            'tinymce.plugins.advlist.common.Settings',
             'tinymce.plugins.advlist.core.Actions',
             'tinymce.plugins.advlist.core.ListUtils',
             'tinymce.plugins.advlist.ui.ListStyles'
@@ -371,7 +371,7 @@ jsc */
         [
             'tinymce.core.PluginManager',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.advlist.api.Commands',
+            'tinymce.plugins.advlist.common.Commands',
             'tinymce.plugins.advlist.ui.Buttons'
         ],
   function (PluginManager, Tools, Commands, Buttons) {

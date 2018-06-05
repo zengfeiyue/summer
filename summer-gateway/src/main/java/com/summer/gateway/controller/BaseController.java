@@ -1,11 +1,10 @@
 package com.summer.gateway.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.summer.api.entity.authorization.SysUser;
+import com.summer.security.entity.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

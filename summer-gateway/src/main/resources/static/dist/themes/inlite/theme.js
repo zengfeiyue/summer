@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.themes.inlite.Theme","global!window","tinymce.core.ThemeManager","tinymce.themes.inlite.api.ThemeApi","tinymce.themes.inlite.ui.Buttons","tinymce.themes.inlite.ui.Panel","tinymce.ui.Api","tinymce.ui.FormatControls","global!tinymce.util.Tools.resolve","tinymce.themes.inlite.core.Render","tinymce.ui.NotificationManagerImpl","tinymce.ui.WindowManagerImpl","global!document","tinymce.core.dom.DOMUtils","tinymce.core.ui.Factory","tinymce.core.util.Tools","tinymce.themes.inlite.api.Events","tinymce.themes.inlite.api.Settings","tinymce.themes.inlite.core.Layout","tinymce.themes.inlite.core.Measure","tinymce.themes.inlite.ui.Forms","tinymce.themes.inlite.ui.Toolbar","tinymce.themes.inlite.file.Conversions","tinymce.themes.inlite.file.Picker","tinymce.themes.inlite.core.Actions","tinymce.ui.AbsoluteLayout","tinymce.ui.BrowseButton","tinymce.ui.Button","tinymce.ui.ButtonGroup","tinymce.ui.Checkbox","tinymce.ui.Collection","tinymce.ui.ColorBox","tinymce.ui.ColorButton","tinymce.ui.ColorPicker","tinymce.ui.ComboBox","tinymce.ui.Container","tinymce.ui.Control","tinymce.ui.DragHelper","tinymce.ui.DropZone","tinymce.ui.ElementPath","tinymce.ui.FieldSet","tinymce.ui.FilePicker","tinymce.ui.FitLayout","tinymce.ui.FlexLayout","tinymce.ui.FloatPanel","tinymce.ui.FlowLayout","tinymce.ui.Form","ephox.katamari.api.Fun","ephox.sugar.api.node.Element","ephox.sugar.api.search.SelectorFind","tinymce.core.EditorManager","tinymce.core.Env","tinymce.ui.Widget","tinymce.ui.editorui.Align","tinymce.ui.editorui.FontSelect","tinymce.ui.editorui.FontSizeSelect","tinymce.ui.editorui.FormatSelect","tinymce.ui.editorui.Formats","tinymce.ui.editorui.InsertButton","tinymce.ui.editorui.SimpleControls","tinymce.ui.editorui.UndoRedo","tinymce.ui.editorui.VisualAid","tinymce.ui.FormItem","tinymce.ui.GridLayout","tinymce.ui.Iframe","tinymce.ui.InfoBox","tinymce.ui.KeyboardNavigation","tinymce.ui.Label","tinymce.ui.Layout","tinymce.ui.ListBox","tinymce.ui.Menu","tinymce.ui.MenuBar","tinymce.ui.MenuButton","tinymce.ui.MenuItem","tinymce.ui.MessageBox","tinymce.ui.Movable","tinymce.ui.Notification","tinymce.ui.Panel","tinymce.ui.PanelButton","tinymce.ui.Path","tinymce.ui.Progress","tinymce.ui.Radio","tinymce.ui.ReflowQueue","tinymce.ui.Resizable","tinymce.ui.ResizeHandle","tinymce.ui.Scrollable","tinymce.ui.SelectBox","tinymce.ui.Selector","tinymce.ui.Slider","tinymce.ui.Spacer","tinymce.ui.SplitButton","tinymce.ui.StackLayout","tinymce.ui.TabPanel","tinymce.ui.TextBox","tinymce.ui.Throbber","tinymce.ui.Toolbar","tinymce.ui.Tooltip","tinymce.ui.Window","tinymce.core.util.Delay","tinymce.themes.inlite.alien.Arr","tinymce.themes.inlite.core.ElementMatcher","tinymce.themes.inlite.core.Matcher","tinymce.themes.inlite.core.PredicateId","tinymce.themes.inlite.core.SelectionMatcher","tinymce.themes.inlite.core.SkinLoader","ephox.katamari.api.Arr","global!setTimeout","tinymce.ui.DomUtils","tinymce.core.dom.DomQuery","tinymce.core.util.Class","tinymce.core.util.EventDispatcher","tinymce.ui.BoxUtils","tinymce.ui.ClassList","tinymce.ui.data.ObservableObject","tinymce.themes.inlite.alien.EditorSettings","tinymce.core.geom.Rect","tinymce.themes.inlite.core.Convert","tinymce.core.util.Promise","tinymce.themes.inlite.alien.Uuid","tinymce.themes.inlite.alien.Unlink","tinymce.themes.inlite.core.UrlType","tinymce.themes.inlite.alien.Type","ephox.sand.api.FileReader","global!RegExp","tinymce.core.util.VK","tinymce.core.util.Color","global!Array","global!Error","tinymce.ui.content.LinkTargets","global!console","ephox.sugar.api.search.PredicateFind","ephox.sugar.api.search.Selectors","ephox.sugar.impl.ClosestOrAncestor","tinymce.ui.editorui.FormatUtils","tinymce.ui.fmt.FontInfo","ephox.katamari.api.Option","global!String","tinymce.ui.data.Binding","tinymce.core.util.Observable","tinymce.themes.inlite.alien.Bookmark","tinymce.core.dom.TreeWalker","tinymce.core.dom.RangeUtils","ephox.sand.util.Global","ephox.katamari.api.Id","ephox.sugar.api.search.SelectorFilter","ephox.katamari.api.Type","ephox.sugar.api.node.Body","ephox.sugar.api.dom.Compare","ephox.sugar.api.node.NodeTypes","ephox.sugar.api.node.Node","global!Object","ephox.katamari.api.Resolve","global!Date","global!Math","ephox.sugar.api.search.PredicateFilter","ephox.katamari.api.Thunk","ephox.sand.api.Node","ephox.sand.api.PlatformDetection","ephox.katamari.api.Global","ephox.sugar.api.search.Traverse","ephox.sand.core.PlatformDetection","global!navigator","ephox.katamari.api.Struct","ephox.sugar.alien.Recurse","ephox.sand.core.Browser","ephox.sand.core.OperatingSystem","ephox.sand.detect.DeviceType","ephox.sand.detect.UaString","ephox.sand.info.PlatformInfo","ephox.katamari.data.Immutable","ephox.katamari.data.MixedBag","ephox.sand.detect.Version","ephox.katamari.api.Strings","ephox.katamari.api.Obj","ephox.katamari.util.BagUtils","global!Number","ephox.katamari.str.StrAppend","ephox.katamari.str.StringParts"]
+["tinymce.themes.inlite.Theme","global!window","tinymce.core.ThemeManager","tinymce.themes.inlite.common.ThemeApi","tinymce.themes.inlite.ui.Buttons","tinymce.themes.inlite.ui.Panel","tinymce.ui.Api","tinymce.ui.FormatControls","global!tinymce.util.Tools.resolve","tinymce.themes.inlite.core.Render","tinymce.ui.NotificationManagerImpl","tinymce.ui.WindowManagerImpl","global!document","tinymce.core.dom.DOMUtils","tinymce.core.ui.Factory","tinymce.core.util.Tools","tinymce.themes.inlite.common.Events","tinymce.themes.inlite.common.Settings","tinymce.themes.inlite.core.Layout","tinymce.themes.inlite.core.Measure","tinymce.themes.inlite.ui.Forms","tinymce.themes.inlite.ui.Toolbar","tinymce.themes.inlite.file.Conversions","tinymce.themes.inlite.file.Picker","tinymce.themes.inlite.core.Actions","tinymce.ui.AbsoluteLayout","tinymce.ui.BrowseButton","tinymce.ui.Button","tinymce.ui.ButtonGroup","tinymce.ui.Checkbox","tinymce.ui.Collection","tinymce.ui.ColorBox","tinymce.ui.ColorButton","tinymce.ui.ColorPicker","tinymce.ui.ComboBox","tinymce.ui.Container","tinymce.ui.Control","tinymce.ui.DragHelper","tinymce.ui.DropZone","tinymce.ui.ElementPath","tinymce.ui.FieldSet","tinymce.ui.FilePicker","tinymce.ui.FitLayout","tinymce.ui.FlexLayout","tinymce.ui.FloatPanel","tinymce.ui.FlowLayout","tinymce.ui.Form","ephox.katamari.common.Fun","ephox.sugar.common.node.Element","ephox.sugar.common.search.SelectorFind","tinymce.core.EditorManager","tinymce.core.Env","tinymce.ui.Widget","tinymce.ui.editorui.Align","tinymce.ui.editorui.FontSelect","tinymce.ui.editorui.FontSizeSelect","tinymce.ui.editorui.FormatSelect","tinymce.ui.editorui.Formats","tinymce.ui.editorui.InsertButton","tinymce.ui.editorui.SimpleControls","tinymce.ui.editorui.UndoRedo","tinymce.ui.editorui.VisualAid","tinymce.ui.FormItem","tinymce.ui.GridLayout","tinymce.ui.Iframe","tinymce.ui.InfoBox","tinymce.ui.KeyboardNavigation","tinymce.ui.Label","tinymce.ui.Layout","tinymce.ui.ListBox","tinymce.ui.Menu","tinymce.ui.MenuBar","tinymce.ui.MenuButton","tinymce.ui.MenuItem","tinymce.ui.MessageBox","tinymce.ui.Movable","tinymce.ui.Notification","tinymce.ui.Panel","tinymce.ui.PanelButton","tinymce.ui.Path","tinymce.ui.Progress","tinymce.ui.Radio","tinymce.ui.ReflowQueue","tinymce.ui.Resizable","tinymce.ui.ResizeHandle","tinymce.ui.Scrollable","tinymce.ui.SelectBox","tinymce.ui.Selector","tinymce.ui.Slider","tinymce.ui.Spacer","tinymce.ui.SplitButton","tinymce.ui.StackLayout","tinymce.ui.TabPanel","tinymce.ui.TextBox","tinymce.ui.Throbber","tinymce.ui.Toolbar","tinymce.ui.Tooltip","tinymce.ui.Window","tinymce.core.util.Delay","tinymce.themes.inlite.alien.Arr","tinymce.themes.inlite.core.ElementMatcher","tinymce.themes.inlite.core.Matcher","tinymce.themes.inlite.core.PredicateId","tinymce.themes.inlite.core.SelectionMatcher","tinymce.themes.inlite.core.SkinLoader","ephox.katamari.common.Arr","global!setTimeout","tinymce.ui.DomUtils","tinymce.core.dom.DomQuery","tinymce.core.util.Class","tinymce.core.util.EventDispatcher","tinymce.ui.BoxUtils","tinymce.ui.ClassList","tinymce.ui.data.ObservableObject","tinymce.themes.inlite.alien.EditorSettings","tinymce.core.geom.Rect","tinymce.themes.inlite.core.Convert","tinymce.core.util.Promise","tinymce.themes.inlite.alien.Uuid","tinymce.themes.inlite.alien.Unlink","tinymce.themes.inlite.core.UrlType","tinymce.themes.inlite.alien.Type","ephox.sand.common.FileReader","global!RegExp","tinymce.core.util.VK","tinymce.core.util.Color","global!Array","global!Error","tinymce.ui.content.LinkTargets","global!console","ephox.sugar.common.search.PredicateFind","ephox.sugar.common.search.Selectors","ephox.sugar.impl.ClosestOrAncestor","tinymce.ui.editorui.FormatUtils","tinymce.ui.fmt.FontInfo","ephox.katamari.common.Option","global!String","tinymce.ui.data.Binding","tinymce.core.util.Observable","tinymce.themes.inlite.alien.Bookmark","tinymce.core.dom.TreeWalker","tinymce.core.dom.RangeUtils","ephox.sand.util.Global","ephox.katamari.common.Id","ephox.sugar.common.search.SelectorFilter","ephox.katamari.common.Type","ephox.sugar.common.node.Body","ephox.sugar.common.dom.Compare","ephox.sugar.common.node.NodeTypes","ephox.sugar.common.node.Node","global!Object","ephox.katamari.common.Resolve","global!Date","global!Math","ephox.sugar.common.search.PredicateFilter","ephox.katamari.common.Thunk","ephox.sand.common.Node","ephox.sand.common.PlatformDetection","ephox.katamari.common.Global","ephox.sugar.common.search.Traverse","ephox.sand.core.PlatformDetection","global!navigator","ephox.katamari.common.Struct","ephox.sugar.alien.Recurse","ephox.sand.core.Browser","ephox.sand.core.OperatingSystem","ephox.sand.detect.DeviceType","ephox.sand.detect.UaString","ephox.sand.info.PlatformInfo","ephox.katamari.data.Immutable","ephox.katamari.data.MixedBag","ephox.sand.detect.Version","ephox.katamari.common.Strings","ephox.katamari.common.Obj","ephox.katamari.util.BagUtils","global!Number","ephox.katamari.str.StrAppend","ephox.katamari.str.StringParts"]
 jsc */
     defineGlobal('global!window', window);
     defineGlobal('global!tinymce.util.Tools.resolve', tinymce.util.Tools.resolve);
@@ -854,8 +854,8 @@ jsc */
         [
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.EditorManager',
-            'tinymce.themes.inlite.api.Events',
-            'tinymce.themes.inlite.api.Settings'
+            'tinymce.themes.inlite.common.Events',
+            'tinymce.themes.inlite.common.Settings'
         ],
   function (DOMUtils, EditorManager, Events, Settings) {
       var fireSkinLoaded = function (editor, callback) {
@@ -1139,7 +1139,7 @@ jsc */
   'ephox.katamari.api.Option',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'global!Object'
         ],
 
@@ -1325,7 +1325,7 @@ jsc */
   'ephox.katamari.api.Arr',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Array',
             'global!Error',
             'global!String'
@@ -5315,7 +5315,7 @@ jsc */
     define(
   'tinymce.ui.NotificationManagerImpl',
         [
-            'ephox.katamari.api.Arr',
+            'ephox.katamari.common.Arr',
             'global!setTimeout',
             'tinymce.core.util.Tools',
             'tinymce.ui.DomUtils',
@@ -8811,8 +8811,8 @@ jsc */
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.ui.Factory',
             'tinymce.core.util.Tools',
-            'tinymce.themes.inlite.api.Events',
-            'tinymce.themes.inlite.api.Settings',
+            'tinymce.themes.inlite.common.Events',
+            'tinymce.themes.inlite.common.Settings',
             'tinymce.themes.inlite.core.Layout',
             'tinymce.themes.inlite.core.Measure',
             'tinymce.themes.inlite.ui.Forms',
@@ -9053,7 +9053,7 @@ jsc */
   'ephox.katamari.api.Resolve',
 
         [
-            'ephox.katamari.api.Global'
+            'ephox.katamari.common.Global'
         ],
 
   function (Global) {
@@ -9102,7 +9102,7 @@ jsc */
   'ephox.sand.util.Global',
 
         [
-            'ephox.katamari.api.Resolve'
+            'ephox.katamari.common.Resolve'
         ],
 
   function (Resolve) {
@@ -9153,7 +9153,7 @@ jsc */
     define(
   'tinymce.themes.inlite.file.Conversions',
         [
-            'ephox.sand.api.FileReader',
+            'ephox.sand.common.FileReader',
             'tinymce.core.util.Promise'
         ],
   function (FileReader, Promise) {
@@ -11799,7 +11799,7 @@ jsc */
   'ephox.sugar.api.node.Element',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'global!Error',
             'global!console',
             'global!document'
@@ -11898,7 +11898,7 @@ jsc */
   'ephox.sugar.api.node.Node',
 
         [
-            'ephox.sugar.api.node.NodeTypes'
+            'ephox.sugar.common.node.NodeTypes'
         ],
 
   function (NodeTypes) {
@@ -11945,9 +11945,9 @@ jsc */
   'ephox.sugar.api.node.Body',
 
         [
-            'ephox.katamari.api.Thunk',
-            'ephox.sugar.api.node.Element',
-            'ephox.sugar.api.node.Node',
+            'ephox.katamari.common.Thunk',
+            'ephox.sugar.common.node.Element',
+            'ephox.sugar.common.node.Node',
             'global!document'
         ],
 
@@ -12022,8 +12022,8 @@ jsc */
   'ephox.katamari.data.Immutable',
 
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
             'global!Array',
             'global!Error'
         ],
@@ -12052,7 +12052,7 @@ jsc */
   'ephox.katamari.api.Obj',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Object'
         ],
 
@@ -12173,8 +12173,8 @@ jsc */
   'ephox.katamari.util.BagUtils',
 
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Type',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Type',
             'global!Error'
         ],
 
@@ -12227,10 +12227,10 @@ jsc */
   'ephox.katamari.data.MixedBag',
 
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
-            'ephox.katamari.api.Obj',
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
+            'ephox.katamari.common.Obj',
+            'ephox.katamari.common.Option',
             'ephox.katamari.util.BagUtils',
             'global!Error',
             'global!Object'
@@ -12377,7 +12377,7 @@ jsc */
   'ephox.sand.detect.Version',
 
         [
-            'ephox.katamari.api.Arr',
+            'ephox.katamari.common.Arr',
             'global!Number',
             'global!String'
         ],
@@ -12426,7 +12426,7 @@ jsc */
   'ephox.sand.core.Browser',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'ephox.sand.detect.Version'
         ],
 
@@ -12486,7 +12486,7 @@ jsc */
   'ephox.sand.core.OperatingSystem',
 
         [
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Fun',
             'ephox.sand.detect.Version'
         ],
 
@@ -12551,7 +12551,7 @@ jsc */
   'ephox.sand.detect.DeviceType',
 
         [
-            'ephox.katamari.api.Fun'
+            'ephox.katamari.common.Fun'
         ],
 
   function (Fun) {
@@ -12583,7 +12583,7 @@ jsc */
   'ephox.sand.detect.UaString',
 
         [
-            'ephox.katamari.api.Arr',
+            'ephox.katamari.common.Arr',
             'ephox.sand.detect.Version',
             'global!String'
         ],
@@ -12660,7 +12660,7 @@ jsc */
   'ephox.katamari.str.StringParts',
 
         [
-            'ephox.katamari.api.Option',
+            'ephox.katamari.common.Option',
             'global!Error'
         ],
 
@@ -12810,8 +12810,8 @@ jsc */
   'ephox.sand.info.PlatformInfo',
 
         [
-            'ephox.katamari.api.Fun',
-            'ephox.katamari.api.Strings'
+            'ephox.katamari.common.Fun',
+            'ephox.katamari.common.Strings'
         ],
 
   function (Fun, Strings) {
@@ -12954,7 +12954,7 @@ jsc */
   'ephox.sand.api.PlatformDetection',
 
         [
-            'ephox.katamari.api.Thunk',
+            'ephox.katamari.common.Thunk',
             'ephox.sand.core.PlatformDetection',
             'global!navigator'
         ],
@@ -12974,10 +12974,10 @@ jsc */
   'ephox.sugar.api.search.Selectors',
 
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Option',
-            'ephox.sugar.api.node.Element',
-            'ephox.sugar.api.node.NodeTypes',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Option',
+            'ephox.sugar.common.node.Element',
+            'ephox.sugar.common.node.NodeTypes',
             'global!Error',
             'global!document'
         ],
@@ -13048,11 +13048,11 @@ jsc */
   'ephox.sugar.api.dom.Compare',
 
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
-            'ephox.sand.api.Node',
-            'ephox.sand.api.PlatformDetection',
-            'ephox.sugar.api.search.Selectors'
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
+            'ephox.sand.common.Node',
+            'ephox.sand.common.PlatformDetection',
+            'ephox.sugar.common.search.Selectors'
         ],
 
   function (Arr, Fun, Node, PlatformDetection, Selectors) {
@@ -13105,14 +13105,14 @@ jsc */
   'ephox.sugar.api.search.Traverse',
 
         [
-            'ephox.katamari.api.Type',
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
-            'ephox.katamari.api.Option',
-            'ephox.katamari.api.Struct',
+            'ephox.katamari.common.Type',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
+            'ephox.katamari.common.Option',
+            'ephox.katamari.common.Struct',
             'ephox.sugar.alien.Recurse',
-            'ephox.sugar.api.dom.Compare',
-            'ephox.sugar.api.node.Element'
+            'ephox.sugar.common.dom.Compare',
+            'ephox.sugar.common.node.Element'
         ],
 
   function (Type, Arr, Fun, Option, Struct, Recurse, Compare, Element) {
@@ -13257,9 +13257,9 @@ jsc */
   'ephox.sugar.api.search.PredicateFilter',
 
         [
-            'ephox.katamari.api.Arr',
-            'ephox.sugar.api.node.Body',
-            'ephox.sugar.api.search.Traverse'
+            'ephox.katamari.common.Arr',
+            'ephox.sugar.common.node.Body',
+            'ephox.sugar.common.search.Traverse'
         ],
 
   function (Arr, Body, Traverse) {
@@ -13308,8 +13308,8 @@ jsc */
   'ephox.sugar.api.search.SelectorFilter',
 
         [
-            'ephox.sugar.api.search.PredicateFilter',
-            'ephox.sugar.api.search.Selectors'
+            'ephox.sugar.common.search.PredicateFilter',
+            'ephox.sugar.common.search.Selectors'
         ],
 
   function (PredicateFilter, Selectors) {
@@ -13380,11 +13380,11 @@ jsc */
     define(
   'tinymce.ui.content.LinkTargets',
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
-            'ephox.katamari.api.Id',
-            'ephox.sugar.api.node.Element',
-            'ephox.sugar.api.search.SelectorFilter',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
+            'ephox.katamari.common.Id',
+            'ephox.sugar.common.node.Element',
+            'ephox.sugar.common.search.SelectorFilter',
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.util.Tools'
         ],
@@ -13532,8 +13532,8 @@ jsc */
     define(
   'tinymce.ui.FilePicker',
         [
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
             'global!window',
             'tinymce.ui.content.LinkTargets',
             'tinymce.core.EditorManager',
@@ -14193,8 +14193,8 @@ jsc */
   'ephox.sugar.impl.ClosestOrAncestor',
 
         [
-            'ephox.katamari.api.Type',
-            'ephox.katamari.api.Option'
+            'ephox.katamari.common.Type',
+            'ephox.katamari.common.Option'
         ],
 
   function (Type, Option) {
@@ -14211,13 +14211,13 @@ jsc */
   'ephox.sugar.api.search.PredicateFind',
 
         [
-            'ephox.katamari.api.Type',
-            'ephox.katamari.api.Arr',
-            'ephox.katamari.api.Fun',
-            'ephox.katamari.api.Option',
-            'ephox.sugar.api.node.Body',
-            'ephox.sugar.api.dom.Compare',
-            'ephox.sugar.api.node.Element',
+            'ephox.katamari.common.Type',
+            'ephox.katamari.common.Arr',
+            'ephox.katamari.common.Fun',
+            'ephox.katamari.common.Option',
+            'ephox.sugar.common.node.Body',
+            'ephox.sugar.common.dom.Compare',
+            'ephox.sugar.common.node.Element',
             'ephox.sugar.impl.ClosestOrAncestor'
         ],
 
@@ -14293,8 +14293,8 @@ jsc */
   'ephox.sugar.api.search.SelectorFind',
 
         [
-            'ephox.sugar.api.search.PredicateFind',
-            'ephox.sugar.api.search.Selectors',
+            'ephox.sugar.common.search.PredicateFind',
+            'ephox.sugar.common.search.Selectors',
             'ephox.sugar.impl.ClosestOrAncestor'
         ],
 
@@ -14458,10 +14458,10 @@ jsc */
     define(
   'tinymce.ui.fmt.FontInfo',
         [
-            'ephox.katamari.api.Fun',
-            'ephox.katamari.api.Option',
-            'ephox.sugar.api.node.Element',
-            'ephox.sugar.api.node.Node',
+            'ephox.katamari.common.Fun',
+            'ephox.katamari.common.Option',
+            'ephox.sugar.common.node.Element',
+            'ephox.sugar.common.node.Node',
             'tinymce.core.dom.DOMUtils'
         ],
   function (Fun, Option, Element, Node, DOMUtils) {
@@ -15135,7 +15135,7 @@ jsc */
     define(
   'tinymce.ui.editorui.InsertButton',
         [
-            'ephox.katamari.api.Arr',
+            'ephox.katamari.common.Arr',
             'tinymce.core.util.Tools'
         ],
   function (Arr, Tools) {
@@ -15479,9 +15479,9 @@ jsc */
     define(
   'tinymce.ui.FormatControls',
         [
-            'ephox.katamari.api.Fun',
-            'ephox.sugar.api.node.Element',
-            'ephox.sugar.api.search.SelectorFind',
+            'ephox.katamari.common.Fun',
+            'ephox.sugar.common.node.Element',
+            'ephox.sugar.common.search.SelectorFind',
             'global!document',
             'tinymce.core.EditorManager',
             'tinymce.core.Env',
@@ -18643,7 +18643,7 @@ jsc */
         [
             'global!window',
             'tinymce.core.ThemeManager',
-            'tinymce.themes.inlite.api.ThemeApi',
+            'tinymce.themes.inlite.common.ThemeApi',
             'tinymce.themes.inlite.ui.Buttons',
             'tinymce.themes.inlite.ui.Panel',
             'tinymce.ui.Api',

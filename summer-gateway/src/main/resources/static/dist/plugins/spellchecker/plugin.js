@@ -68,7 +68,7 @@
         define(id, [], function () { return ref; });
     };
 /* jsc
-["tinymce.plugins.spellchecker.Plugin","ephox.katamari.api.Cell","tinymce.core.PluginManager","tinymce.plugins.spellchecker.alien.DetectProPlugin","tinymce.plugins.spellchecker.api.Api","tinymce.plugins.spellchecker.api.Commands","tinymce.plugins.spellchecker.api.Settings","tinymce.plugins.spellchecker.ui.Buttons","tinymce.plugins.spellchecker.ui.SuggestionsMenu","global!tinymce.util.Tools.resolve","global!window","tinymce.plugins.spellchecker.core.Actions","tinymce.core.util.Tools","global!document","tinymce.core.dom.DOMUtils","tinymce.core.ui.Factory","tinymce.core.util.URI","tinymce.core.util.XHR","tinymce.plugins.spellchecker.api.Events","tinymce.plugins.spellchecker.core.DomTextMatcher"]
+["tinymce.plugins.spellchecker.Plugin","ephox.katamari.common.Cell","tinymce.core.PluginManager","tinymce.plugins.spellchecker.alien.DetectProPlugin","tinymce.plugins.spellchecker.common.Api","tinymce.plugins.spellchecker.common.Commands","tinymce.plugins.spellchecker.common.Settings","tinymce.plugins.spellchecker.ui.Buttons","tinymce.plugins.spellchecker.ui.SuggestionsMenu","global!tinymce.util.Tools.resolve","global!window","tinymce.plugins.spellchecker.core.Actions","tinymce.core.util.Tools","global!document","tinymce.core.dom.DOMUtils","tinymce.core.ui.Factory","tinymce.core.util.URI","tinymce.core.util.XHR","tinymce.plugins.spellchecker.common.Events","tinymce.plugins.spellchecker.core.DomTextMatcher"]
 jsc */
     define(
   'ephox.katamari.api.Cell',
@@ -801,8 +801,8 @@ jsc */
             'tinymce.core.util.Tools',
             'tinymce.core.util.URI',
             'tinymce.core.util.XHR',
-            'tinymce.plugins.spellchecker.api.Events',
-            'tinymce.plugins.spellchecker.api.Settings',
+            'tinymce.plugins.spellchecker.common.Events',
+            'tinymce.plugins.spellchecker.common.Settings',
             'tinymce.plugins.spellchecker.core.DomTextMatcher'
         ],
   function (Tools, URI, XHR, Events, Settings, DomTextMatcher) {
@@ -1030,7 +1030,7 @@ jsc */
     define(
   'tinymce.plugins.spellchecker.api.Api',
         [
-            'tinymce.plugins.spellchecker.api.Settings',
+            'tinymce.plugins.spellchecker.common.Settings',
             'tinymce.plugins.spellchecker.core.Actions'
         ],
   function (Settings, Actions) {
@@ -1105,7 +1105,7 @@ jsc */
   'tinymce.plugins.spellchecker.ui.Buttons',
         [
             'tinymce.core.util.Tools',
-            'tinymce.plugins.spellchecker.api.Settings',
+            'tinymce.plugins.spellchecker.common.Settings',
             'tinymce.plugins.spellchecker.core.Actions'
         ],
   function (Tools, Settings, Actions) {
@@ -1253,7 +1253,7 @@ jsc */
             'tinymce.core.dom.DOMUtils',
             'tinymce.core.ui.Factory',
             'tinymce.core.util.Tools',
-            'tinymce.plugins.spellchecker.api.Settings',
+            'tinymce.plugins.spellchecker.common.Settings',
             'tinymce.plugins.spellchecker.core.Actions'
         ],
   function (document, DOMUtils, Factory, Tools, Settings, Actions) {
@@ -1377,12 +1377,12 @@ jsc */
     define(
   'tinymce.plugins.spellchecker.Plugin',
         [
-            'ephox.katamari.api.Cell',
+            'ephox.katamari.common.Cell',
             'tinymce.core.PluginManager',
             'tinymce.plugins.spellchecker.alien.DetectProPlugin',
-            'tinymce.plugins.spellchecker.api.Api',
-            'tinymce.plugins.spellchecker.api.Commands',
-            'tinymce.plugins.spellchecker.api.Settings',
+            'tinymce.plugins.spellchecker.common.Api',
+            'tinymce.plugins.spellchecker.common.Commands',
+            'tinymce.plugins.spellchecker.common.Settings',
             'tinymce.plugins.spellchecker.ui.Buttons',
             'tinymce.plugins.spellchecker.ui.SuggestionsMenu'
         ],
