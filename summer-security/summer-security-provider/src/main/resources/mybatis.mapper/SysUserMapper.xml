@@ -196,6 +196,6 @@
   </update>
 
   <select id="getUserAccount" resultMap="BaseResultMap">
-      select u.* from sys_user u  where username= #{username}
+      select u.* from sys_user u  where username= #{account}
   </select>
 </mapper>
