@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>summer-security-api</module>
+        <module>summer-security-provider</module>
     </modules>
 
     <properties>
