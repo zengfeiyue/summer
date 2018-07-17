@@ -91,7 +91,7 @@
                 shrink: false,
                 userName: '',
                 isFullScreen: false,
-                openedSubmenuArr: this.$store.state.app.openedSubmenuArr
+                openedSubmenuArr: this.$store.state.app.openedSubmenuArr,
             };
         },
         computed: {

@@ -66,37 +66,54 @@ export const otherRouter = {
 
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
+    // {
+    //     path: '/access',
+    //     icon: 'key',
+    //     name: 'access',
+    //     title: '权限管理',
+    //     component: Main,
+    //     children: [
+    //         { path: 'index', title: '权限管理', name: 'access_index', component: resolve => { require(['@/views/access/access.vue'], resolve); } }
+    //     ]
+    // },
     {
-        path: '/access',
+        path: '/test',
         icon: 'key',
-        name: 'access',
-        title: '权限管理',
+        name: '路由测试',
+        title: '路由测试',
         component: Main,
         children: [
-            { path: 'index', title: '权限管理', name: 'access_index', component: resolve => { require(['@/views/access/access.vue'], resolve); } }
+            { 
+                path: 'index', 
+                title: '路由测试', 
+                name: 'test', 
+                component: resolve => { 
+                    require(['@/views/test/index.vue'], resolve);
+                } 
+            }
         ]
     },
-    {
-        path: '/access-test',
-        icon: 'lock-combination',
-        title: '权限测试页',
-        name: 'accesstest',
-        access: 0,
-        component: Main,
-        children: [
-            { path: 'index', title: '权限测试页', name: 'accesstest_index', access: 0, component: resolve => { require(['@/views/access/access-test.vue'], resolve); } }
-        ]
-    },
-    {
-        path: '/international',
-        icon: 'earth',
-        title: {i18n: 'international'},
-        name: 'international',
-        component: Main,
-        children: [
-            { path: 'index', title: {i18n: 'international'}, name: 'international_index', component: resolve => { require(['@/views/international/international.vue'], resolve); } }
-        ]
-    },
+    // {
+    //     path: '/access-test',
+    //     icon: 'lock-combination',
+    //     title: '权限测试页',
+    //     name: 'accesstest',
+    //     access: 0,
+    //     component: Main,
+    //     children: [
+    //         { path: 'index', title: '权限测试页', name: 'accesstest_index', access: 0, component: resolve => { require(['@/views/access/access-test.vue'], resolve); } }
+    //     ]
+    // },
+    // {
+    //     path: '/international',
+    //     icon: 'earth',
+    //     title: {i18n: 'international'},
+    //     name: 'international',
+    //     component: Main,
+    //     children: [
+    //         { path: 'index', title: {i18n: 'international'}, name: 'international_index', component: resolve => { require(['@/views/international/international.vue'], resolve); } }
+    //     ]
+    // },
     {
         path: '/component',
         icon: 'social-buffer',
@@ -162,65 +179,65 @@ export const appRouter = [
             }
         ]
     },
-    {
-        path: '/form',
-        icon: 'android-checkbox',
-        name: 'form',
-        title: '表单编辑',
-        component: Main,
-        children: [
-            { path: 'artical-publish', title: '文章发布', name: 'artical-publish', icon: 'compose', component: resolve => { require(['@/views/form/article-publish/article-publish.vue'], resolve); } },
-            { path: 'workflow', title: '工作流', name: 'workflow', icon: 'arrow-swap', component: resolve => { require(['@/views/form/work-flow/work-flow.vue'], resolve); } }
-
-        ]
-    },
     // {
-    //     path: '/charts',
-    //     icon: 'ios-analytics',
-    //     name: 'charts',
-    //     title: '图表',
+    //     path: '/form',
+    //     icon: 'android-checkbox',
+    //     name: 'form',
+    //     title: '表单编辑',
     //     component: Main,
     //     children: [
-    //         { path: 'pie', title: '饼状图', name: 'pie', icon: 'ios-pie', component: resolve => { require('@/views/access/access.vue') },
-    //         { path: 'histogram', title: '柱状图', name: 'histogram', icon: 'stats-bars', component: resolve => { require('@/views/access/access.vue') }
+    //         { path: 'artical-publish', title: '文章发布', name: 'artical-publish', icon: 'compose', component: resolve => { require(['@/views/form/article-publish/article-publish.vue'], resolve); } },
+    //         { path: 'workflow', title: '工作流', name: 'workflow', icon: 'arrow-swap', component: resolve => { require(['@/views/form/work-flow/work-flow.vue'], resolve); } }
 
     //     ]
     // },
-    {
-        path: '/tables',
-        icon: 'ios-grid-view',
-        name: 'tables',
-        title: '表格',
-        component: Main,
-        children: [
-            { path: 'dragableTable', title: '可拖拽排序', name: 'dragable-table', icon: 'arrow-move', component: resolve => { require(['@/views/tables/dragable-table.vue'], resolve); } },
-            { path: 'editableTable', title: '可编辑表格', name: 'editable-table', icon: 'edit', component: resolve => { require(['@/views/tables/editable-table.vue'], resolve); } },
-            { path: 'searchableTable', title: '可搜索表格', name: 'searchable-table', icon: 'search', component: resolve => { require(['@/views/tables/searchable-table.vue'], resolve); } },
-            { path: 'exportableTable', title: '表格导出数据', name: 'exportable-table', icon: 'code-download', component: resolve => { require(['@/views/tables/exportable-table.vue'], resolve); } },
-            { path: 'table2image', title: '表格转图片', name: 'table-to-image', icon: 'images', component: resolve => { require(['@/views/tables/table-to-image.vue'], resolve); } }
-        ]
-    },
-    {
-        path: '/advanced-router',
-        icon: 'ios-infinite',
-        name: 'advanced-router',
-        title: '高级路由',
-        component: Main,
-        children: [
-            { path: 'mutative-router', title: '动态路由', name: 'mutative-router', icon: 'link', component: resolve => { require(['@/views/advanced-router/mutative-router.vue'], resolve); } },
-            { path: 'argument-page', title: '带参页面', name: 'argument-page', icon: 'android-send', component: resolve => { require(['@/views/advanced-router/argument-page.vue'], resolve); } }
-        ]
-    },
-    {
-        path: '/error-page',
-        icon: 'android-sad',
-        title: '错误页面',
-        name: 'errorpage',
-        component: Main,
-        children: [
-            { path: 'index', title: '错误页面', name: 'errorpage_index', component: resolve => { require(['@/views/error-page/error-page.vue'], resolve); } }
-        ]
-    }
+    // // {
+    // //     path: '/charts',
+    // //     icon: 'ios-analytics',
+    // //     name: 'charts',
+    // //     title: '图表',
+    // //     component: Main,
+    // //     children: [
+    // //         { path: 'pie', title: '饼状图', name: 'pie', icon: 'ios-pie', component: resolve => { require('@/views/access/access.vue') },
+    // //         { path: 'histogram', title: '柱状图', name: 'histogram', icon: 'stats-bars', component: resolve => { require('@/views/access/access.vue') }
+
+    // //     ]
+    // // },
+    // {
+    //     path: '/tables',
+    //     icon: 'ios-grid-view',
+    //     name: 'tables',
+    //     title: '表格',
+    //     component: Main,
+    //     children: [
+    //         { path: 'dragableTable', title: '可拖拽排序', name: 'dragable-table', icon: 'arrow-move', component: resolve => { require(['@/views/tables/dragable-table.vue'], resolve); } },
+    //         { path: 'editableTable', title: '可编辑表格', name: 'editable-table', icon: 'edit', component: resolve => { require(['@/views/tables/editable-table.vue'], resolve); } },
+    //         { path: 'searchableTable', title: '可搜索表格', name: 'searchable-table', icon: 'search', component: resolve => { require(['@/views/tables/searchable-table.vue'], resolve); } },
+    //         { path: 'exportableTable', title: '表格导出数据', name: 'exportable-table', icon: 'code-download', component: resolve => { require(['@/views/tables/exportable-table.vue'], resolve); } },
+    //         { path: 'table2image', title: '表格转图片', name: 'table-to-image', icon: 'images', component: resolve => { require(['@/views/tables/table-to-image.vue'], resolve); } }
+    //     ]
+    // },
+    // {
+    //     path: '/advanced-router',
+    //     icon: 'ios-infinite',
+    //     name: 'advanced-router',
+    //     title: '高级路由',
+    //     component: Main,
+    //     children: [
+    //         { path: 'mutative-router', title: '动态路由', name: 'mutative-router', icon: 'link', component: resolve => { require(['@/views/advanced-router/mutative-router.vue'], resolve); } },
+    //         { path: 'argument-page', title: '带参页面', name: 'argument-page', icon: 'android-send', component: resolve => { require(['@/views/advanced-router/argument-page.vue'], resolve); } }
+    //     ]
+    // },
+    // {
+    //     path: '/error-page',
+    //     icon: 'android-sad',
+    //     title: '错误页面',
+    //     name: 'errorpage',
+    //     component: Main,
+    //     children: [
+    //         { path: 'index', title: '错误页面', name: 'errorpage_index', component: resolve => { require(['@/views/error-page/error-page.vue'], resolve); } }
+    //     ]
+    // }
 ];
 
 // 所有上面定义的路由都要写在下面的routers里
