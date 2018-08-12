@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 /*放行的路径*/
                 .antMatchers("/**").permitAll()
                 .antMatchers("/").permitAll()
-                .antMatchers("/test","/test1").permitAll()
+                .antMatchers("/test","/test1","/weixin_login").permitAll()
                 /*其他路径都要鉴权*/
                 .anyRequest().authenticated()
                 //允许跨域

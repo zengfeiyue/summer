@@ -37,6 +37,7 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req,HttpServletResponse res, FilterChain chain,Authentication auth) {
+
         //生成token
         String token = JwtTokenAuthentication.getJwtToken(auth.getName(),  auth);
         //传递token
@@ -52,7 +53,7 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         response.setContentType("application/json");
-        response.setStatus(HttpServletResponse.SC_OK);
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         //response.getOutputStream().println(JSONResult.fillResultString(500, "Internal Server Error!!!", JSONObject.NULL));
     }
 }
