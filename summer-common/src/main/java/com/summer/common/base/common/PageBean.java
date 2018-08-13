@@ -1,4 +1,4 @@
-package com.summer.gateway.core.base;
+package com.summer.common.base.common;
 
 import java.io.Serializable;
 import java.util.List;

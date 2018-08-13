@@ -1,15 +1,22 @@
-package com.summer.gateway.core.base;
-
+package com.summer.common.base.common;
 
 /**
- * rquest message bean
+ * Response message bean
  *@author zengfeiyue
  */
-public class RequestBean {
+public class ResponseBean {
     private String msg;
     private Integer code;
     private Object data;
 
+    public ResponseBean(Integer code, String msg, Object data) {
+        this.msg = msg;
+        this.code = code;
+        this.data = data;
+    }
+    public ResponseBean() {
+
+    }
     public String getMsg() {
         return msg;
     }

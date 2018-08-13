@@ -44,6 +44,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.summer.school</groupId>
+			<artifactId>summer-school-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>0.7.0</version>

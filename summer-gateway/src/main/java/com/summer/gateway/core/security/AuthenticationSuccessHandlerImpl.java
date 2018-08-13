@@ -1,7 +1,7 @@
 package com.summer.gateway.core.security;
 
 import com.alibaba.fastjson.JSON;
-import com.summer.gateway.core.base.ResponseBean;
+import com.summer.common.base.common.ResponseBean;
 import com.summer.security.entity.SysUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
