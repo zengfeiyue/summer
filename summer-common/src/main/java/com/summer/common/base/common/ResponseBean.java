@@ -1,10 +1,13 @@
 package com.summer.common.base.common;
 
+import java.io.Serializable;
+
 /**
  * Response message bean
  *@author zengfeiyue
  */
-public class ResponseBean {
+public class ResponseBean implements Serializable {
+    private static final long serialVersionUID = 5760097915453738435L;
     private String msg;
     private Integer code;
     private Object data;

@@ -6,9 +6,9 @@ import java.util.Date;
 public class Activity implements Serializable {
     private Integer id;
 
-    private String title;
-
     private String theme;
+
+    private Boolean type;
 
     private Date startTime;
 
@@ -24,6 +24,12 @@ public class Activity implements Serializable {
 
     private Date createTime;
 
+    private Integer costStrategyId;
+
+    private Integer formSettingId;
+
+    private String contactInformation;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -34,20 +40,20 @@ public class Activity implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
-
     public String getTheme() {
         return theme;
     }
 
     public void setTheme(String theme) {
         this.theme = theme == null ? null : theme.trim();
+    }
+
+    public Boolean getType() {
+        return type;
+    }
+
+    public void setType(Boolean type) {
+        this.type = type;
     }
 
     public Date getStartTime() {
@@ -106,6 +112,30 @@ public class Activity implements Serializable {
         this.createTime = createTime;
     }
 
+    public Integer getCostStrategyId() {
+        return costStrategyId;
+    }
+
+    public void setCostStrategyId(Integer costStrategyId) {
+        this.costStrategyId = costStrategyId;
+    }
+
+    public Integer getFormSettingId() {
+        return formSettingId;
+    }
+
+    public void setFormSettingId(Integer formSettingId) {
+        this.formSettingId = formSettingId;
+    }
+
+    public String getContactInformation() {
+        return contactInformation;
+    }
+
+    public void setContactInformation(String contactInformation) {
+        this.contactInformation = contactInformation == null ? null : contactInformation.trim();
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -119,15 +149,18 @@ public class Activity implements Serializable {
         }
         Activity other = (Activity) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
             && (this.getTheme() == null ? other.getTheme() == null : this.getTheme().equals(other.getTheme()))
+            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
             && (this.getStartTime() == null ? other.getStartTime() == null : this.getStartTime().equals(other.getStartTime()))
             && (this.getEndTime() == null ? other.getEndTime() == null : this.getEndTime().equals(other.getEndTime()))
             && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
             && (this.getPlacardUrl() == null ? other.getPlacardUrl() == null : this.getPlacardUrl().equals(other.getPlacardUrl()))
             && (this.getIntroduction() == null ? other.getIntroduction() == null : this.getIntroduction().equals(other.getIntroduction()))
             && (this.getOrgId() == null ? other.getOrgId() == null : this.getOrgId().equals(other.getOrgId()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getCostStrategyId() == null ? other.getCostStrategyId() == null : this.getCostStrategyId().equals(other.getCostStrategyId()))
+            && (this.getFormSettingId() == null ? other.getFormSettingId() == null : this.getFormSettingId().equals(other.getFormSettingId()))
+            && (this.getContactInformation() == null ? other.getContactInformation() == null : this.getContactInformation().equals(other.getContactInformation()));
     }
 
     @Override
@@ -135,8 +168,8 @@ public class Activity implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
         result = prime * result + ((getTheme() == null) ? 0 : getTheme().hashCode());
+        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
         result = prime * result + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
         result = prime * result + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
         result = prime * result + ((getAddress() == null) ? 0 : getAddress().hashCode());
@@ -144,6 +177,9 @@ public class Activity implements Serializable {
         result = prime * result + ((getIntroduction() == null) ? 0 : getIntroduction().hashCode());
         result = prime * result + ((getOrgId() == null) ? 0 : getOrgId().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getCostStrategyId() == null) ? 0 : getCostStrategyId().hashCode());
+        result = prime * result + ((getFormSettingId() == null) ? 0 : getFormSettingId().hashCode());
+        result = prime * result + ((getContactInformation() == null) ? 0 : getContactInformation().hashCode());
         return result;
     }
 
@@ -154,8 +190,8 @@ public class Activity implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", title=").append(title);
         sb.append(", theme=").append(theme);
+        sb.append(", type=").append(type);
         sb.append(", startTime=").append(startTime);
         sb.append(", endTime=").append(endTime);
         sb.append(", address=").append(address);
@@ -163,6 +199,9 @@ public class Activity implements Serializable {
         sb.append(", introduction=").append(introduction);
         sb.append(", orgId=").append(orgId);
         sb.append(", createTime=").append(createTime);
+        sb.append(", costStrategyId=").append(costStrategyId);
+        sb.append(", formSettingId=").append(formSettingId);
+        sb.append(", contactInformation=").append(contactInformation);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

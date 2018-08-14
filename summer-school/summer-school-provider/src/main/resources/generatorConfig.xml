@@ -43,10 +43,10 @@
         </sqlMapGenerator>
 
         <!-- 生成DAO的包名和位置 -->
-        <javaClientGenerator type="XMLMAPPER"
+        <!--<javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.summer.school.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
-        </javaClientGenerator>
+        </javaClientGenerator>-->
 
 
         <!--
@@ -58,10 +58,35 @@
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="activity_member" domainObjectName="ActivityMember"
+        <table tableName="activity_cost" domainObjectName="ActivityCost"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="activity_cost_strategy" domainObjectName="ActivityCostStrategy"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="activity_member_form" domainObjectName="ActivityMemberForm"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="activity_member_ticket" domainObjectName="ActivityMemberTicket"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="activty_form_setting" domainObjectName="ActivtyFormSetting"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
 
         <table tableName="attention_org" domainObjectName="AttentionOrg"
                enableCountByExample="false" enableUpdateByExample="false"
@@ -83,12 +108,10 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
 
-        <table tableName="shool" domainObjectName="Shool"
+        <table tableName="school" domainObjectName="School"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
-
-
 
     </context>
 </generatorConfiguration>

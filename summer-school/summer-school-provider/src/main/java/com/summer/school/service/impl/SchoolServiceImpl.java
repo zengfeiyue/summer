@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.summer.common.base.common.ResponseBean;
 import com.summer.common.base.service.BaseServiceImpl;
 import com.summer.school.api.entity.School;
+import com.summer.school.api.model.SearchSchool;
 import com.summer.school.api.service.SchoolService;
 import com.summer.school.dao.SchoolMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class SchoolServiceImpl extends BaseServiceImpl<School, Integer> implemen
     private SchoolMapper schoolMapper;
 
     @Override
-    public ResponseBean queryLocation(String longitude, String latitude) {
+    public ResponseBean queryLocation(SearchSchool searchSchool) {
         School school = schoolMapper.selectByPrimaryKey(1);
         return new ResponseBean(200,"",school);
     }

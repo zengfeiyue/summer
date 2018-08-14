@@ -5,9 +5,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.summer.common.base.common.ResponseBean;
 import com.summer.gateway.core.jwt.JwtTokenAuthentication;
+import com.summer.school.api.model.SearchSchool;
 import com.summer.school.api.service.SchoolService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import javax.websocket.server.PathParam;
 import java.util.Map;
 
 @RestController
@@ -57,15 +54,11 @@ public class SchoolController {
     }
 
     @ApiOperation(value="获取定位学校", notes="传递经纬度获取最近定位学校")
-    @RequestMapping(value ="/location" ,method = RequestMethod.GET,  produces="text/plain;charset=UTF-8")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", dataType = "String", name = "longitude", value = "经度", required = true),
-            @ApiImplicitParam(paramType = "query", dataType = "String", name = "latitude", value = "纬度", required = true)
-    })
-    public ResponseBean getLocation( @PathParam("longitude") String longitude,
-                               @PathParam("latitude") String latitude){
-        ResponseBean responseBean = schoolService.queryLocation(longitude,latitude);
-        return responseBean;
+    @RequestMapping(value ="/location" ,method = RequestMethod.POST,  produces="text/plain;charset=UTF-8")
+    @ResponseBody
+    public String getLocation(@RequestBody SearchSchool search){
+        ResponseBean responseBean = schoolService.queryLocation(search);
+        return JSON.toJSONString(responseBean);
     }
 
 }

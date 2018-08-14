@@ -1,11 +1,14 @@
 package com.summer.common.base.common;
 
 
+import java.io.Serializable;
+
 /**
  * rquest message bean
  *@author zengfeiyue
  */
-public class RequestBean {
+public class RequestBean  implements Serializable {
+    private static final long serialVersionUID = 5760097915453738435L;
     private String msg;
     private Integer code;
     private Object data;

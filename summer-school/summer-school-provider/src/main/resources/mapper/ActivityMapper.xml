@@ -3,8 +3,8 @@
 <mapper namespace="com.summer.school.dao.ActivityMapper">
   <resultMap id="BaseResultMap" type="com.summer.school.api.entity.Activity">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="theme" jdbcType="VARCHAR" property="theme" />
+    <result column="type" jdbcType="BIT" property="type" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
     <result column="address" jdbcType="VARCHAR" property="address" />
@@ -12,10 +12,13 @@
     <result column="introduction" jdbcType="VARCHAR" property="introduction" />
     <result column="org_id" jdbcType="INTEGER" property="orgId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="cost_strategy_id" jdbcType="INTEGER" property="costStrategyId" />
+    <result column="form_setting_id" jdbcType="INTEGER" property="formSettingId" />
+    <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, title, theme, start_time, end_time, address, placard_url, introduction, org_id, 
-    create_time
+    id, theme, type, start_time, end_time, address, placard_url, introduction, org_id, 
+    create_time, cost_strategy_id, form_setting_id, contact_information
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -28,14 +31,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.summer.school.api.entity.Activity">
-    insert into activity (id, title, theme, 
+    insert into activity (id, theme, type, 
       start_time, end_time, address, 
       placard_url, introduction, org_id, 
-      create_time)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, 
+      create_time, cost_strategy_id, form_setting_id, 
+      contact_information)
+    values (#{id,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, 
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
       #{placardUrl,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{createTime,jdbcType=TIMESTAMP}, #{costStrategyId,jdbcType=INTEGER}, #{formSettingId,jdbcType=INTEGER}, 
+      #{contactInformation,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.summer.school.api.entity.Activity">
     insert into activity
@@ -43,11 +48,11 @@
       <if test="id != null">
         id,
       </if>
-      <if test="title != null">
-        title,
-      </if>
       <if test="theme != null">
         theme,
+      </if>
+      <if test="type != null">
+        type,
       </if>
       <if test="startTime != null">
         start_time,
@@ -70,16 +75,25 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="costStrategyId != null">
+        cost_strategy_id,
+      </if>
+      <if test="formSettingId != null">
+        form_setting_id,
+      </if>
+      <if test="contactInformation != null">
+        contact_information,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
       <if test="theme != null">
         #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
       </if>
       <if test="startTime != null">
         #{startTime,jdbcType=TIMESTAMP},
@@ -102,16 +116,25 @@
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="costStrategyId != null">
+        #{costStrategyId,jdbcType=INTEGER},
+      </if>
+      <if test="formSettingId != null">
+        #{formSettingId,jdbcType=INTEGER},
+      </if>
+      <if test="contactInformation != null">
+        #{contactInformation,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.summer.school.api.entity.Activity">
     update activity
     <set>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
       <if test="theme != null">
         theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIT},
       </if>
       <if test="startTime != null">
         start_time = #{startTime,jdbcType=TIMESTAMP},
@@ -134,20 +157,32 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="costStrategyId != null">
+        cost_strategy_id = #{costStrategyId,jdbcType=INTEGER},
+      </if>
+      <if test="formSettingId != null">
+        form_setting_id = #{formSettingId,jdbcType=INTEGER},
+      </if>
+      <if test="contactInformation != null">
+        contact_information = #{contactInformation,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.summer.school.api.entity.Activity">
     update activity
-    set title = #{title,jdbcType=VARCHAR},
-      theme = #{theme,jdbcType=VARCHAR},
+    set theme = #{theme,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       address = #{address,jdbcType=VARCHAR},
       placard_url = #{placardUrl,jdbcType=VARCHAR},
       introduction = #{introduction,jdbcType=VARCHAR},
       org_id = #{orgId,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      cost_strategy_id = #{costStrategyId,jdbcType=INTEGER},
+      form_setting_id = #{formSettingId,jdbcType=INTEGER},
+      contact_information = #{contactInformation,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

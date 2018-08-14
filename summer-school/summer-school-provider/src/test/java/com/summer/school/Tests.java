@@ -1,6 +1,5 @@
 package com.summer.school;
 
-import com.summer.school.api.entity.Member;
 import com.summer.school.dao.MemberMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
