@@ -16,6 +16,20 @@
     <result column="form_setting_id" jdbcType="INTEGER" property="formSettingId" />
     <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
   </resultMap>
+
+  <resultMap id="PageResultMap" type="com.summer.school.api.entity.Activity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="theme" jdbcType="VARCHAR" property="theme" />
+    <result column="type" jdbcType="BIT" property="type" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="placard_url" jdbcType="VARCHAR" property="placardUrl" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="orgName" jdbcType="INTEGER" property="orgName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
+  </resultMap>
   <sql id="Base_Column_List">
     id, theme, type, start_time, end_time, address, placard_url, introduction, org_id, 
     create_time, cost_strategy_id, form_setting_id, contact_information
@@ -185,4 +199,16 @@
       contact_information = #{contactInformation,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <sql id="Page_Column_List">
+    ac.id, ac.theme, ac.type, ac.acstart_time, ac.end_time, ac.address, ac.placard_url, ac.introduction, ac.org_id,
+    ac.create_time, ac.contact_information
+  </sql>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Page_Column_List" />,org.name as orgName
+    from activity ac INNER JOIN organization org on org.id = ac.org_id
+  </select>
+
 </mapper>

@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.summer.common.base.service.BaseServiceImpl;
 import com.summer.school.api.entity.Organization;
 import com.summer.school.api.service.OrganiztionService;
+
 /**
  * @author zengfeiyue
  */

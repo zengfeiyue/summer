@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.school.dao.ActivityMemberTicketMapper">
+  <resultMap id="BaseResultMap" type="com.summer.school.api.entity.ActivityMemberTicket">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="activity_id" jdbcType="INTEGER" property="activityId" />
+    <result column="join_time" jdbcType="TIMESTAMP" property="joinTime" />
+    <result column="action" jdbcType="BIT" property="action" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="qr_code" jdbcType="VARCHAR" property="qrCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, member_id, activity_id, join_time, action, title, qr_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from activity_member_ticket
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from activity_member_ticket
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityMemberTicket">
+    insert into activity_member_ticket (id, member_id, activity_id, 
+      join_time, action, title, 
+      qr_code)
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, 
+      #{joinTime,jdbcType=TIMESTAMP}, #{action,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, 
+      #{qrCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityMemberTicket">
+    insert into activity_member_ticket
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="joinTime != null">
+        join_time,
+      </if>
+      <if test="action != null">
+        action,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="qrCode != null">
+        qr_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="joinTime != null">
+        #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=BIT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="qrCode != null">
+        #{qrCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.school.api.entity.ActivityMemberTicket">
+    update activity_member_ticket
+    <set>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="joinTime != null">
+        join_time = #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="action != null">
+        action = #{action,jdbcType=BIT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="qrCode != null">
+        qr_code = #{qrCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.summer.school.api.entity.ActivityMemberTicket">
+    update activity_member_ticket
+    set member_id = #{memberId,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      join_time = #{joinTime,jdbcType=TIMESTAMP},
+      action = #{action,jdbcType=BIT},
+      title = #{title,jdbcType=VARCHAR},
+      qr_code = #{qrCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

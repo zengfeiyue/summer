@@ -8,7 +8,7 @@ public class Activity implements Serializable {
 
     private String theme;
 
-    private Boolean type;
+    private Integer type;
 
     private Date startTime;
 
@@ -21,6 +21,8 @@ public class Activity implements Serializable {
     private String introduction;
 
     private Integer orgId;
+
+    private Integer orgName;
 
     private Date createTime;
 
@@ -48,11 +50,11 @@ public class Activity implements Serializable {
         this.theme = theme == null ? null : theme.trim();
     }
 
-    public Boolean getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Boolean type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -134,6 +136,14 @@ public class Activity implements Serializable {
 
     public void setContactInformation(String contactInformation) {
         this.contactInformation = contactInformation == null ? null : contactInformation.trim();
+    }
+
+    public Integer getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(Integer orgName) {
+        this.orgName = orgName;
     }
 
     @Override

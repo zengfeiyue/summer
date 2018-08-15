@@ -9,6 +9,8 @@ import com.summer.school.api.service.SchoolService;
 import com.summer.school.dao.SchoolMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @author zengfeiyue
  */
@@ -22,7 +24,8 @@ public class SchoolServiceImpl extends BaseServiceImpl<School, Integer> implemen
 
     @Override
     public ResponseBean queryLocation(SearchSchool searchSchool) {
-        School school = schoolMapper.selectByPrimaryKey(1);
+        /*School school = schoolMapper.selectByPrimaryKey(1);*/
+        List<School> school = schoolMapper.queryLocation(searchSchool);
         return new ResponseBean(200,"",school);
     }
 }

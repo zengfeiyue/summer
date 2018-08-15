@@ -3,9 +3,12 @@ package com.summer.gateway.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
 import com.summer.common.base.common.ResponseBean;
+import com.summer.common.base.model.PageSearchModel;
 import com.summer.gateway.core.jwt.JwtTokenAuthentication;
 import com.summer.school.api.model.SearchSchool;
+import com.summer.school.api.service.ActivityService;
 import com.summer.school.api.service.SchoolService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -17,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value ="/api/school" ,  produces="text/plain;charset=UTF-8")
+@RequestMapping(value ="/api/school")
 public class SchoolController {
 
     @Autowired
@@ -30,7 +33,10 @@ public class SchoolController {
     private String secret;
 
     @Reference(version = "0.1",timeout = 2000,mock = "return null",check = false)
-    protected SchoolService schoolService;
+    private SchoolService schoolService;
+
+    @Reference(version = "0.1",timeout = 2000,mock = "return null",check = false)
+    private ActivityService activityService;
 
     @ApiOperation(value="登录", notes="传递微信临时code，换取token")
     @RequestMapping(value ="/weixin_login" ,method = RequestMethod.POST,  produces="text/plain;charset=UTF-8")
@@ -54,11 +60,19 @@ public class SchoolController {
     }
 
     @ApiOperation(value="获取定位学校", notes="传递经纬度获取最近定位学校")
-    @RequestMapping(value ="/location" ,method = RequestMethod.POST,  produces="text/plain;charset=UTF-8")
+    @RequestMapping(value ="/location" ,method = RequestMethod.POST)
     @ResponseBody
-    public String getLocation(@RequestBody SearchSchool search){
+    public ResponseBean getLocation(@RequestBody SearchSchool search){
         ResponseBean responseBean = schoolService.queryLocation(search);
-        return JSON.toJSONString(responseBean);
+        return responseBean;
+    }
+
+    @ApiOperation(value="分页获取活动", notes="传递分页信息获取分页的活动")
+    @RequestMapping(value ="/activity_page" ,method = RequestMethod.POST)
+    @ResponseBody
+    public PageInfo getActivityPage(@RequestBody PageSearchModel search){
+        PageInfo pageInfo = activityService.activityPage(search);
+        return pageInfo;
     }
 
 }
