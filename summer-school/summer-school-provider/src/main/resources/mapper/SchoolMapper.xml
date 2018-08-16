@@ -11,6 +11,12 @@
     <result column="status" jdbcType="BIT" property="status" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
+  <resultMap id="SearchResultMap" type="com.summer.school.api.entity.School">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+  </resultMap>
   <sql id="Base_Column_List">
     id, name, code, address, latitude, longitude, status, create_time
   </sql>
@@ -125,4 +131,21 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryLocation" parameterType="com.summer.school.api.model.SearchSchool" resultMap="SearchResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from school
+    where
+    status = 1
+    <if test="searchName != null">
+      and name LIKE CONCAT('%',#{searchName},'%')
+    </if>
+    <if test="searchName == null">
+      and ROUND(6378.138 * 2 * ASIN(SQRT(POW(SIN((latitude * PI() / 180 - #{latitude} * PI() / 180 ) / 2 ),2) +
+      COS(latitude * PI() / 180) * COS(#{latitude} * PI() / 180) * POW(SIN((longitude * PI() / 180 - #{longitude} * PI() / 180) / 2),2)))) <![CDATA[  <= ]]> 20
+    </if>
+
+
+  </select>
 </mapper>

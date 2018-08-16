@@ -24,8 +24,7 @@ public class SchoolServiceImpl extends BaseServiceImpl<School, Integer> implemen
 
     @Override
     public ResponseBean queryLocation(SearchSchool searchSchool) {
-        /*School school = schoolMapper.selectByPrimaryKey(1);*/
         List<School> school = schoolMapper.queryLocation(searchSchool);
-        return new ResponseBean(200,"",school);
+        return new ResponseBean(200,school.size()==0?"附近暂无学校":"",school);
     }
 }

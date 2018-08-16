@@ -4,15 +4,29 @@
   <resultMap id="BaseResultMap" type="com.summer.school.api.entity.Organization">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="type" jdbcType="BIT" property="type" />
+    <result column="type" jdbcType="INTEGER" property="type" />
     <result column="parend_id" jdbcType="INTEGER" property="parendId" />
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
-    <result column="school_id" jdbcType="INTEGER" property="schoolId" />
+    <result column="school_code" jdbcType="INTEGER" property="schoolCode" />
     <result column="grade" jdbcType="DOUBLE" property="grade" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl"/>
   </resultMap>
+
+  <resultMap id="PageResultMap" type="com.summer.school.api.entity.Organization">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="parend_id" jdbcType="INTEGER" property="parendId" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="school_code" jdbcType="INTEGER" property="schoolCode" />
+    <result column="grade" jdbcType="DOUBLE" property="grade" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl"/>
+  </resultMap>
+
   <sql id="Base_Column_List">
-    id, name, type, parend_id, member_id, school_id, grade, create_time
+    id, name, type, parend_id, member_id, school_code, grade, create_time,logo_url
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -26,10 +40,10 @@
   </delete>
   <insert id="insert" parameterType="com.summer.school.api.entity.Organization">
     insert into organization (id, name, type, parend_id, 
-      member_id, school_id, grade, 
+      member_id, school_code, grade, 
       create_time)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{parendId,jdbcType=INTEGER}, 
-      #{memberId,jdbcType=INTEGER}, #{schoolId,jdbcType=INTEGER}, #{grade,jdbcType=DOUBLE}, 
+      #{memberId,jdbcType=INTEGER}, #{schoolCode,jdbcType=INTEGER}, #{grade,jdbcType=DOUBLE}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.summer.school.api.entity.Organization">
@@ -50,8 +64,8 @@
       <if test="memberId != null">
         member_id,
       </if>
-      <if test="schoolId != null">
-        school_id,
+      <if test="schoolCode != null">
+        school_code,
       </if>
       <if test="grade != null">
         grade,
@@ -76,8 +90,8 @@
       <if test="memberId != null">
         #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="schoolId != null">
-        #{schoolId,jdbcType=INTEGER},
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=INTEGER},
       </if>
       <if test="grade != null">
         #{grade,jdbcType=DOUBLE},
@@ -102,8 +116,8 @@
       <if test="memberId != null">
         member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="schoolId != null">
-        school_id = #{schoolId,jdbcType=INTEGER},
+      <if test="schoolCode != null">
+        school_code = #{schoolCode,jdbcType=INTEGER},
       </if>
       <if test="grade != null">
         grade = #{grade,jdbcType=DOUBLE},
@@ -120,9 +134,25 @@
       type = #{type,jdbcType=BIT},
       parend_id = #{parendId,jdbcType=INTEGER},
       member_id = #{memberId,jdbcType=INTEGER},
-      school_id = #{schoolId,jdbcType=INTEGER},
+      school_code = #{schoolCode,jdbcType=INTEGER},
       grade = #{grade,jdbcType=DOUBLE},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <sql id="Page_Column_List">
+    id, name, type, parend_id, member_id, school_code, grade, create_time,logo_url
+  </sql>
+
+  <select id="findByPage" resultMap="PageResultMap">
+    select
+    <include refid="Page_Column_List" />
+    from organization org
+    where
+    1=1
+    <if test="type != null">
+      and org.type = #{type}
+    </if>
+    order by org.create_time desc
+  </select>
 </mapper>

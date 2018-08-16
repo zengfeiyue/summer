@@ -26,7 +26,8 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="placard_url" jdbcType="VARCHAR" property="placardUrl" />
     <result column="introduction" jdbcType="VARCHAR" property="introduction" />
-    <result column="orgName" jdbcType="INTEGER" property="orgName" />
+    <result column="orgName" jdbcType="VARCHAR" property="orgName" />
+    <result column="logoUrl" jdbcType="VARCHAR" property="logoUrl" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
   </resultMap>
@@ -201,14 +202,20 @@
   </update>
 
   <sql id="Page_Column_List">
-    ac.id, ac.theme, ac.type, ac.acstart_time, ac.end_time, ac.address, ac.placard_url, ac.introduction, ac.org_id,
+    ac.id, ac.theme, ac.type, DATE_FORMAT(ac.start_time,'%Y-%m-%d %H:%i:%s') start_time,DATE_FORMAT( ac.end_time,'%Y-%m-%d %H:%i:%s') end_time, ac.address, ac.placard_url, ac.introduction, ac.org_id,
     ac.create_time, ac.contact_information
   </sql>
 
-  <select id="findByPage" resultMap="BaseResultMap">
+  <select id="findByPage" resultMap="PageResultMap">
     select
-    <include refid="Page_Column_List" />,org.name as orgName
+    <include refid="Page_Column_List" />,org.name as orgName,org.logo_url as logoUrl
     from activity ac INNER JOIN organization org on org.id = ac.org_id
+    where
+    1=1
+    <if test="type != null">
+      and ac.type = #{type}
+    </if>
+    order by ac.create_time desc
   </select>
 
 </mapper>

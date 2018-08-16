@@ -3,6 +3,7 @@ import com.github.pagehelper.PageInfo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zengfeiyue
@@ -55,7 +56,7 @@ public interface BaseService<T,ID extends Serializable> {
      * 分页查询数据
      * @return
      */
-    PageInfo<T> findByPage(int currPage, int pageSize);
+    PageInfo<T> findByPage(Map search, int currPage, int pageSize);
 
     /**
      * 批量插入

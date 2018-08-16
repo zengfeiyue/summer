@@ -7,6 +7,10 @@ import com.summer.school.api.model.SearchSchool;
 import java.util.List;
 
 public interface SchoolMapper extends BaseMapper<School,Integer> {
-
+    /***
+     * 根据定位/名称 匹配学校
+     * @param searchSchool
+     * @return
+     */
     List<School> queryLocation(SearchSchool searchSchool);
 }

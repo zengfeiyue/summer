@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zengfeiyue
@@ -56,7 +57,7 @@ public interface BaseMapper<T,ID extends Serializable> {
      * 分页查询数据
      * @return
      */
-    Page<T> findByPage();
+    Page<T> findByPage(Map search);
 
     /**
      * 批量插入

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zengfeiyue
@@ -48,9 +49,9 @@ public class BaseServiceImpl<T,ID extends Serializable> implements BaseService<T
     }
 
     @Override
-    public PageInfo<T> findByPage(int currPage, int pageSize) {
+    public PageInfo<T> findByPage(Map search, int currPage, int pageSize) {
         PageHelper.startPage(currPage, pageSize);
-        PageInfo<T> pageInfo = new PageInfo<>(baseMapper.findByPage());
+        PageInfo<T> pageInfo = new PageInfo<>(baseMapper.findByPage(search));
         return pageInfo;
     }
 

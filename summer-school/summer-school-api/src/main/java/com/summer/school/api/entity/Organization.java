@@ -1,5 +1,7 @@
 package com.summer.school.api.entity;
 
+import io.swagger.models.auth.In;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,17 +10,19 @@ public class Organization implements Serializable {
 
     private String name;
 
-    private Boolean type;
+    private Integer type;
 
     private Integer parendId;
 
     private Integer memberId;
 
-    private Integer schoolId;
+    private String schoolCode;
 
     private Double grade;
 
     private Date createTime;
+
+    private String logoUrl;
 
     private static final long serialVersionUID = 1L;
 
@@ -38,11 +42,11 @@ public class Organization implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Boolean getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Boolean type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -62,12 +66,12 @@ public class Organization implements Serializable {
         this.memberId = memberId;
     }
 
-    public Integer getSchoolId() {
-        return schoolId;
+    public String getSchoolId() {
+        return schoolCode;
     }
 
-    public void setSchoolId(Integer schoolId) {
-        this.schoolId = schoolId;
+    public void setSchoolId(String schoolId) {
+        this.schoolCode = schoolCode;
     }
 
     public Double getGrade() {
@@ -84,6 +88,14 @@ public class Organization implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 
     @Override
@@ -134,7 +146,7 @@ public class Organization implements Serializable {
         sb.append(", type=").append(type);
         sb.append(", parendId=").append(parendId);
         sb.append(", memberId=").append(memberId);
-        sb.append(", schoolId=").append(schoolId);
+        sb.append(", schoolId=").append(schoolCode);
         sb.append(", grade=").append(grade);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

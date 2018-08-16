@@ -1,36 +1,45 @@
 package com.summer.school.api.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class Activity implements Serializable {
+
+    @ApiModelProperty(hidden = true)
     private Integer id;
-
+    @ApiModelProperty(value = "主题")
     private String theme;
-
+    @ApiModelProperty(value = "活动类型")
     private Integer type;
-
+    @ApiModelProperty(value = "开始时间")
     private Date startTime;
-
+    @ApiModelProperty(value = "结束时间")
     private Date endTime;
-
+    @ApiModelProperty(value = "地址")
     private String address;
-
+    @ApiModelProperty(value = "海报url")
     private String placardUrl;
-
+    @ApiModelProperty(value = "活动描述")
     private String introduction;
-
+    @ApiModelProperty(hidden = true)
     private Integer orgId;
-
-    private Integer orgName;
-
+    @ApiModelProperty(hidden = true)
+    private String orgName;
+    @ApiModelProperty(hidden = true)
     private Date createTime;
-
+    @ApiModelProperty(value = "选择的计费策略")
     private Integer costStrategyId;
-
+    @ApiModelProperty(value = "表单设置")
     private Integer formSettingId;
-
+    @ApiModelProperty(value = "联系方式")
     private String contactInformation;
+    /**
+     * org logo
+     */
+    @ApiModelProperty(hidden = true)
+    private String logoUrl;
 
     private static final long serialVersionUID = 1L;
 
@@ -138,12 +147,20 @@ public class Activity implements Serializable {
         this.contactInformation = contactInformation == null ? null : contactInformation.trim();
     }
 
-    public Integer getOrgName() {
+    public String getOrgName() {
         return orgName;
     }
 
-    public void setOrgName(Integer orgName) {
+    public void setOrgName(String orgName) {
         this.orgName = orgName;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 
     @Override
