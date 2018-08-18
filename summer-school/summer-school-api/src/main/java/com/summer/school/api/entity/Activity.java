@@ -35,6 +35,9 @@ public class Activity implements Serializable {
     private Integer formSettingId;
     @ApiModelProperty(value = "联系方式")
     private String contactInformation;
+    @ApiModelProperty(value = "报名/投票人数")
+    private Integer enrollment;
+    private Integer limitMax;
     /**
      * org logo
      */
@@ -161,6 +164,22 @@ public class Activity implements Serializable {
 
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
+    }
+
+    public Integer getEnrollment() {
+        return enrollment;
+    }
+
+    public void setEnrollment(Integer enrollment) {
+        this.enrollment = enrollment;
+    }
+
+    public Integer getLimitMax() {
+        return limitMax;
+    }
+
+    public void setLimitMax(Integer limitMax) {
+        this.limitMax = limitMax;
     }
 
     @Override

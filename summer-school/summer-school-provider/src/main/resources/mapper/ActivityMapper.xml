@@ -15,6 +15,7 @@
     <result column="cost_strategy_id" jdbcType="INTEGER" property="costStrategyId" />
     <result column="form_setting_id" jdbcType="INTEGER" property="formSettingId" />
     <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
+    <result column="limit_max" jdbcType="INTEGER" property="limitMax"/>
   </resultMap>
 
   <resultMap id="PageResultMap" type="com.summer.school.api.entity.Activity">
@@ -28,12 +29,13 @@
     <result column="introduction" jdbcType="VARCHAR" property="introduction" />
     <result column="orgName" jdbcType="VARCHAR" property="orgName" />
     <result column="logoUrl" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="enrollment" jdbcType="INTEGER" property="enrollment" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
   </resultMap>
   <sql id="Base_Column_List">
     id, theme, type, start_time, end_time, address, placard_url, introduction, org_id, 
-    create_time, cost_strategy_id, form_setting_id, contact_information
+    create_time, cost_strategy_id, form_setting_id, contact_information,limit_max
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -203,7 +205,7 @@
 
   <sql id="Page_Column_List">
     ac.id, ac.theme, ac.type, DATE_FORMAT(ac.start_time,'%Y-%m-%d %H:%i:%s') start_time,DATE_FORMAT( ac.end_time,'%Y-%m-%d %H:%i:%s') end_time, ac.address, ac.placard_url, ac.introduction, ac.org_id,
-    ac.create_time, ac.contact_information
+    ac.create_time, ac.contact_information,enrollment
   </sql>
 
   <select id="findByPage" resultMap="PageResultMap">
@@ -214,6 +216,9 @@
     1=1
     <if test="type != null">
       and ac.type = #{type}
+    </if>
+    <if test="school_code != null">
+      and org.school_code = #{school_code}
     </if>
     order by ac.create_time desc
   </select>

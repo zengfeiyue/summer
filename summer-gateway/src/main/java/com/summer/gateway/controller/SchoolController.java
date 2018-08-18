@@ -8,16 +8,21 @@ import com.summer.common.base.common.ResponseBean;
 import com.summer.common.base.model.PageSearchModel;
 import com.summer.gateway.core.jwt.JwtTokenAuthentication;
 import com.summer.school.api.entity.Activity;
+import com.summer.school.api.entity.ActivityMemberForm;
+import com.summer.school.api.entity.Advertisement;
 import com.summer.school.api.entity.Organization;
 import com.summer.school.api.model.SearchSchool;
 import com.summer.school.api.service.ActivityService;
+import com.summer.school.api.service.AdvertisementService;
 import com.summer.school.api.service.OrganiztionService;
 import com.summer.school.api.service.SchoolService;
+import com.summer.security.entity.SysUser;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.util.Map;
@@ -43,6 +48,10 @@ public class SchoolController {
 
     @Reference(version = "0.1",timeout = 2000,mock = "return null",check = false)
     private OrganiztionService organiztionService;
+
+    @Reference(version = "0.1",timeout = 2000,mock = "return null",check = false)
+    private AdvertisementService advertisementService;
+
 
     @ApiOperation(value="登录", notes="传递微信临时code，换取token")
     @RequestMapping(value ="/weixin_login" ,method = RequestMethod.POST,  produces="text/plain;charset=UTF-8")
@@ -85,6 +94,7 @@ public class SchoolController {
     @RequestMapping(value ="/activity_create" ,method = RequestMethod.POST)
     @ResponseBody
     public ResponseBean activityCreate(@RequestBody Activity activity){
+        //todo 改造新增活动
         Integer count = activityService.insertSelective(activity);
         if (count>0)
             return new ResponseBean(200,"创建成功",null);
@@ -95,9 +105,34 @@ public class SchoolController {
     @ApiOperation(value="获取分页的组织列表")
     @RequestMapping(value ="/org_page" ,method = RequestMethod.POST)
     @ResponseBody
-    public PageInfo activityCreate(@RequestBody PageSearchModel search){
+    public PageInfo activityPage(@RequestBody PageSearchModel search){
         PageInfo<Organization> page = organiztionService.findByPage(search.getSearch(),search.getCurrentPage(),search.getPageSize());
         return page;
+    }
+
+    @ApiOperation(value="获取首页横幅")
+    @RequestMapping(value ="/advertisement_page" ,method = RequestMethod.POST)
+    @ResponseBody
+    public PageInfo advertisementPage(@RequestBody PageSearchModel search){
+        PageInfo<Advertisement> page = advertisementService.findByPage(search.getSearch(),search.getCurrentPage(),search.getPageSize());
+        return page;
+    }
+
+    @ApiOperation(value="给投票活动投票")
+    @RequestMapping(value ="/activity_vote" ,method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean activityVote(@RequestBody ActivityMemberForm voteform){
+        ResponseBean responseBean = activityService.vote(voteform);
+        return null;
+    }
+
+    /**
+     * 获取登录用户
+     * @return
+     */
+    @ModelAttribute
+    public String getUserOpenId() {
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
     }
 
 }

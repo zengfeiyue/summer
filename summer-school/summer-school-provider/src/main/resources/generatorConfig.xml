@@ -43,16 +43,16 @@
         </sqlMapGenerator>
 
         <!-- 生成DAO的包名和位置 -->
-        <!--<javaClientGenerator type="XMLMAPPER"
+        <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.summer.school.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
-        </javaClientGenerator>-->
+        </javaClientGenerator>
 
 
         <!--
         <table tableName="live_course_channel" domainObjectName="LiveCourseChannel"></table>
         -->
-        <table tableName="activity" domainObjectName="Activity"
+        <!--<table tableName="activity" domainObjectName="Activity"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
@@ -109,6 +109,10 @@
                selectByExampleQueryId="false"></table>
 
         <table tableName="school" domainObjectName="School"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>-->
+        <table tableName="advertisement" domainObjectName="Advertisement"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
