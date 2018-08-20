@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.school.dao.AdvertisementMapper">
+  <resultMap id="BaseResultMap" type="com.summer.school.api.entity.Advertisement">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="content_url" jdbcType="VARCHAR" property="contentUrl" />
+    <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+
+  <resultMap id="PageResultMap" type="com.summer.school.api.entity.Advertisement">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="content_url" jdbcType="VARCHAR" property="contentUrl" />
+    <result column="school_code" jdbcType="VARCHAR" property="schoolCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, url, content_url, school_code, create_time, status, type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from advertisement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from advertisement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.summer.school.api.entity.Advertisement">
+    insert into advertisement (id, url, content_url, 
+      school_code, create_time, status, 
+      type)
+    values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{contentUrl,jdbcType=VARCHAR}, 
+      #{schoolCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=BIT}, 
+      #{type,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.Advertisement">
+    insert into advertisement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="contentUrl != null">
+        content_url,
+      </if>
+      <if test="schoolCode != null">
+        school_code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="contentUrl != null">
+        #{contentUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        #{schoolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.school.api.entity.Advertisement">
+    update advertisement
+    <set>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="contentUrl != null">
+        content_url = #{contentUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolCode != null">
+        school_code = #{schoolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.summer.school.api.entity.Advertisement">
+    update advertisement
+    set url = #{url,jdbcType=VARCHAR},
+      content_url = #{contentUrl,jdbcType=VARCHAR},
+      school_code = #{schoolCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=BIT},
+      type = #{type,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <sql id="Page_Column_List">
+    id, url, content_url, school_code, create_time, status, type
+  </sql>
+
+  <select id="findByPage" resultMap="PageResultMap">
+    select
+    <include refid="Page_Column_List" />
+    from advertisement
+    where
+    status=1
+    <if test="school_code != null">
+      and school_code = #{school_code}
+    </if>
+    <if test="type != null">
+      and type = #{type}
+    </if>
+    order by create_time desc
+  </select>
+</mapper>
