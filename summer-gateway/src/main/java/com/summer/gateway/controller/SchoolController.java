@@ -4,6 +4,10 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
+import com.qcloud.cos.auth.BasicCOSCredentials;
+import com.qcloud.cos.auth.COSCredentials;
+import com.qcloud.cos.auth.COSSigner;
+import com.qcloud.cos.http.HttpMethodName;
 import com.summer.common.base.common.ResponseBean;
 import com.summer.common.base.model.PageSearchModel;
 import com.summer.gateway.core.jwt.JwtTokenAuthentication;
@@ -11,6 +15,7 @@ import com.summer.school.api.entity.Activity;
 import com.summer.school.api.entity.ActivityMemberForm;
 import com.summer.school.api.entity.Advertisement;
 import com.summer.school.api.entity.Organization;
+import com.summer.school.api.model.CosSecurityToken;
 import com.summer.school.api.model.SearchSchool;
 import com.summer.school.api.service.ActivityService;
 import com.summer.school.api.service.AdvertisementService;
@@ -25,6 +30,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -39,6 +47,12 @@ public class SchoolController {
     private String appid;
     @Value("${weixin.secret}")
     private String secret;
+
+    @Value("${tencent.cos.secretId}")
+    private String cosSecretId;
+
+    @Value("${tencent.cos.secretKey}")
+    private String cosSecretKey;
 
     @Reference(version = "0.1",timeout = 2000,mock = "return null",check = false)
     private SchoolService schoolService;
@@ -124,6 +138,38 @@ public class SchoolController {
     public ResponseBean activityVote(@RequestBody ActivityMemberForm voteform){
         ResponseBean responseBean = activityService.vote(voteform);
         return null;
+    }
+
+    @ApiOperation(value="生成cos的签名信息")
+    @RequestMapping(value ="/cos_sign" ,method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean cosSign(@RequestBody CosSecurityToken securityToken){
+        // bucket 的命名规则为{name}-{appid} ，此处填写的存储桶名称必须为此格式
+        String bucketName = "test-1251126190";
+        COSCredentials cred = new BasicCOSCredentials(cosSecretId, cosSecretKey);
+        COSSigner signer = new COSSigner();
+        //设置过期时间为 1 个小时
+        Date expiredTime = new Date(System.currentTimeMillis() + 3600L * 1000L);
+        // 要签名的 key, 生成的签名只能用于对应此 key 的上传,文件名
+        String key = securityToken.getPath();
+        //PUT GET DELETE
+        String sign ="";
+        if (securityToken.getType().equalsIgnoreCase("PUT")){
+            sign = signer.buildAuthorizationStr(HttpMethodName.PUT, key, cred, expiredTime);
+        }
+        if (securityToken.getType().equalsIgnoreCase("GET")){
+            sign = signer.buildAuthorizationStr(HttpMethodName.GET, key, cred, expiredTime);
+        }
+        if (securityToken.getType().equalsIgnoreCase("DELETE")){
+            sign = signer.buildAuthorizationStr(HttpMethodName.DELETE, key, cred, expiredTime);
+        }
+        Map data = new HashMap();
+        data.put("sign",sign);
+        data.put("secretId",cosSecretId);
+        data.put("secretKey",cosSecretKey);
+
+        ResponseBean responseBean = new ResponseBean(200,"请求签名成功",data);
+        return responseBean;
     }
 
     /**
