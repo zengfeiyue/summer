@@ -167,7 +167,6 @@ public class SchoolController {
         data.put("sign",sign);
         data.put("secretId",cosSecretId);
         data.put("secretKey",cosSecretKey);
-
         ResponseBean responseBean = new ResponseBean(200,"请求签名成功",data);
         return responseBean;
     }
