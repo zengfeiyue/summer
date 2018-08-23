@@ -7,15 +7,15 @@ import com.summer.common.base.model.BaseModel;
  */
 public class CosSecurityToken extends BaseModel {
 
-    private String type;
+    private String method;
     private String path;
 
-    public String getType() {
-        return type;
+    public String getMethod() {
+        return method;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     public String getPath() {

@@ -151,16 +151,19 @@ public class SchoolController {
         //设置过期时间为 1 个小时
         Date expiredTime = new Date(System.currentTimeMillis() + 3600L * 1000L);
         // 要签名的 key, 生成的签名只能用于对应此 key 的上传,文件名
-        String key = securityToken.getPath();
+        String key = "/"+securityToken.getPath();
         //PUT GET DELETE
         String sign ="";
-        if (securityToken.getType().equalsIgnoreCase("PUT")){
+        if (securityToken.getMethod().equalsIgnoreCase("POST")){
+            sign = signer.buildAuthorizationStr(HttpMethodName.POST, key, cred, expiredTime);
+        }
+        if (securityToken.getMethod().equalsIgnoreCase("PUT")){
             sign = signer.buildAuthorizationStr(HttpMethodName.PUT, key, cred, expiredTime);
         }
-        if (securityToken.getType().equalsIgnoreCase("GET")){
+        if (securityToken.getMethod().equalsIgnoreCase("GET")){
             sign = signer.buildAuthorizationStr(HttpMethodName.GET, key, cred, expiredTime);
         }
-        if (securityToken.getType().equalsIgnoreCase("DELETE")){
+        if (securityToken.getMethod().equalsIgnoreCase("DELETE")){
             sign = signer.buildAuthorizationStr(HttpMethodName.DELETE, key, cred, expiredTime);
         }
         Map data = new HashMap();
