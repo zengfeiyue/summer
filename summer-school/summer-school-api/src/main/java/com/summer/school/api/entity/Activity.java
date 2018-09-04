@@ -1,48 +1,38 @@
 package com.summer.school.api.entity;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class Activity implements Serializable {
-
-    @ApiModelProperty(hidden = true)
     private Integer id;
-    @ApiModelProperty(value = "主题")
+
     private String theme;
-    @ApiModelProperty(value = "活动类型")
-    private Integer type;
-    @ApiModelProperty(value = "开始时间")
+
+    private Boolean type;
+
     private Date startTime;
-    @ApiModelProperty(value = "结束时间")
+
     private Date endTime;
-    @ApiModelProperty(value = "地址")
-    private String address;
-    @ApiModelProperty(value = "海报url")
+
+    private Integer memberId;
+
+    private Integer extendId;
+
+    private Integer checkStatus;
+
+    private String checkRemark;
+
+    private Integer viewTotal;
+
+    private Integer isStart;
+
+    private String contactinformation;
+
     private String placardUrl;
-    @ApiModelProperty(value = "活动描述")
+
     private String introduction;
-    @ApiModelProperty(hidden = true)
-    private Integer orgId;
-    @ApiModelProperty(hidden = true)
-    private String orgName;
-    @ApiModelProperty(hidden = true)
-    private Date createTime;
-    @ApiModelProperty(value = "选择的计费策略")
-    private Integer costStrategyId;
-    @ApiModelProperty(value = "表单设置")
-    private Integer formSettingId;
-    @ApiModelProperty(value = "联系方式")
-    private String contactInformation;
-    @ApiModelProperty(value = "报名/投票人数")
-    private Integer enrollment;
-    private Integer limitMax;
-    /**
-     * org logo
-     */
-    @ApiModelProperty(hidden = true)
-    private String logoUrl;
 
     private static final long serialVersionUID = 1L;
 
@@ -62,14 +52,15 @@ public class Activity implements Serializable {
         this.theme = theme == null ? null : theme.trim();
     }
 
-    public Integer getType() {
+    public Boolean getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(Boolean type) {
         this.type = type;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     public Date getStartTime() {
         return startTime;
     }
@@ -78,6 +69,7 @@ public class Activity implements Serializable {
         this.startTime = startTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     public Date getEndTime() {
         return endTime;
     }
@@ -86,12 +78,60 @@ public class Activity implements Serializable {
         this.endTime = endTime;
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
+    }
+
+    public Integer getExtendId() {
+        return extendId;
+    }
+
+    public void setExtendId(Integer extendId) {
+        this.extendId = extendId;
+    }
+
+    public Integer getCheckStatus() {
+        return checkStatus;
+    }
+
+    public void setCheckStatus(Integer checkStatus) {
+        this.checkStatus = checkStatus;
+    }
+
+    public String getCheckRemark() {
+        return checkRemark;
+    }
+
+    public void setCheckRemark(String checkRemark) {
+        this.checkRemark = checkRemark == null ? null : checkRemark.trim();
+    }
+
+    public Integer getViewTotal() {
+        return viewTotal;
+    }
+
+    public void setViewTotal(Integer viewTotal) {
+        this.viewTotal = viewTotal;
+    }
+
+    public Integer getIsStart() {
+        return isStart;
+    }
+
+    public void setIsStart(Integer isStart) {
+        this.isStart = isStart;
+    }
+
+    public String getContactinformation() {
+        return contactinformation;
+    }
+
+    public void setContactinformation(String contactinformation) {
+        this.contactinformation = contactinformation == null ? null : contactinformation.trim();
     }
 
     public String getPlacardUrl() {
@@ -108,78 +148,6 @@ public class Activity implements Serializable {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction == null ? null : introduction.trim();
-    }
-
-    public Integer getOrgId() {
-        return orgId;
-    }
-
-    public void setOrgId(Integer orgId) {
-        this.orgId = orgId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getCostStrategyId() {
-        return costStrategyId;
-    }
-
-    public void setCostStrategyId(Integer costStrategyId) {
-        this.costStrategyId = costStrategyId;
-    }
-
-    public Integer getFormSettingId() {
-        return formSettingId;
-    }
-
-    public void setFormSettingId(Integer formSettingId) {
-        this.formSettingId = formSettingId;
-    }
-
-    public String getContactInformation() {
-        return contactInformation;
-    }
-
-    public void setContactInformation(String contactInformation) {
-        this.contactInformation = contactInformation == null ? null : contactInformation.trim();
-    }
-
-    public String getOrgName() {
-        return orgName;
-    }
-
-    public void setOrgName(String orgName) {
-        this.orgName = orgName;
-    }
-
-    public String getLogoUrl() {
-        return logoUrl;
-    }
-
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
-    }
-
-    public Integer getEnrollment() {
-        return enrollment;
-    }
-
-    public void setEnrollment(Integer enrollment) {
-        this.enrollment = enrollment;
-    }
-
-    public Integer getLimitMax() {
-        return limitMax;
-    }
-
-    public void setLimitMax(Integer limitMax) {
-        this.limitMax = limitMax;
     }
 
     @Override
@@ -199,14 +167,15 @@ public class Activity implements Serializable {
             && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
             && (this.getStartTime() == null ? other.getStartTime() == null : this.getStartTime().equals(other.getStartTime()))
             && (this.getEndTime() == null ? other.getEndTime() == null : this.getEndTime().equals(other.getEndTime()))
-            && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
+            && (this.getMemberId() == null ? other.getMemberId() == null : this.getMemberId().equals(other.getMemberId()))
+            && (this.getExtendId() == null ? other.getExtendId() == null : this.getExtendId().equals(other.getExtendId()))
+            && (this.getCheckStatus() == null ? other.getCheckStatus() == null : this.getCheckStatus().equals(other.getCheckStatus()))
+            && (this.getCheckRemark() == null ? other.getCheckRemark() == null : this.getCheckRemark().equals(other.getCheckRemark()))
+            && (this.getViewTotal() == null ? other.getViewTotal() == null : this.getViewTotal().equals(other.getViewTotal()))
+            && (this.getIsStart() == null ? other.getIsStart() == null : this.getIsStart().equals(other.getIsStart()))
+            && (this.getContactinformation() == null ? other.getContactinformation() == null : this.getContactinformation().equals(other.getContactinformation()))
             && (this.getPlacardUrl() == null ? other.getPlacardUrl() == null : this.getPlacardUrl().equals(other.getPlacardUrl()))
-            && (this.getIntroduction() == null ? other.getIntroduction() == null : this.getIntroduction().equals(other.getIntroduction()))
-            && (this.getOrgId() == null ? other.getOrgId() == null : this.getOrgId().equals(other.getOrgId()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getCostStrategyId() == null ? other.getCostStrategyId() == null : this.getCostStrategyId().equals(other.getCostStrategyId()))
-            && (this.getFormSettingId() == null ? other.getFormSettingId() == null : this.getFormSettingId().equals(other.getFormSettingId()))
-            && (this.getContactInformation() == null ? other.getContactInformation() == null : this.getContactInformation().equals(other.getContactInformation()));
+            && (this.getIntroduction() == null ? other.getIntroduction() == null : this.getIntroduction().equals(other.getIntroduction()));
     }
 
     @Override
@@ -218,14 +187,15 @@ public class Activity implements Serializable {
         result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
         result = prime * result + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
         result = prime * result + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
-        result = prime * result + ((getAddress() == null) ? 0 : getAddress().hashCode());
+        result = prime * result + ((getMemberId() == null) ? 0 : getMemberId().hashCode());
+        result = prime * result + ((getExtendId() == null) ? 0 : getExtendId().hashCode());
+        result = prime * result + ((getCheckStatus() == null) ? 0 : getCheckStatus().hashCode());
+        result = prime * result + ((getCheckRemark() == null) ? 0 : getCheckRemark().hashCode());
+        result = prime * result + ((getViewTotal() == null) ? 0 : getViewTotal().hashCode());
+        result = prime * result + ((getIsStart() == null) ? 0 : getIsStart().hashCode());
+        result = prime * result + ((getContactinformation() == null) ? 0 : getContactinformation().hashCode());
         result = prime * result + ((getPlacardUrl() == null) ? 0 : getPlacardUrl().hashCode());
         result = prime * result + ((getIntroduction() == null) ? 0 : getIntroduction().hashCode());
-        result = prime * result + ((getOrgId() == null) ? 0 : getOrgId().hashCode());
-        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
-        result = prime * result + ((getCostStrategyId() == null) ? 0 : getCostStrategyId().hashCode());
-        result = prime * result + ((getFormSettingId() == null) ? 0 : getFormSettingId().hashCode());
-        result = prime * result + ((getContactInformation() == null) ? 0 : getContactInformation().hashCode());
         return result;
     }
 
@@ -240,14 +210,15 @@ public class Activity implements Serializable {
         sb.append(", type=").append(type);
         sb.append(", startTime=").append(startTime);
         sb.append(", endTime=").append(endTime);
-        sb.append(", address=").append(address);
+        sb.append(", memberId=").append(memberId);
+        sb.append(", extendId=").append(extendId);
+        sb.append(", checkStatus=").append(checkStatus);
+        sb.append(", checkRemark=").append(checkRemark);
+        sb.append(", viewTotal=").append(viewTotal);
+        sb.append(", isStart=").append(isStart);
+        sb.append(", contactinformation=").append(contactinformation);
         sb.append(", placardUrl=").append(placardUrl);
         sb.append(", introduction=").append(introduction);
-        sb.append(", orgId=").append(orgId);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", costStrategyId=").append(costStrategyId);
-        sb.append(", formSettingId=").append(formSettingId);
-        sb.append(", contactInformation=").append(contactInformation);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -1,226 +1,236 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.summer.school.dao.ActivityMapper">
-  <resultMap id="BaseResultMap" type="com.summer.school.api.entity.Activity">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="theme" jdbcType="VARCHAR" property="theme" />
-    <result column="type" jdbcType="BIT" property="type" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="placard_url" jdbcType="VARCHAR" property="placardUrl" />
-    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
-    <result column="org_id" jdbcType="INTEGER" property="orgId" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="cost_strategy_id" jdbcType="INTEGER" property="costStrategyId" />
-    <result column="form_setting_id" jdbcType="INTEGER" property="formSettingId" />
-    <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
-    <result column="limit_max" jdbcType="INTEGER" property="limitMax"/>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.summer.school.dao.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.summer.school.api.entity.Activity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="extend_id" property="extendId" jdbcType="INTEGER" />
+    <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
+    <result column="check_remark" property="checkRemark" jdbcType="VARCHAR" />
+    <result column="view_total" property="viewTotal" jdbcType="INTEGER" />
+    <result column="is_start" property="isStart" jdbcType="INTEGER" />
+    <result column="contactInformation" property="contactinformation" jdbcType="VARCHAR" />
   </resultMap>
-
-  <resultMap id="PageResultMap" type="com.summer.school.api.entity.Activity">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="theme" jdbcType="VARCHAR" property="theme" />
-    <result column="type" jdbcType="BIT" property="type" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="placard_url" jdbcType="VARCHAR" property="placardUrl" />
-    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
-    <result column="orgName" jdbcType="VARCHAR" property="orgName" />
-    <result column="logoUrl" jdbcType="VARCHAR" property="logoUrl" />
-    <result column="enrollment" jdbcType="INTEGER" property="enrollment" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
+  <resultMap id="ResultMapWithBLOBs" type="com.summer.school.api.entity.Activity" extends="BaseResultMap" >
+    <result column="placard_url" property="placardUrl" jdbcType="LONGVARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, theme, type, start_time, end_time, address, placard_url, introduction, org_id, 
-    create_time, cost_strategy_id, form_setting_id, contact_information,limit_max
+  <sql id="Base_Column_List" >
+    id, theme, type, start_time, end_time, member_id, extend_id, check_status, check_remark, 
+    view_total, is_start, contactInformation
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List" >
+    placard_url, introduction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from activity
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.summer.school.api.entity.Activity">
+  <insert id="insert" parameterType="com.summer.school.api.entity.Activity" >
     insert into activity (id, theme, type, 
-      start_time, end_time, address, 
-      placard_url, introduction, org_id, 
-      create_time, cost_strategy_id, form_setting_id, 
-      contact_information)
+      start_time, end_time, member_id, 
+      extend_id, check_status, check_remark, 
+      view_total, is_start, contactInformation, 
+      placard_url, introduction)
     values (#{id,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
-      #{placardUrl,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{costStrategyId,jdbcType=INTEGER}, #{formSettingId,jdbcType=INTEGER}, 
-      #{contactInformation,jdbcType=VARCHAR})
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{memberId,jdbcType=INTEGER}, 
+      #{extendId,jdbcType=INTEGER}, #{checkStatus,jdbcType=INTEGER}, #{checkRemark,jdbcType=VARCHAR}, 
+      #{viewTotal,jdbcType=INTEGER}, #{isStart,jdbcType=INTEGER}, #{contactinformation,jdbcType=VARCHAR}, 
+      #{placardUrl,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.summer.school.api.entity.Activity">
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.Activity" >
     insert into activity
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="theme != null">
+      <if test="theme != null" >
         theme,
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type,
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         start_time,
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         end_time,
       </if>
-      <if test="address != null">
-        address,
+      <if test="memberId != null" >
+        member_id,
       </if>
-      <if test="placardUrl != null">
+      <if test="extendId != null" >
+        extend_id,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
+      </if>
+      <if test="checkRemark != null" >
+        check_remark,
+      </if>
+      <if test="viewTotal != null" >
+        view_total,
+      </if>
+      <if test="isStart != null" >
+        is_start,
+      </if>
+      <if test="contactinformation != null" >
+        contactInformation,
+      </if>
+      <if test="placardUrl != null" >
         placard_url,
       </if>
-      <if test="introduction != null">
+      <if test="introduction != null" >
         introduction,
       </if>
-      <if test="orgId != null">
-        org_id,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="costStrategyId != null">
-        cost_strategy_id,
-      </if>
-      <if test="formSettingId != null">
-        form_setting_id,
-      </if>
-      <if test="contactInformation != null">
-        contact_information,
-      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="theme != null">
+      <if test="theme != null" >
         #{theme,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         #{type,jdbcType=BIT},
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="placardUrl != null">
-        #{placardUrl,jdbcType=VARCHAR},
+      <if test="extendId != null" >
+        #{extendId,jdbcType=INTEGER},
       </if>
-      <if test="introduction != null">
-        #{introduction,jdbcType=VARCHAR},
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
       </if>
-      <if test="orgId != null">
-        #{orgId,jdbcType=INTEGER},
+      <if test="checkRemark != null" >
+        #{checkRemark,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="viewTotal != null" >
+        #{viewTotal,jdbcType=INTEGER},
       </if>
-      <if test="costStrategyId != null">
-        #{costStrategyId,jdbcType=INTEGER},
+      <if test="isStart != null" >
+        #{isStart,jdbcType=INTEGER},
       </if>
-      <if test="formSettingId != null">
-        #{formSettingId,jdbcType=INTEGER},
+      <if test="contactinformation != null" >
+        #{contactinformation,jdbcType=VARCHAR},
       </if>
-      <if test="contactInformation != null">
-        #{contactInformation,jdbcType=VARCHAR},
+      <if test="placardUrl != null" >
+        #{placardUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.summer.school.api.entity.Activity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.school.api.entity.Activity" >
     update activity
-    <set>
-      <if test="theme != null">
+    <set >
+      <if test="theme != null" >
         theme = #{theme,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type = #{type,jdbcType=BIT},
       </if>
-      <if test="startTime != null">
+      <if test="startTime != null" >
         start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null">
+      <if test="endTime != null" >
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="placardUrl != null">
-        placard_url = #{placardUrl,jdbcType=VARCHAR},
+      <if test="extendId != null" >
+        extend_id = #{extendId,jdbcType=INTEGER},
       </if>
-      <if test="introduction != null">
-        introduction = #{introduction,jdbcType=VARCHAR},
+      <if test="checkStatus != null" >
+        check_status = #{checkStatus,jdbcType=INTEGER},
       </if>
-      <if test="orgId != null">
-        org_id = #{orgId,jdbcType=INTEGER},
+      <if test="checkRemark != null" >
+        check_remark = #{checkRemark,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="viewTotal != null" >
+        view_total = #{viewTotal,jdbcType=INTEGER},
       </if>
-      <if test="costStrategyId != null">
-        cost_strategy_id = #{costStrategyId,jdbcType=INTEGER},
+      <if test="isStart != null" >
+        is_start = #{isStart,jdbcType=INTEGER},
       </if>
-      <if test="formSettingId != null">
-        form_setting_id = #{formSettingId,jdbcType=INTEGER},
+      <if test="contactinformation != null" >
+        contactInformation = #{contactinformation,jdbcType=VARCHAR},
       </if>
-      <if test="contactInformation != null">
-        contact_information = #{contactInformation,jdbcType=VARCHAR},
+      <if test="placardUrl != null" >
+        placard_url = #{placardUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.summer.school.api.entity.Activity">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.summer.school.api.entity.Activity" >
     update activity
     set theme = #{theme,jdbcType=VARCHAR},
       type = #{type,jdbcType=BIT},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
-      address = #{address,jdbcType=VARCHAR},
-      placard_url = #{placardUrl,jdbcType=VARCHAR},
-      introduction = #{introduction,jdbcType=VARCHAR},
-      org_id = #{orgId,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      cost_strategy_id = #{costStrategyId,jdbcType=INTEGER},
-      form_setting_id = #{formSettingId,jdbcType=INTEGER},
-      contact_information = #{contactInformation,jdbcType=VARCHAR}
+      member_id = #{memberId,jdbcType=INTEGER},
+      extend_id = #{extendId,jdbcType=INTEGER},
+      check_status = #{checkStatus,jdbcType=INTEGER},
+      check_remark = #{checkRemark,jdbcType=VARCHAR},
+      view_total = #{viewTotal,jdbcType=INTEGER},
+      is_start = #{isStart,jdbcType=INTEGER},
+      contactInformation = #{contactinformation,jdbcType=VARCHAR},
+      placard_url = #{placardUrl,jdbcType=LONGVARCHAR},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
+  <update id="updateByPrimaryKey" parameterType="com.summer.school.api.entity.Activity" >
+    update activity
+    set theme = #{theme,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      member_id = #{memberId,jdbcType=INTEGER},
+      extend_id = #{extendId,jdbcType=INTEGER},
+      check_status = #{checkStatus,jdbcType=INTEGER},
+      check_remark = #{checkRemark,jdbcType=VARCHAR},
+      view_total = #{viewTotal,jdbcType=INTEGER},
+      is_start = #{isStart,jdbcType=INTEGER},
+      contactInformation = #{contactinformation,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <sql id="Page_Column_List">
-    ac.id, ac.theme, ac.type, DATE_FORMAT(ac.start_time,'%Y-%m-%d %H:%i:%s') start_time,DATE_FORMAT( ac.end_time,'%Y-%m-%d %H:%i:%s') end_time, ac.address, ac.placard_url, ac.introduction, ac.org_id,
-    ac.create_time, ac.contact_information,enrollment
+    id, theme, type, start_time, end_time, member_id,check_status,check_remark,is_start,view_total,placard_url, introduction
   </sql>
 
-  <select id="findByPage" resultMap="PageResultMap">
+  <select id="findByPage" resultMap="BaseResultMap">
     select
-    <include refid="Page_Column_List" />,org.name as orgName,org.logo_url as logoUrl
-    from activity ac INNER JOIN organization org on org.id = ac.org_id
+    <include refid="Page_Column_List" />
+    from activity ac
     where
     1=1
-    <if test="type != null">
-      and ac.type = #{type}
-    </if>
-    <if test="school_code != null">
-      and org.school_code = #{school_code}
+    <if test="memberId != null">
+      and ac.member_id = #{memberId}
     </if>
     order by ac.create_time desc
   </select>
-
 </mapper>
