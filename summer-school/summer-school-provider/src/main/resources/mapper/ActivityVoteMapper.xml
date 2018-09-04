@@ -5,13 +5,13 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="limit_total" property="limitTotal" jdbcType="INTEGER" />
     <result column="limit_day" property="limitDay" jdbcType="INTEGER" />
-    <result column="repeat" property="repeat" jdbcType="INTEGER" />
+    <result column="is_repeat" property="isRepeat" jdbcType="INTEGER" />
     <result column="display_ballot" property="displayBallot" jdbcType="INTEGER" />
     <result column="display_result" property="displayResult" jdbcType="INTEGER" />
     <result column="user_create" property="userCreate" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, limit_total, limit_day, repeat, display_ballot, display_result, user_create
+    id, limit_total, limit_day, is_repeat, display_ballot, display_result, user_create
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,15 +23,15 @@
     delete from activity_vote
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityVote" >
+  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityVote" keyProperty="id" useGeneratedKeys="true">
     insert into activity_vote (id, limit_total, limit_day, 
-      repeat, display_ballot, display_result, 
+      is_repeat, display_ballot, display_result, 
       user_create)
     values (#{id,jdbcType=INTEGER}, #{limitTotal,jdbcType=INTEGER}, #{limitDay,jdbcType=INTEGER}, 
-      #{repeat,jdbcType=INTEGER}, #{displayBallot,jdbcType=INTEGER}, #{displayResult,jdbcType=INTEGER}, 
+      #{is_repeat,jdbcType=INTEGER}, #{displayBallot,jdbcType=INTEGER}, #{displayResult,jdbcType=INTEGER}, 
       #{userCreate,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityVote" >
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityVote" keyProperty="id" useGeneratedKeys="true">
     insert into activity_vote
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -43,8 +43,8 @@
       <if test="limitDay != null" >
         limit_day,
       </if>
-      <if test="repeat != null" >
-        repeat,
+      <if test="isRepeat != null" >
+        is_repeat,
       </if>
       <if test="displayBallot != null" >
         display_ballot,
@@ -66,8 +66,8 @@
       <if test="limitDay != null" >
         #{limitDay,jdbcType=INTEGER},
       </if>
-      <if test="repeat != null" >
-        #{repeat,jdbcType=INTEGER},
+      <if test="isRepeat != null" >
+        #{isRepeat,jdbcType=INTEGER},
       </if>
       <if test="displayBallot != null" >
         #{displayBallot,jdbcType=INTEGER},
@@ -89,8 +89,8 @@
       <if test="limitDay != null" >
         limit_day = #{limitDay,jdbcType=INTEGER},
       </if>
-      <if test="repeat != null" >
-        repeat = #{repeat,jdbcType=INTEGER},
+      <if test="isRepeat != null" >
+        is_repeat = #{isRepeat,jdbcType=INTEGER},
       </if>
       <if test="displayBallot != null" >
         display_ballot = #{displayBallot,jdbcType=INTEGER},
@@ -108,7 +108,7 @@
     update activity_vote
     set limit_total = #{limitTotal,jdbcType=INTEGER},
       limit_day = #{limitDay,jdbcType=INTEGER},
-      repeat = #{repeat,jdbcType=INTEGER},
+      is_repeat = #{isRepeat,jdbcType=INTEGER},
       display_ballot = #{displayBallot,jdbcType=INTEGER},
       display_result = #{displayResult,jdbcType=INTEGER},
       user_create = #{userCreate,jdbcType=INTEGER}

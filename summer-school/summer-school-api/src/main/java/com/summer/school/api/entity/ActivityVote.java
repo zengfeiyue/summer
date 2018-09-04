@@ -9,7 +9,7 @@ public class ActivityVote implements Serializable {
 
     private Integer limitDay;
 
-    private Integer repeat;
+    private Integer isRepeat;
 
     private Integer displayBallot;
 
@@ -43,12 +43,12 @@ public class ActivityVote implements Serializable {
         this.limitDay = limitDay;
     }
 
-    public Integer getRepeat() {
-        return repeat;
+    public Integer getIsRepeat() {
+        return isRepeat;
     }
 
-    public void setRepeat(Integer repeat) {
-        this.repeat = repeat;
+    public void setIsRepeat(Integer isRepeat) {
+        this.isRepeat = isRepeat;
     }
 
     public Integer getDisplayBallot() {
@@ -75,56 +75,5 @@ public class ActivityVote implements Serializable {
         this.userCreate = userCreate;
     }
 
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        ActivityVote other = (ActivityVote) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getLimitTotal() == null ? other.getLimitTotal() == null : this.getLimitTotal().equals(other.getLimitTotal()))
-            && (this.getLimitDay() == null ? other.getLimitDay() == null : this.getLimitDay().equals(other.getLimitDay()))
-            && (this.getRepeat() == null ? other.getRepeat() == null : this.getRepeat().equals(other.getRepeat()))
-            && (this.getDisplayBallot() == null ? other.getDisplayBallot() == null : this.getDisplayBallot().equals(other.getDisplayBallot()))
-            && (this.getDisplayResult() == null ? other.getDisplayResult() == null : this.getDisplayResult().equals(other.getDisplayResult()))
-            && (this.getUserCreate() == null ? other.getUserCreate() == null : this.getUserCreate().equals(other.getUserCreate()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getLimitTotal() == null) ? 0 : getLimitTotal().hashCode());
-        result = prime * result + ((getLimitDay() == null) ? 0 : getLimitDay().hashCode());
-        result = prime * result + ((getRepeat() == null) ? 0 : getRepeat().hashCode());
-        result = prime * result + ((getDisplayBallot() == null) ? 0 : getDisplayBallot().hashCode());
-        result = prime * result + ((getDisplayResult() == null) ? 0 : getDisplayResult().hashCode());
-        result = prime * result + ((getUserCreate() == null) ? 0 : getUserCreate().hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", limitTotal=").append(limitTotal);
-        sb.append(", limitDay=").append(limitDay);
-        sb.append(", repeat=").append(repeat);
-        sb.append(", displayBallot=").append(displayBallot);
-        sb.append(", displayResult=").append(displayResult);
-        sb.append(", userCreate=").append(userCreate);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+    
 }

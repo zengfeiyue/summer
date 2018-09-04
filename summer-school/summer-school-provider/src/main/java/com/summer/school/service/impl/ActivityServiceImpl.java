@@ -40,6 +40,9 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         activityVoteMapper.insertSelective(activityVote);
         activity.setExtendId(activityVote.getId());
         activityMapper.insertSelective(activity);
+        activityVoteItem.stream().forEach(x->{
+            activityVoteItemMapper.insertSelective(x);
+        });
         ResponseBean responseBean = new ResponseBean(200,"创建成功",null);
         return responseBean;
     }

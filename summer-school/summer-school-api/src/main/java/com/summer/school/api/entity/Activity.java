@@ -28,7 +28,7 @@ public class Activity implements Serializable {
 
     private Integer isStart;
 
-    private String contactinformation;
+    private String contactInformation;
 
     private String placardUrl;
 
@@ -126,12 +126,16 @@ public class Activity implements Serializable {
         this.isStart = isStart;
     }
 
-    public String getContactinformation() {
-        return contactinformation;
+    public String getContactInformation() {
+        return contactInformation;
     }
 
-    public void setContactinformation(String contactinformation) {
-        this.contactinformation = contactinformation == null ? null : contactinformation.trim();
+    public void setContactInformation(String contactInformation) {
+        this.contactInformation = contactInformation;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public String getPlacardUrl() {
@@ -150,77 +154,4 @@ public class Activity implements Serializable {
         this.introduction = introduction == null ? null : introduction.trim();
     }
 
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        Activity other = (Activity) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getTheme() == null ? other.getTheme() == null : this.getTheme().equals(other.getTheme()))
-            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
-            && (this.getStartTime() == null ? other.getStartTime() == null : this.getStartTime().equals(other.getStartTime()))
-            && (this.getEndTime() == null ? other.getEndTime() == null : this.getEndTime().equals(other.getEndTime()))
-            && (this.getMemberId() == null ? other.getMemberId() == null : this.getMemberId().equals(other.getMemberId()))
-            && (this.getExtendId() == null ? other.getExtendId() == null : this.getExtendId().equals(other.getExtendId()))
-            && (this.getCheckStatus() == null ? other.getCheckStatus() == null : this.getCheckStatus().equals(other.getCheckStatus()))
-            && (this.getCheckRemark() == null ? other.getCheckRemark() == null : this.getCheckRemark().equals(other.getCheckRemark()))
-            && (this.getViewTotal() == null ? other.getViewTotal() == null : this.getViewTotal().equals(other.getViewTotal()))
-            && (this.getIsStart() == null ? other.getIsStart() == null : this.getIsStart().equals(other.getIsStart()))
-            && (this.getContactinformation() == null ? other.getContactinformation() == null : this.getContactinformation().equals(other.getContactinformation()))
-            && (this.getPlacardUrl() == null ? other.getPlacardUrl() == null : this.getPlacardUrl().equals(other.getPlacardUrl()))
-            && (this.getIntroduction() == null ? other.getIntroduction() == null : this.getIntroduction().equals(other.getIntroduction()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getTheme() == null) ? 0 : getTheme().hashCode());
-        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
-        result = prime * result + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
-        result = prime * result + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
-        result = prime * result + ((getMemberId() == null) ? 0 : getMemberId().hashCode());
-        result = prime * result + ((getExtendId() == null) ? 0 : getExtendId().hashCode());
-        result = prime * result + ((getCheckStatus() == null) ? 0 : getCheckStatus().hashCode());
-        result = prime * result + ((getCheckRemark() == null) ? 0 : getCheckRemark().hashCode());
-        result = prime * result + ((getViewTotal() == null) ? 0 : getViewTotal().hashCode());
-        result = prime * result + ((getIsStart() == null) ? 0 : getIsStart().hashCode());
-        result = prime * result + ((getContactinformation() == null) ? 0 : getContactinformation().hashCode());
-        result = prime * result + ((getPlacardUrl() == null) ? 0 : getPlacardUrl().hashCode());
-        result = prime * result + ((getIntroduction() == null) ? 0 : getIntroduction().hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", theme=").append(theme);
-        sb.append(", type=").append(type);
-        sb.append(", startTime=").append(startTime);
-        sb.append(", endTime=").append(endTime);
-        sb.append(", memberId=").append(memberId);
-        sb.append(", extendId=").append(extendId);
-        sb.append(", checkStatus=").append(checkStatus);
-        sb.append(", checkRemark=").append(checkRemark);
-        sb.append(", viewTotal=").append(viewTotal);
-        sb.append(", isStart=").append(isStart);
-        sb.append(", contactinformation=").append(contactinformation);
-        sb.append(", placardUrl=").append(placardUrl);
-        sb.append(", introduction=").append(introduction);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }

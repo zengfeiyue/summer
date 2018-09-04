@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="item_no" property="itemNo" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="describe" property="describe" jdbcType="VARCHAR" />
+    <result column="describes" property="describes" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="total_number" property="totalNumber" jdbcType="INTEGER" />
     <result column="activity_id" property="activityId" jdbcType="INTEGER" />
@@ -14,7 +14,7 @@
     <result column="photo_url" property="photoUrl" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, item_no, title, describe, create_time, total_number, activity_id
+    id, item_no, title, describes, create_time, total_number, activity_id
   </sql>
   <sql id="Blob_Column_List" >
     photo_url
@@ -31,15 +31,15 @@
     delete from activity_vote_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityVoteItem" >
+  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityVoteItem" keyProperty="id" useGeneratedKeys="true" >
     insert into activity_vote_item (id, item_no, title, 
-      describe, create_time, total_number, 
+      describes, create_time, total_number, 
       activity_id, photo_url)
     values (#{id,jdbcType=INTEGER}, #{itemNo,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{describe,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{totalNumber,jdbcType=INTEGER}, 
+      #{describes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{totalNumber,jdbcType=INTEGER}, 
       #{activityId,jdbcType=INTEGER}, #{photoUrl,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityVoteItem" >
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityVoteItem" keyProperty="id" useGeneratedKeys="true">
     insert into activity_vote_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -51,8 +51,8 @@
       <if test="title != null" >
         title,
       </if>
-      <if test="describe != null" >
-        describe,
+      <if test="describes != null" >
+        describes,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -77,8 +77,8 @@
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null" >
-        #{describe,jdbcType=VARCHAR},
+      <if test="describes != null" >
+        #{describes,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -103,8 +103,8 @@
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null" >
-        describe = #{describe,jdbcType=VARCHAR},
+      <if test="describes != null" >
+        describes = #{describes,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -125,7 +125,7 @@
     update activity_vote_item
     set item_no = #{itemNo,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       total_number = #{totalNumber,jdbcType=INTEGER},
       activity_id = #{activityId,jdbcType=INTEGER},
@@ -136,7 +136,7 @@
     update activity_vote_item
     set item_no = #{itemNo,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       total_number = #{totalNumber,jdbcType=INTEGER},
       activity_id = #{activityId,jdbcType=INTEGER}

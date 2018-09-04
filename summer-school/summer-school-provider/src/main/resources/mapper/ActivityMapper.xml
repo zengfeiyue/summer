@@ -13,7 +13,7 @@
     <result column="check_remark" property="checkRemark" jdbcType="VARCHAR" />
     <result column="view_total" property="viewTotal" jdbcType="INTEGER" />
     <result column="is_start" property="isStart" jdbcType="INTEGER" />
-    <result column="contactInformation" property="contactinformation" jdbcType="VARCHAR" />
+    <result column="contactInformation" property="contactInformation" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.summer.school.api.entity.Activity" extends="BaseResultMap" >
     <result column="placard_url" property="placardUrl" jdbcType="LONGVARCHAR" />
@@ -47,7 +47,7 @@
     values (#{id,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, 
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{memberId,jdbcType=INTEGER}, 
       #{extendId,jdbcType=INTEGER}, #{checkStatus,jdbcType=INTEGER}, #{checkRemark,jdbcType=VARCHAR}, 
-      #{viewTotal,jdbcType=INTEGER}, #{isStart,jdbcType=INTEGER}, #{contactinformation,jdbcType=VARCHAR}, 
+      #{viewTotal,jdbcType=INTEGER}, #{isStart,jdbcType=INTEGER}, #{contactInformation,jdbcType=VARCHAR}, 
       #{placardUrl,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.summer.school.api.entity.Activity" >
@@ -86,7 +86,7 @@
       <if test="isStart != null" >
         is_start,
       </if>
-      <if test="contactinformation != null" >
+      <if test="contactInformation != null" >
         contactInformation,
       </if>
       <if test="placardUrl != null" >
@@ -130,8 +130,8 @@
       <if test="isStart != null" >
         #{isStart,jdbcType=INTEGER},
       </if>
-      <if test="contactinformation != null" >
-        #{contactinformation,jdbcType=VARCHAR},
+      <if test="contactInformation != null" >
+        #{contactInformation,jdbcType=VARCHAR},
       </if>
       <if test="placardUrl != null" >
         #{placardUrl,jdbcType=LONGVARCHAR},
@@ -174,8 +174,8 @@
       <if test="isStart != null" >
         is_start = #{isStart,jdbcType=INTEGER},
       </if>
-      <if test="contactinformation != null" >
-        contactInformation = #{contactinformation,jdbcType=VARCHAR},
+      <if test="contactInformation != null" >
+        contactInformation = #{contactInformation,jdbcType=VARCHAR},
       </if>
       <if test="placardUrl != null" >
         placard_url = #{placardUrl,jdbcType=LONGVARCHAR},
@@ -198,7 +198,7 @@
       check_remark = #{checkRemark,jdbcType=VARCHAR},
       view_total = #{viewTotal,jdbcType=INTEGER},
       is_start = #{isStart,jdbcType=INTEGER},
-      contactInformation = #{contactinformation,jdbcType=VARCHAR},
+      contactInformation = #{contactInformation,jdbcType=VARCHAR},
       placard_url = #{placardUrl,jdbcType=LONGVARCHAR},
       introduction = #{introduction,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -215,7 +215,7 @@
       check_remark = #{checkRemark,jdbcType=VARCHAR},
       view_total = #{viewTotal,jdbcType=INTEGER},
       is_start = #{isStart,jdbcType=INTEGER},
-      contactInformation = #{contactinformation,jdbcType=VARCHAR}
+      contactInformation = #{contactInformation,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <sql id="Page_Column_List">
