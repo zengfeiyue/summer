@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.summer.school.dao.ActivityVoteMapper" >
+  <resultMap id="BaseResultMap" type="com.summer.school.api.entity.ActivityVote" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="limit_total" property="limitTotal" jdbcType="INTEGER" />
+    <result column="limit_day" property="limitDay" jdbcType="INTEGER" />
+    <result column="repeat" property="repeat" jdbcType="INTEGER" />
+    <result column="display_ballot" property="displayBallot" jdbcType="INTEGER" />
+    <result column="display_result" property="displayResult" jdbcType="INTEGER" />
+    <result column="user_create" property="userCreate" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, limit_total, limit_day, repeat, display_ballot, display_result, user_create
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activity_vote
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activity_vote
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityVote" >
+    insert into activity_vote (id, limit_total, limit_day, 
+      repeat, display_ballot, display_result, 
+      user_create)
+    values (#{id,jdbcType=INTEGER}, #{limitTotal,jdbcType=INTEGER}, #{limitDay,jdbcType=INTEGER}, 
+      #{repeat,jdbcType=INTEGER}, #{displayBallot,jdbcType=INTEGER}, #{displayResult,jdbcType=INTEGER}, 
+      #{userCreate,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityVote" >
+    insert into activity_vote
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="limitTotal != null" >
+        limit_total,
+      </if>
+      <if test="limitDay != null" >
+        limit_day,
+      </if>
+      <if test="repeat != null" >
+        repeat,
+      </if>
+      <if test="displayBallot != null" >
+        display_ballot,
+      </if>
+      <if test="displayResult != null" >
+        display_result,
+      </if>
+      <if test="userCreate != null" >
+        user_create,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="limitTotal != null" >
+        #{limitTotal,jdbcType=INTEGER},
+      </if>
+      <if test="limitDay != null" >
+        #{limitDay,jdbcType=INTEGER},
+      </if>
+      <if test="repeat != null" >
+        #{repeat,jdbcType=INTEGER},
+      </if>
+      <if test="displayBallot != null" >
+        #{displayBallot,jdbcType=INTEGER},
+      </if>
+      <if test="displayResult != null" >
+        #{displayResult,jdbcType=INTEGER},
+      </if>
+      <if test="userCreate != null" >
+        #{userCreate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.school.api.entity.ActivityVote" >
+    update activity_vote
+    <set >
+      <if test="limitTotal != null" >
+        limit_total = #{limitTotal,jdbcType=INTEGER},
+      </if>
+      <if test="limitDay != null" >
+        limit_day = #{limitDay,jdbcType=INTEGER},
+      </if>
+      <if test="repeat != null" >
+        repeat = #{repeat,jdbcType=INTEGER},
+      </if>
+      <if test="displayBallot != null" >
+        display_ballot = #{displayBallot,jdbcType=INTEGER},
+      </if>
+      <if test="displayResult != null" >
+        display_result = #{displayResult,jdbcType=INTEGER},
+      </if>
+      <if test="userCreate != null" >
+        user_create = #{userCreate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.summer.school.api.entity.ActivityVote" >
+    update activity_vote
+    set limit_total = #{limitTotal,jdbcType=INTEGER},
+      limit_day = #{limitDay,jdbcType=INTEGER},
+      repeat = #{repeat,jdbcType=INTEGER},
+      display_ballot = #{displayBallot,jdbcType=INTEGER},
+      display_result = #{displayResult,jdbcType=INTEGER},
+      user_create = #{userCreate,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
