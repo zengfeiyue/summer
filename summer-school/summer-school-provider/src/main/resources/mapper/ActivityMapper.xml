@@ -14,23 +14,17 @@
     <result column="view_total" property="viewTotal" jdbcType="INTEGER" />
     <result column="is_start" property="isStart" jdbcType="INTEGER" />
     <result column="contactInformation" property="contactInformation" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.summer.school.api.entity.Activity" extends="BaseResultMap" >
     <result column="placard_url" property="placardUrl" jdbcType="LONGVARCHAR" />
     <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, theme, type, start_time, end_time, member_id, extend_id, check_status, check_remark, 
-    view_total, is_start, contactInformation
+    view_total, is_start, contactInformation,create_time,placard_url,introduction
   </sql>
-  <sql id="Blob_Column_List" >
-    placard_url, introduction
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from activity
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -43,12 +37,12 @@
       start_time, end_time, member_id, 
       extend_id, check_status, check_remark, 
       view_total, is_start, contactInformation, 
-      placard_url, introduction)
+      placard_url, introduction,create_time)
     values (#{id,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, 
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{memberId,jdbcType=INTEGER}, 
       #{extendId,jdbcType=INTEGER}, #{checkStatus,jdbcType=INTEGER}, #{checkRemark,jdbcType=VARCHAR}, 
       #{viewTotal,jdbcType=INTEGER}, #{isStart,jdbcType=INTEGER}, #{contactInformation,jdbcType=VARCHAR}, 
-      #{placardUrl,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR})
+      #{placardUrl,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR},#{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.summer.school.api.entity.Activity" >
     insert into activity
@@ -95,6 +89,9 @@
       <if test="introduction != null" >
         introduction,
       </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -138,6 +135,9 @@
       </if>
       <if test="introduction != null" >
         #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -183,6 +183,9 @@
       <if test="introduction != null" >
         introduction = #{introduction,jdbcType=LONGVARCHAR},
       </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -200,7 +203,8 @@
       is_start = #{isStart,jdbcType=INTEGER},
       contactInformation = #{contactInformation,jdbcType=VARCHAR},
       placard_url = #{placardUrl,jdbcType=LONGVARCHAR},
-      introduction = #{introduction,jdbcType=LONGVARCHAR}
+      introduction = #{introduction,jdbcType=LONGVARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.summer.school.api.entity.Activity" >
@@ -215,7 +219,8 @@
       check_remark = #{checkRemark,jdbcType=VARCHAR},
       view_total = #{viewTotal,jdbcType=INTEGER},
       is_start = #{isStart,jdbcType=INTEGER},
-      contactInformation = #{contactInformation,jdbcType=VARCHAR}
+      contactInformation = #{contactInformation,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <sql id="Page_Column_List">

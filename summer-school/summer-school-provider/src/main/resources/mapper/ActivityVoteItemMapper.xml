@@ -27,6 +27,7 @@
     from activity_vote_item
     where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from activity_vote_item
     where id = #{id,jdbcType=INTEGER}
@@ -142,4 +143,14 @@
       activity_id = #{activityId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findByActivityId" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from activity_vote_item
+    where activity_id = #{id,jdbcType=INTEGER}
+    order by total_number desc
+  </select>
 </mapper>

@@ -18,7 +18,8 @@
     from member
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from member
     where id = #{id,jdbcType=INTEGER}
   </delete>
@@ -101,4 +102,11 @@
       token = #{token,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByOpenId" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from member
+    where open_id = #{openId}
+  </select>
 </mapper>

@@ -13,4 +13,18 @@ public interface ActivityService extends BaseService<Activity,Integer> {
      * @return
      */
     ResponseBean create(ActivityVoteModel activityVoteModel);
+
+    /**
+     * 获取投票活动详情
+     * @param id
+     * @return
+     */
+    ActivityVoteModel queryVoteDetail(Integer id);
+
+    /**
+     * 投票
+     * @param itemId
+     * @return
+     */
+    ResponseBean activityVote(Integer itemId);
 }

@@ -16,6 +16,8 @@ public class Activity implements Serializable {
 
     private Date endTime;
 
+    private Date createTime;
+
     private Integer memberId;
 
     private Integer extendId;
@@ -72,6 +74,15 @@ public class Activity implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     public Date getEndTime() {
         return endTime;
+    }
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public void setEndTime(Date endTime) {
