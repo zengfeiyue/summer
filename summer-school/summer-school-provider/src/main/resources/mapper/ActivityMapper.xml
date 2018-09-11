@@ -20,11 +20,12 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, theme, type, start_time, end_time, member_id, extend_id, check_status, check_remark, 
-    view_total, is_start, contactInformation,create_time,placard_url,introduction
+    view_total, contactInformation,create_time,placard_url,introduction
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="Base_Column_List" />,
+    (case when (is_start = 1  and  NOW() BETWEEN start_time and end_time) then 1 else 0 end ) as is_start
     from activity
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -224,18 +225,19 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <sql id="Page_Column_List">
-    id, theme, type, start_time, end_time, member_id,check_status,check_remark,is_start,view_total,placard_url, introduction
+    id, theme, type, start_time, end_time, member_id,check_status,check_remark,view_total,placard_url, introduction
   </sql>
 
   <select id="findByPage" resultMap="BaseResultMap">
     select
-    <include refid="Page_Column_List" />
-    from activity ac
+    <include refid="Page_Column_List" />,
+    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1 else 0 end ) as is_start
+     from activity ac
     where
     1=1
     <if test="memberId != null">
       and ac.member_id = #{memberId}
     </if>
-    order by ac.create_time desc
+    order by ac.create_time desc,view_total desc
   </select>
 </mapper>

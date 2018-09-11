@@ -9,6 +9,7 @@ import com.summer.school.api.entity.ActivityVoteItem;
 import com.summer.school.api.entity.ActivityVoteResult;
 import com.summer.school.api.model.ActivityVoteModel;
 import com.summer.school.api.model.ActivityVoteModelDetail;
+import com.summer.school.api.model.QueryModel;
 import com.summer.school.api.service.ActivityService;
 import com.summer.school.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +42,28 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         activity.setCreateTime(new Date());
         ActivityVote activityVote = activityVoteModel.getInfo();
         List<ActivityVoteItem> activityVoteItem = activityVoteModel.getItem();
-        activityVoteMapper.insertSelective(activityVote);
+        if (activityVote.getId()!=null){
+            activityVoteMapper.updateByPrimaryKeySelective(activityVote);
+        }else{
+            activityVoteMapper.insertSelective(activityVote);
+        }
         activity.setExtendId(activityVote.getId());
-        activityMapper.insertSelective(activity);
+        if (activity.getId()!=null){
+            activityMapper.updateByPrimaryKeySelective(activity);
+        }else{
+            activityMapper.insertSelective(activity);
+        }
+
         activityVoteItem.stream().forEach(x->{
-            x.setActivityId(activity.getId());
-            x.setCreateTime(new Date());
-            activityVoteItemMapper.insertSelective(x);
+            if (x.getId()!=null){
+                x.setActivityId(activity.getId());
+                activityVoteItemMapper.updateByPrimaryKeySelective(x);
+            }else{
+                x.setActivityId(activity.getId());
+                x.setCreateTime(new Date());
+                activityVoteItemMapper.insertSelective(x);
+            }
+
         });
         ResponseBean responseBean = new ResponseBean(200,"创建成功",null);
         return responseBean;
@@ -73,12 +89,12 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
     }
 
     @Override
-    public ResponseBean activityVote(Integer itemId) {
+    public ResponseBean activityVote(Integer itemId,Integer memberId) {
         ResponseBean responseBean = null;
         ActivityVoteItem item = activityVoteItemMapper.selectByPrimaryKey(itemId);
         Activity activity = activityMapper.selectByPrimaryKey(item.getActivityId());
         ActivityVote activityVote = activityVoteMapper.selectByPrimaryKey(activity.getExtendId());
-        ActivityVoteResult activityVoteResult = activityVoteResultMapper.queryLastVoteRecord("");
+        ActivityVoteResult activityVoteResult = activityVoteResultMapper.queryLastVoteRecord(memberId);
         if (item==null){
             responseBean = new ResponseBean(500,"投票项目不存在",null);
         }else{
@@ -93,6 +109,38 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
             activityVoteItemMapper.updateByPrimaryKey(item);
             responseBean = new ResponseBean(200,"投票成功！",null);
         }
+        return responseBean;
+    }
+
+    @Override
+    public ResponseBean start(QueryModel queryModel) {
+        ResponseBean responseBean = null;
+        Activity activity = activityMapper.selectByPrimaryKey(queryModel.getId());
+        if (activity!=null){
+            Activity activity_ = new Activity();
+            activity_.setId(activity.getId());
+            activity_.setIsStart(1);
+            responseBean = new ResponseBean(200,"操作成功！",null);
+        }else{
+            responseBean = new ResponseBean(500,"操作失败！",null);
+        }
+
+        return responseBean;
+    }
+
+    @Override
+    public ResponseBean stop(QueryModel queryModel) {
+        ResponseBean responseBean = null;
+        Activity activity = activityMapper.selectByPrimaryKey(queryModel.getId());
+        if (activity!=null){
+            Activity activity_ = new Activity();
+            activity_.setId(activity.getId());
+            activity_.setIsStart(0);
+            responseBean = new ResponseBean(200,"操作成功！",null);
+        }else{
+            responseBean = new ResponseBean(500,"操作失败！",null);
+        }
+
         return responseBean;
     }
 }

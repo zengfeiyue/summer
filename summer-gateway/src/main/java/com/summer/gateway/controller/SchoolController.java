@@ -85,7 +85,10 @@ public class SchoolController {
                 memberNew.setSessionKey(((JSONObject) result).getString("session_key"));
                 memberService.insertSelective(memberNew);
             }
-            return JSON.toJSONString(new ResponseBean(200,"登录成功",token));
+            Map map = new HashMap();
+            map.put("token",token);
+            map.put("memberId",member.getId());
+            return JSON.toJSONString(new ResponseBean(200,"登录成功",map));
         }
        return JSON.toJSONString(new ResponseBean(500,"登录错误",null));
     }
@@ -145,7 +148,7 @@ public class SchoolController {
     }
 
     /**
-     * 获取登录用户
+     * 获取登录用户OpenId
      * @return
      */
     @ModelAttribute

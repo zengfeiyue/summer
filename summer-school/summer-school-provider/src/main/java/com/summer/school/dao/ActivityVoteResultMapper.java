@@ -5,5 +5,5 @@ import com.summer.school.api.entity.ActivityVoteResult;
 
 public interface ActivityVoteResultMapper extends BaseMapper<ActivityVoteResult,Integer> {
 
-    ActivityVoteResult queryLastVoteRecord(String openId);
+    ActivityVoteResult queryLastVoteRecord(Integer memberId);
 }

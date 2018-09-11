@@ -23,13 +23,13 @@
     delete from member
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.summer.school.api.entity.Member" >
+  <insert id="insert" parameterType="com.summer.school.api.entity.Member"  keyProperty="id" useGeneratedKeys="true"  >
     insert into member (id, open_id, session_key, 
       name, sex, token)
     values (#{id,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{sessionKey,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{token,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.summer.school.api.entity.Member" >
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.Member"  keyProperty="id" useGeneratedKeys="true"  >
     insert into member
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
