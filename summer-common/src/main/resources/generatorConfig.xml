@@ -8,7 +8,7 @@
     <context id="mysqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
-        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
 
         <commentGenerator>
             <!-- 这个元素用来去除指定生成的注释中是否包含生成的日期 false:表示保护 -->
@@ -30,7 +30,7 @@
         </javaTypeResolver>
 
         <!-- 生成模型的包名和位置 -->
-        <javaModelGenerator targetPackage="com.summer.school.api.entity"
+        <javaModelGenerator targetPackage="com.summer.common.base.entity"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
@@ -44,7 +44,7 @@
 
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.summer.school.dao" targetProject="src/main/java">
+                             targetPackage="com.summer.common.base.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
@@ -52,12 +52,7 @@
         <!--
         <table tableName="live_course_channel" domainObjectName="LiveCourseChannel"></table>
         -->
-        <table tableName="activity_vote_result" domainObjectName="ActivityVoteResult"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <!--<table tableName="activity" domainObjectName="Activity"
+        <table tableName="activity" domainObjectName="Activity"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
@@ -79,7 +74,7 @@
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>-->
+        </table>
 
         <!-- <table tableName="activity_member_ticket" domainObjectName="ActivityMemberTicket"
                 enableCountByExample="false" enableUpdateByExample="false"
