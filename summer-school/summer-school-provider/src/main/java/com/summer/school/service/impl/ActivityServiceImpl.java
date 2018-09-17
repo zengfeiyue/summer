@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * @author zengfeiyue
@@ -94,20 +96,40 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         ActivityVoteItem item = activityVoteItemMapper.selectByPrimaryKey(itemId);
         Activity activity = activityMapper.selectByPrimaryKey(item.getActivityId());
         ActivityVote activityVote = activityVoteMapper.selectByPrimaryKey(activity.getExtendId());
-        ActivityVoteResult activityVoteResult = activityVoteResultMapper.queryLastVoteRecord(memberId);
+        Map voteResult = activityVoteResultMapper.queryMemberVoteResult(memberId);
+        ActivityVoteResult voteRecord = activityVoteResultMapper.queryLastVoteRecord(memberId);
+        Date now = new Date();
         if (item==null){
             responseBean = new ResponseBean(500,"投票项目不存在",null);
         }else{
+            if (activity.getIsStart()==0){
+                responseBean = new ResponseBean(500,"报名未开始",null);
+            }
+            else if (!now.after(activity.getStartTime())||!now.before(activity.getEndTime())){
+                responseBean = new ResponseBean(500,"活动已结束",null);
+            }
+            else if (Optional.ofNullable(Integer.valueOf(voteResult.get("totalCount").toString())).orElse(1)
+                    >=activityVote.getLimitTotal()){
+                responseBean = new ResponseBean(500,"您的投票次数已达到上限",null);
+            }
+            else if (Optional.ofNullable(Integer.valueOf(voteResult.get("todayCount").toString())).orElse(1)
+                    >=activityVote.getLimitDay()){
+                responseBean = new ResponseBean(500,"您今天投票次数已达到上限",null);
+            }
+            else if (voteRecord.getItemId()==itemId&&activityVote.getIsRepeat()==0){
+                responseBean = new ResponseBean(500,"不可以重复投同一个！",null);
+            } else{
+                item.setTotalNumber(item.getTotalNumber()+1);
+                ActivityVoteResult result = new ActivityVoteResult();
+                result.setActivityId(activity.getId());
+                result.setCreateTime(new Date());
+                result.setItemId(itemId);
+                result.setMemberId(memberId);
+                activityVoteResultMapper.insertSelective(result);
+                activityVoteItemMapper.updateByPrimaryKey(item);
+                responseBean = new ResponseBean(200,"投票成功！",null);
+            }
 
-            item.setTotalNumber(item.getTotalNumber()+1);
-            ActivityVoteResult result = new ActivityVoteResult();
-            result.setActivityId(activity.getId());
-            result.setCreateTime(new Date());
-            result.setItemId(itemId);
-            result.setMemberId(2);//todo memberId
-            activityVoteResultMapper.insertSelective(result);
-            activityVoteItemMapper.updateByPrimaryKey(item);
-            responseBean = new ResponseBean(200,"投票成功！",null);
         }
         return responseBean;
     }

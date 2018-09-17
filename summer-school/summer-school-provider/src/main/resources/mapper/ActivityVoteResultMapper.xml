@@ -22,18 +22,27 @@
     <include refid="Base_Column_List" />
     from activity_vote_result
     where member_id =  #{memberId}
+    order by create_time desc limit 1
+  </select>
+  <select id="queryMemberVoteResult" resultType="java.util.Map">
+    SELECT
+	SUM(CASE when DATE_FORMAT(NOW(),"%Y-%m-%d")=DATE_FORMAT(create_time,"%Y-%m-%d") then 1 else 0 end) todayCount,COUNT(1) as totalCount
+    FROM
+	activity_vote_result
+    where  member_id =  #{memberId}
+    GROUP BY DATE_FORMAT(create_time,"%Y-%m-%d")
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from activity_vote_result
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityVoteResult" >
+  <insert id="insert" parameterType="com.summer.school.api.entity.ActivityVoteResult" keyProperty="id" useGeneratedKeys="true">
     insert into activity_vote_result (id, activity_id, item_id, 
       member_id, create_time)
     values (#{id,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
       #{memberId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityVoteResult" >
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.ActivityVoteResult" keyProperty="id" useGeneratedKeys="true">
     insert into activity_vote_result
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

@@ -33,7 +33,7 @@
     delete from activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.summer.school.api.entity.Activity" >
+  <insert id="insert" parameterType="com.summer.school.api.entity.Activity" keyProperty="id" useGeneratedKeys="true">
     insert into activity (id, theme, type, 
       start_time, end_time, member_id, 
       extend_id, check_status, check_remark, 
@@ -45,7 +45,7 @@
       #{viewTotal,jdbcType=INTEGER}, #{isStart,jdbcType=INTEGER}, #{contactInformation,jdbcType=VARCHAR}, 
       #{placardUrl,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR},#{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.summer.school.api.entity.Activity" >
+  <insert id="insertSelective" parameterType="com.summer.school.api.entity.Activity" keyProperty="id" useGeneratedKeys="true">
     insert into activity
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

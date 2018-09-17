@@ -55,8 +55,9 @@ public class VoteController {
     @ApiOperation(value="给投票项目投票", notes="给投票项目投票")
     @RequestMapping(value ="/activity_vote" ,method = RequestMethod.POST)
     @ResponseBody
-    public ResponseBean activityVote(@RequestBody QueryModel queryModel){
-        ResponseBean responseBean = activityService.activityVote(queryModel.getId(),queryModel.getMemberId());
+    public ResponseBean activityVote(@RequestBody QueryModel queryModel,@RequestHeader(value="memberId") Integer memberId){
+
+        ResponseBean responseBean = activityService.activityVote(queryModel.getId(),memberId);
         return responseBean;
 
     }
