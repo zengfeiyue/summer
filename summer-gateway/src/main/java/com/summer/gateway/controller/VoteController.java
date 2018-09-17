@@ -43,6 +43,15 @@ public class VoteController {
         return page;
     }
 
+    @ApiOperation(value="我参与的", notes="我参与的")
+    @RequestMapping(value ="/activity_page_join" ,method = RequestMethod.POST)
+    @ResponseBody
+    public PageInfo getActivityPageJoin(@RequestBody PageSearchModel search,@RequestHeader(value="memberId") Integer memberId){
+        search.getSearch().put("memberId",memberId);
+        PageInfo<Activity> page = activityService.findByPageJoin(search.getSearch(),search.getCurrentPage(),search.getPageSize());
+        return page;
+    }
+
     @ApiOperation(value="获取活动详情", notes="获取活动详情")
     @RequestMapping(value ="/activity_detail" ,method = RequestMethod.POST)
     @ResponseBody

@@ -1,6 +1,8 @@
 package com.summer.school.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.summer.common.base.common.ResponseBean;
 import com.summer.common.base.service.BaseServiceImpl;
 import com.summer.school.api.entity.Activity;
@@ -15,10 +17,7 @@ import com.summer.school.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author zengfeiyue
@@ -97,6 +96,11 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         Activity activity = activityMapper.selectByPrimaryKey(item.getActivityId());
         ActivityVote activityVote = activityVoteMapper.selectByPrimaryKey(activity.getExtendId());
         Map voteResult = activityVoteResultMapper.queryMemberVoteResult(memberId);
+        if (voteResult==null){
+            voteResult = new HashMap();
+            voteResult.put("totalCount",0);
+            voteResult.put("todayCount",0);
+        }
         ActivityVoteResult voteRecord = activityVoteResultMapper.queryLastVoteRecord(memberId);
         Date now = new Date();
         if (item==null){
@@ -108,15 +112,15 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
             else if (!now.after(activity.getStartTime())||!now.before(activity.getEndTime())){
                 responseBean = new ResponseBean(500,"活动已结束",null);
             }
-            else if (Optional.ofNullable(Integer.valueOf(voteResult.get("totalCount").toString())).orElse(1)
+            else if (Integer.valueOf(Optional.ofNullable(voteResult.get("totalCount")).orElse("0").toString())
                     >=activityVote.getLimitTotal()){
                 responseBean = new ResponseBean(500,"您的投票次数已达到上限",null);
             }
-            else if (Optional.ofNullable(Integer.valueOf(voteResult.get("todayCount").toString())).orElse(1)
+            else if (Integer.valueOf(Optional.ofNullable(voteResult.get("todayCount")).orElse("0").toString())
                     >=activityVote.getLimitDay()){
                 responseBean = new ResponseBean(500,"您今天投票次数已达到上限",null);
             }
-            else if (voteRecord.getItemId()==itemId&&activityVote.getIsRepeat()==0){
+            else if (voteRecord!=null&&voteRecord.getItemId()==itemId&&activityVote.getIsRepeat()==0){
                 responseBean = new ResponseBean(500,"不可以重复投同一个！",null);
             } else{
                 item.setTotalNumber(item.getTotalNumber()+1);
@@ -164,5 +168,12 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         }
 
         return responseBean;
+    }
+
+    @Override
+    public PageInfo<Activity> findByPageJoin(Map search, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        PageInfo<Activity> pageInfo = new PageInfo<>(activityMapper.findByPageJoin(search));
+        return pageInfo;
     }
 }

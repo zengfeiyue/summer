@@ -231,13 +231,27 @@
   <select id="findByPage" resultMap="BaseResultMap">
     select
     <include refid="Page_Column_List" />,
-    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1 else 0 end ) as is_start
+    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1 when ac.is_start = 0 then 2
+    when NOW() NOT BETWEEN ac.start_time and ac.end_time then 3 else 0 end ) as is_start
      from activity ac
     where
     1=1
     <if test="memberId != null">
       and ac.member_id = #{memberId}
     </if>
-    order by ac.create_time desc,view_total desc
+    order by is_start asc ,ac.create_time desc,view_total desc
+  </select>
+  <select id="findByPageJoin"  resultMap="BaseResultMap">
+    select
+    ac.id, ac.theme, ac.type, ac.start_time, ac.end_time, ac.member_id,ac.check_status,ac.check_remark,ac.view_total,ac.placard_url,ac.introduction,
+    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1 when ac.is_start = 0 then 2
+    when NOW() NOT BETWEEN ac.start_time and ac.end_time then 3 else 0 end ) as is_start
+    from activity ac
+    INNER JOIN activity_vote_result avr on avr.activity_id = ac.id
+    where
+    1=1 and
+    avr.member_id=#{memberId}
+    GROUP BY ac.id
+    order by is_start asc ,ac.create_time desc,view_total desc
   </select>
 </mapper>
