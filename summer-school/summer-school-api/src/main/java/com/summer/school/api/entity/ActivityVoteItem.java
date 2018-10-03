@@ -1,5 +1,7 @@
 package com.summer.school.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -54,6 +56,7 @@ public class ActivityVoteItem implements Serializable {
         this.describes = describes;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     public Date getCreateTime() {
         return createTime;
     }

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.summer.common.base.common.ResponseBean;
 import com.summer.common.base.service.BaseService;
 import com.summer.school.api.entity.Activity;
+import com.summer.school.api.entity.ActivityVoteItem;
 import com.summer.school.api.model.ActivityVoteModel;
 import com.summer.school.api.model.QueryModel;
 
@@ -16,7 +17,7 @@ public interface ActivityService extends BaseService<Activity,Integer> {
      * @param activityVoteModel
      * @return
      */
-    ResponseBean create(ActivityVoteModel activityVoteModel);
+    ResponseBean create(ActivityVoteModel activityVoteModel,Integer memberId);
 
     /**
      * 获取投票活动详情
@@ -54,4 +55,11 @@ public interface ActivityService extends BaseService<Activity,Integer> {
      * @return
      */
     PageInfo<Activity> findByPageJoin(Map search, Integer currentPage, Integer pageSize);
+
+    /**
+     * 报名活动
+     * @param item
+     * @return
+     */
+    ResponseBean createJoin(ActivityVoteItem item);
 }

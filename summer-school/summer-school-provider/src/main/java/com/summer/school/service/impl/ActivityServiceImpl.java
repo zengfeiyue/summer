@@ -14,6 +14,7 @@ import com.summer.school.api.model.ActivityVoteModelDetail;
 import com.summer.school.api.model.QueryModel;
 import com.summer.school.api.service.ActivityService;
 import com.summer.school.dao.*;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,9 +39,10 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public ResponseBean create(ActivityVoteModel activityVoteModel) {
+    public ResponseBean create(ActivityVoteModel activityVoteModel, Integer memberId) {
         Activity activity = activityVoteModel.getBase();
         activity.setCreateTime(new Date());
+        activity.setMemberId(memberId);
         ActivityVote activityVote = activityVoteModel.getInfo();
         List<ActivityVoteItem> activityVoteItem = activityVoteModel.getItem();
         if (activityVote.getId()!=null){
@@ -84,7 +86,7 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         activityVoteModelDetail.setTotalVoteCount(activityVoteItem.stream().mapToInt(ActivityVoteItem::getTotalNumber).sum());
         Activity activity_ = new Activity();
         activity_.setId(activity.getId());
-        activity_.setViewTotal(activity.getViewTotal()+1);
+        activity_.setViewTotal(Optional.ofNullable(activity.getViewTotal()).orElse(0)+1);
         activityMapper.updateByPrimaryKeySelective(activity_);
         return activityVoteModelDetail;
     }
@@ -95,7 +97,7 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         ActivityVoteItem item = activityVoteItemMapper.selectByPrimaryKey(itemId);
         Activity activity = activityMapper.selectByPrimaryKey(item.getActivityId());
         ActivityVote activityVote = activityVoteMapper.selectByPrimaryKey(activity.getExtendId());
-        Map voteResult = activityVoteResultMapper.queryMemberVoteResult(memberId);
+        Map voteResult = activityVoteResultMapper.queryMemberVoteResult(activity.getId(),memberId);
         if (voteResult==null){
             voteResult = new HashMap();
             voteResult.put("totalCount",0);
@@ -112,7 +114,7 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
             else if (!now.after(activity.getStartTime())||!now.before(activity.getEndTime())){
                 responseBean = new ResponseBean(500,"活动已结束",null);
             }
-            else if (Integer.valueOf(Optional.ofNullable(voteResult.get("totalCount")).orElse("0").toString())
+            else if (activityVote.getLimitTotal()!=null&&Integer.valueOf(Optional.ofNullable(voteResult.get("totalCount")).orElse("0").toString())
                     >=activityVote.getLimitTotal()){
                 responseBean = new ResponseBean(500,"您的投票次数已达到上限",null);
             }
@@ -146,6 +148,7 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
             Activity activity_ = new Activity();
             activity_.setId(activity.getId());
             activity_.setIsStart(1);
+            activityMapper.updateByPrimaryKeySelective(activity_);
             responseBean = new ResponseBean(200,"操作成功！",null);
         }else{
             responseBean = new ResponseBean(500,"操作失败！",null);
@@ -162,6 +165,7 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
             Activity activity_ = new Activity();
             activity_.setId(activity.getId());
             activity_.setIsStart(0);
+            activityMapper.updateByPrimaryKeySelective(activity_);
             responseBean = new ResponseBean(200,"操作成功！",null);
         }else{
             responseBean = new ResponseBean(500,"操作失败！",null);
@@ -175,5 +179,16 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
         PageHelper.startPage(currentPage, pageSize);
         PageInfo<Activity> pageInfo = new PageInfo<>(activityMapper.findByPageJoin(search));
         return pageInfo;
+    }
+
+    @Override
+    public ResponseBean createJoin(ActivityVoteItem item) {
+        try {
+            activityVoteItemMapper.insertSelective(item);
+            return new ResponseBean(200,"报名成功！",null);
+        }catch (Exception e){
+            return new ResponseBean(500,"报名失败！",null);
+        }
+
     }
 }

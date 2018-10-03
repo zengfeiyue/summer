@@ -30,8 +30,16 @@ public class VoteController {
     @ApiOperation(value="创建投票活动")
     @RequestMapping(value ="/activity_create" ,method = RequestMethod.POST)
     @ResponseBody
-    public ResponseBean activityCreate(@RequestBody ActivityVoteModel activityVoteModel){
-        ResponseBean responseBean = activityService.create(activityVoteModel);
+    public ResponseBean activityCreate(@RequestBody ActivityVoteModel activityVoteModel,@RequestHeader(value="memberId") Integer memberId){
+        ResponseBean responseBean = activityService.create(activityVoteModel,memberId);
+        return responseBean;
+    }
+
+    @ApiOperation(value="参加投票活动")
+    @RequestMapping(value ="/activity_join" ,method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean activityJoin(@RequestBody ActivityVoteItem item){
+        ResponseBean responseBean = activityService.createJoin(item);
         return responseBean;
     }
 
