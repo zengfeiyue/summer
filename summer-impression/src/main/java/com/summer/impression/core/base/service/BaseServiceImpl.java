@@ -12,7 +12,6 @@ import java.util.Map;
 /**
  * @author zengfeiyue
  */
-@Service
 public class BaseServiceImpl<T,ID extends Serializable> implements BaseService<T,ID> {
 
     @Autowired
