@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.summer.gateway.dao.ActivityVoteResultMapper" >
+  <resultMap id="BaseResultMap" type="com.summer.gateway.entity.ActivityVoteResult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="item_id" property="itemId" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, activity_id, item_id, member_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activity_vote_result
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryLastVoteRecord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from activity_vote_result
+    where member_id =  #{memberId}
+    order by create_time desc limit 1
+  </select>
+  <select id="queryMemberVoteResult" resultType="java.util.Map">
+    SELECT
+	SUM(CASE when DATE_FORMAT(NOW(),"%Y-%m-%d")=DATE_FORMAT(create_time,"%Y-%m-%d") then 1 else 0 end) todayCount,COUNT(1) as totalCount
+    FROM
+	activity_vote_result
+    where  member_id =  #{memberId} and activity_id = #{activity}
+    GROUP BY member_id
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activity_vote_result
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.summer.gateway.entity.ActivityVoteResult" keyProperty="id" useGeneratedKeys="true">
+    insert into activity_vote_result (id, activity_id, item_id, 
+      member_id, create_time)
+    values (#{id,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
+      #{memberId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.summer.gateway.entity.ActivityVoteResult" keyProperty="id" useGeneratedKeys="true">
+    insert into activity_vote_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.gateway.entity.ActivityVoteResult" >
+    update activity_vote_result
+    <set >
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.summer.gateway.entity.ActivityVoteResult" >
+    update activity_vote_result
+    set activity_id = #{activityId,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

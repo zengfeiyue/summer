@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.summer.gateway.dao.ActivityVoteItemMapper" >
+  <resultMap id="BaseResultMap" type="com.summer.gateway.entity.ActivityVoteItem" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_no" property="itemNo" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="describes" property="describes" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="total_number" property="totalNumber" jdbcType="INTEGER" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.summer.gateway.entity.ActivityVoteItem" extends="BaseResultMap" >
+    <result column="photo_url" property="photoUrl" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, item_no, title, describes, create_time, total_number, activity_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    photo_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from activity_vote_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activity_vote_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.summer.gateway.entity.ActivityVoteItem" keyProperty="id" useGeneratedKeys="true" >
+    insert into activity_vote_item (id, item_no, title, 
+      describes, create_time, total_number, 
+      activity_id, photo_url)
+    values (#{id,jdbcType=INTEGER}, #{itemNo,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{describes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{totalNumber,jdbcType=INTEGER}, 
+      #{activityId,jdbcType=INTEGER}, #{photoUrl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.summer.gateway.entity.ActivityVoteItem" keyProperty="id" useGeneratedKeys="true">
+    insert into activity_vote_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemNo != null" >
+        item_no,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="describes != null" >
+        describes,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="totalNumber != null" >
+        total_number,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="photoUrl != null" >
+        photo_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemNo != null" >
+        #{itemNo,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="describes != null" >
+        #{describes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalNumber != null" >
+        #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="photoUrl != null" >
+        #{photoUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.gateway.entity.ActivityVoteItem" >
+    update activity_vote_item
+    <set >
+      <if test="itemNo != null" >
+        item_no = #{itemNo,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="describes != null" >
+        describes = #{describes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalNumber != null" >
+        total_number = #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="photoUrl != null" >
+        photo_url = #{photoUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.summer.gateway.entity.ActivityVoteItem" >
+    update activity_vote_item
+    set item_no = #{itemNo,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      total_number = #{totalNumber,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      photo_url = #{photoUrl,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.summer.gateway.entity.ActivityVoteItem" >
+    update activity_vote_item
+    set item_no = #{itemNo,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      total_number = #{totalNumber,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByActivityId" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from activity_vote_item
+    where activity_id = #{id,jdbcType=INTEGER}
+    order by total_number desc
+  </select>
+</mapper>

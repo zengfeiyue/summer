@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.summer.gateway.dao.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.summer.gateway.entity.Activity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="extend_id" property="extendId" jdbcType="INTEGER" />
+    <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
+    <result column="check_remark" property="checkRemark" jdbcType="VARCHAR" />
+    <result column="view_total" property="viewTotal" jdbcType="INTEGER" />
+    <result column="is_start" property="isStart" jdbcType="INTEGER" />
+    <result column="contactInformation" property="contactInformation" jdbcType="VARCHAR" />
+    <result column="placard_url" property="placardUrl" jdbcType="LONGVARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, theme, type, start_time, end_time, member_id, extend_id, check_status, check_remark, 
+    view_total, contactInformation,create_time,placard_url,introduction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />,
+    (case when (is_start = 1  and  NOW() BETWEEN start_time and end_time) then 1 else 0 end ) as is_start
+    from activity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.summer.gateway.entity.Activity" keyProperty="id" useGeneratedKeys="true">
+    insert into activity (id, theme, type, 
+      start_time, end_time, member_id, 
+      extend_id, check_status, check_remark, 
+      view_total, is_start, contactInformation, 
+      placard_url, introduction,create_time)
+    values (#{id,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{memberId,jdbcType=INTEGER}, 
+      #{extendId,jdbcType=INTEGER}, #{checkStatus,jdbcType=INTEGER}, #{checkRemark,jdbcType=VARCHAR}, 
+      #{viewTotal,jdbcType=INTEGER}, #{isStart,jdbcType=INTEGER}, #{contactInformation,jdbcType=VARCHAR}, 
+      #{placardUrl,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR},#{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.summer.gateway.entity.Activity" keyProperty="id" useGeneratedKeys="true">
+    insert into activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="extendId != null" >
+        extend_id,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
+      </if>
+      <if test="checkRemark != null" >
+        check_remark,
+      </if>
+      <if test="viewTotal != null" >
+        view_total,
+      </if>
+      <if test="isStart != null" >
+        is_start,
+      </if>
+      <if test="contactInformation != null" >
+        contactInformation,
+      </if>
+      <if test="placardUrl != null" >
+        placard_url,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="extendId != null" >
+        #{extendId,jdbcType=INTEGER},
+      </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="checkRemark != null" >
+        #{checkRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="viewTotal != null" >
+        #{viewTotal,jdbcType=INTEGER},
+      </if>
+      <if test="isStart != null" >
+        #{isStart,jdbcType=INTEGER},
+      </if>
+      <if test="contactInformation != null" >
+        #{contactInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="placardUrl != null" >
+        #{placardUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.summer.gateway.entity.Activity" >
+    update activity
+    <set >
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="extendId != null" >
+        extend_id = #{extendId,jdbcType=INTEGER},
+      </if>
+      <if test="checkStatus != null" >
+        check_status = #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="checkRemark != null" >
+        check_remark = #{checkRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="viewTotal != null" >
+        view_total = #{viewTotal,jdbcType=INTEGER},
+      </if>
+      <if test="isStart != null" >
+        is_start = #{isStart,jdbcType=INTEGER},
+      </if>
+      <if test="contactInformation != null" >
+        contactInformation = #{contactInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="placardUrl != null" >
+        placard_url = #{placardUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.summer.gateway.entity.Activity" >
+    update activity
+    set theme = #{theme,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      member_id = #{memberId,jdbcType=INTEGER},
+      extend_id = #{extendId,jdbcType=INTEGER},
+      check_status = #{checkStatus,jdbcType=INTEGER},
+      check_remark = #{checkRemark,jdbcType=VARCHAR},
+      view_total = #{viewTotal,jdbcType=INTEGER},
+      is_start = #{isStart,jdbcType=INTEGER},
+      contactInformation = #{contactInformation,jdbcType=VARCHAR},
+      placard_url = #{placardUrl,jdbcType=LONGVARCHAR},
+      introduction = #{introduction,jdbcType=LONGVARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.summer.gateway.entity.Activity" >
+    update activity
+    set theme = #{theme,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      member_id = #{memberId,jdbcType=INTEGER},
+      extend_id = #{extendId,jdbcType=INTEGER},
+      check_status = #{checkStatus,jdbcType=INTEGER},
+      check_remark = #{checkRemark,jdbcType=VARCHAR},
+      view_total = #{viewTotal,jdbcType=INTEGER},
+      is_start = #{isStart,jdbcType=INTEGER},
+      contactInformation = #{contactInformation,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="Page_Column_List">
+    id, theme, type, start_time, end_time, member_id,check_status,check_remark,view_total,placard_url, introduction
+  </sql>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Page_Column_List" />,
+    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1 when ac.is_start = 0 then 2
+    when NOW() NOT BETWEEN ac.start_time and ac.end_time then 3 else 0 end ) as is_start
+     from activity ac
+    where
+    1=1
+    <if test="memberId != null">
+      and ac.member_id = #{memberId}
+    </if>
+    order by is_start asc ,ac.create_time desc,view_total desc
+  </select>
+  <select id="findByPageJoin"  resultMap="BaseResultMap">
+    select
+    ac.id, ac.theme, ac.type, ac.start_time, ac.end_time, ac.member_id,ac.check_status,ac.check_remark,ac.view_total,ac.placard_url,ac.introduction,
+    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1 when ac.is_start = 0 then 2
+    when NOW() NOT BETWEEN ac.start_time and ac.end_time then 3 else 0 end ) as is_start
+    from activity ac
+    INNER JOIN activity_vote_result avr on avr.activity_id = ac.id
+    where
+    1=1 and
+    avr.member_id=#{memberId}
+    GROUP BY ac.id
+    order by is_start asc ,ac.create_time desc,view_total desc
+  </select>
+</mapper>
