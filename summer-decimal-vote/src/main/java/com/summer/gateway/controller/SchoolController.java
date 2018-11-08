@@ -66,7 +66,7 @@ public class SchoolController {
         if (param.containsKey("code")){
             code = param.getString("code");
         }
-        String url ="https://api.weixin.qq.com/sns/jscode2session?appid=wxf784080a4b8c9eb3&secret=638cb23e9295c1cc0c322199b018c33f&grant_type=authorization_code&js_code="+code;
+        String url ="https://api.weixin.qq.com/sns/jscode2session?appid=wx6e2ff7ab07d81ebe&secret=eee894b9e637278b85403443d45b3ddc&grant_type=authorization_code&js_code="+code;
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(url,String.class);
         Map result = JSON.parseObject(responseEntity.getBody());
         if (result.containsKey("session_key")){
@@ -74,11 +74,10 @@ public class SchoolController {
 
             Member member = memberService.selectByOpenId(result.get("openid").toString());
             if (member==null){
-                Member memberNew = new Member();
-                memberNew.setOpenId(result.get("openid").toString());
-                memberNew.setToken("");
-                memberNew.setSessionKey(((JSONObject) result).getString("session_key"));
-                memberService.insertSelective(memberNew);
+                member.setOpenId(result.get("openid").toString());
+                member.setToken("");
+                member.setSessionKey(((JSONObject) result).getString("session_key"));
+                memberService.insertSelective(member);
             }
             Map map = new HashMap();
             map.put("token",token);
