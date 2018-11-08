@@ -184,6 +184,11 @@ public class ActivityServiceImpl extends BaseServiceImpl<Activity,Integer> imple
     @Override
     public ResponseBean createJoin(ActivityVoteItem item) {
         try {
+            List<ActivityVoteItem> items = activityVoteItemMapper.findByActivityId(item.getActivityId());
+            Integer maxNum = items.stream().mapToInt(x->x.getItemNo()).max().getAsInt();
+            item.setItemNo(maxNum+1);
+            item.setCreateTime(new Date());
+            item.setTotalNumber(0);
             activityVoteItemMapper.insertSelective(item);
             return new ResponseBean(200,"报名成功！",null);
         }catch (Exception e){

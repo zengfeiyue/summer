@@ -231,15 +231,15 @@
   <select id="findByPage" resultMap="BaseResultMap">
     select
     <include refid="Page_Column_List" />,
-    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1 when ac.is_start = 0 then 2
-    when NOW() NOT BETWEEN ac.start_time and ac.end_time then 3 else 0 end ) as is_start
+    (case when (ac.is_start = 1  and  NOW() BETWEEN ac.start_time and ac.end_time) then 1  when  NOW()<![CDATA[ <ac.start_time ]]> then 2 when ac.is_start = 0  then 3
+    when NOW() NOT BETWEEN ac.start_time and ac.end_time then 4  else 0 end ) as is_start
      from activity ac
     where
     1=1
     <if test="memberId != null">
       and ac.member_id = #{memberId}
     </if>
-    order by is_start asc ,ac.create_time desc,view_total desc
+    order by is_start asc ,view_total desc
   </select>
   <select id="findByPageJoin"  resultMap="BaseResultMap">
     select
