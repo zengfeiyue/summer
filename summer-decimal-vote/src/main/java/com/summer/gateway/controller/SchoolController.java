@@ -74,6 +74,7 @@ public class SchoolController {
 
             Member member = memberService.selectByOpenId(result.get("openid").toString());
             if (member==null){
+                member = new Member();
                 member.setOpenId(result.get("openid").toString());
                 member.setToken("");
                 member.setSessionKey(((JSONObject) result).getString("session_key"));
