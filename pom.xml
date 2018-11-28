@@ -16,7 +16,8 @@
 		<module>summer-gateway</module>
 		<module>summer-security</module>
 		<module>summer-school</module>
-	</modules>
+        <module>summer-code-generator</module>
+    </modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

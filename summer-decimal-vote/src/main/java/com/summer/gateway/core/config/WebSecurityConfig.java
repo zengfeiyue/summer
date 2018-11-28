@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 /*放行的路径*/
                 //.antMatchers("/**").permitAll()
                 .antMatchers("/").permitAll()
-                .antMatchers("/test","/test1","/swagger-ui.html","/swagger-resources/**","/v2/**",
+                .antMatchers("/test","/api/vote/activity_page","/api/vote/activity_detail","/test1","/swagger-ui.html","/swagger-resources/**","/v2/**",
                         "/webjars/**","/api/school/weixin_login").permitAll()
                 /*其他路径都要鉴权*/
                 .anyRequest().authenticated()

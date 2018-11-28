@@ -1,15 +1,15 @@
-package com.summer.common.base.service;
+package $basePackage;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.summer.common.base.dao.BaseMapper;
+import $basePackage .core.base.dao.BaseMapper
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 /**
- * @author zengfeiyue
+ * @author $author
  */
 public class BaseServiceImpl<T,ID extends Serializable> implements BaseService<T,ID> {
 

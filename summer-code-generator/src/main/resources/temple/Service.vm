@@ -1,0 +1,11 @@
+package $basePackage;
+import ${basePackage}.core.base.service.BaseService};
+import ${basePackage}.entity.$TableName;
+
+/**
+ * ${TableDescribe}
+ * @author $author
+ */
+public interface ${TableName}Service extends BaseService<$TableName,Integer> {
+
+}
